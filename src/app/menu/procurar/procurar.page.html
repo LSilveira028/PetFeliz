@@ -1,10 +1,86 @@
 <ion-header>
   <ion-toolbar color="primary"><!--Toolbar-->
     <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
-    <ion-title color="tertiary"> <b>Procurar</b> <!-- <b> deixa o texto em negrito --> </ion-title>
+    <ion-title color="tertiary"> <b>Procurar Dog Walkers</b> <!-- <b> deixa o texto em negrito --> </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content> <!--Conteúdo do app-->
+  <ion-list>
+  <ion-item *ngFor="let d of dogWalkers">
+    <div class="item-lista">
+      <div class="informacoes">
+        <div class="avatarSolicitarServicoDW">
+          <ion-avatar slot="start">
+            <img src="/assets/avatar_homemPerfil.jpg"> <!--Avatar do Dog Walker-->
+          </ion-avatar>
+        </div>
+        
+        <div class="informacoesDW">
+          <div class="nomeStatus">
+            <div class="nomeDW">
+              <ion-label><b> {{d.nome}}</b></ion-label>  <!--Nome Dog Walker-->
+            </div>
+              
+            <div class="statusSolicitarServicoDW">
+              <b>Indisponivel</b> <!--Status-->
+            </div>
+          </div>
+          
+          <div class="linha1Info">
+            <div class="cartao-distancia">
+              <div class="cartao">
+                <ion-icon name="card" style="width: 25px; height: 25px;"></ion-icon>
+                <div class="textoCartao" style="margin-left: 5px;">
+                  Não aceito cartão
+                </div>
+              </div>
+  
+              <div class="distancia">
+                <img src="/assets/red-pin.png" style="width: 20px; height: 20px;">
+                <div class="texto-distancia" style="margin-left: 5px;">
+                  1 km
+                </div>
+              </div>
+            </div>
+            
+  
+            <div class="preco-servico"> <!--Aceito cartao ou não-->
+              <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
+              <b style="margin-left: 10px; color:forestgreen ;">R$ 15.00</b>
+            </div> 
+            
+            <div class="avaliacao-dw"> <!--Avaliação média-->
+              <b>Avaliação média:</b> <br>
+              <b>{{d.servicoDogWalker.avaliacaoMedia}}</b> <!--Estrelas (descobriremos como fazer)-->
+            </div>
+      
+            <div class="preferencias-dw">  <!--Preferencias-->
+              <b>Preferências:</b> <br>
+              {{d.servicoDogWalker.preferencias}}
+            </div>
+          </div>
+        </div>
+      </div>
+      
 
+      <!--Botões-->
+      <div class="botoes">
+
+        <button class="botao-solicitar">
+          Solicitar <br> servico
+        </button>
+
+        <button class="botao-whatsapp">
+          <img src="/assets/whatsapp.png" style="height: 25px; width: 25px;">
+        </button>
+
+        <button class="botao-tornar-favorito">
+          <img src="/assets/like-white.png" style="height: 25px; width: 25px;">
+        </button>
+
+      </div>
+    </div>
+  </ion-item>
+</ion-list>
 </ion-content>
