@@ -1,0 +1,125 @@
+<ion-header class="headerCadastro">
+  <ion-avatar class="avatarLogoCadastro">
+    <img src="/assets/logoPetFeliz.png">
+  </ion-avatar>
+</ion-header>
+
+<ion-content> <!--Conteúdo do app-->
+  
+  <div class="fundoRosaCadastro"> <!--"Que pena que você está nos deixando!"-->
+
+  </div>
+    
+    <div class="fundoBrancoCadastro"> <!--Quadrado branco-->
+
+      <div class="textoCadastro"> <!-- "Para continuar você precisa digitar sua senha."-->
+        <br>
+        <b>Cadastro</b>
+      </div>
+
+      <div class="textoVoceE">
+        <br>
+        <br>
+        <b>Você é:</b>
+      </div>
+
+      <ion-segment (ionChange)="alterarVoceECadastro($event)">
+        <ion-segment-button value="EscolhaDogWalkerCadastro">
+          <img src="/assets/dogWalker.png" class="imgEscolhaDogWalkerCadastro">
+          <ion-label>DogWalker</ion-label>
+        </ion-segment-button>
+    
+        <ion-segment-button value="EscolhaProprietarioCadastro">
+          <img src="/assets/proprietario.png" class="imgEscolhaProprietarioCadastro">
+          <ion-label>Proprietário</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      
+      <ion-list *ngIf="escolha=='EscolhaDogWalkerCadastro'">
+        <form #f="ngForm" (ngSubmit)="enviar(f)">
+            <ion-item>
+              <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">Nome</ion-label>
+              <ion-input type="text" placeholder="Digite seu nome" ngModel name="nome"></ion-input>
+            </ion-item>
+                
+            <ion-item>
+              <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">Data de Nascimento</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" 
+                            max="2002-12-31" 
+                            ngModel name="dataNascimento">
+              </ion-datetime>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">Telefone</ion-label>
+              <ion-input type="tel" ngModel name="telefone" placeholder="Digite seu Telefone"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">E-mail</ion-label>
+              <ion-input type="email" ngModel name="email" placeholder="Digite seu E-mail"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label class="labelEscolhaDogWalkerCadastro">Senha</ion-label>
+              <ion-input type="password" ngModel name="senha"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label class="labelEscolhaDogWalkerCadastro">Confirmar Senha</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+            
+            <ion-button expand="block"
+                        class="botaoCadastrarCadastro"
+                        color="secondary"
+                        type="submit">
+              <b>Cadastrar</b>
+            </ion-button> <!--BOTÃO Cadastrar-->
+        </form>
+      </ion-list>
+
+      <ion-list *ngIf="escolha=='EscolhaProprietarioCadastro'">
+        <form>
+            <ion-item>
+              <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">Nome</ion-label>
+              <ion-input type="text" placeholder="Digite seu nome"></ion-input>
+            </ion-item>
+                
+            <ion-item>
+              <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">Data de Nascimento</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" max="2002-12-31"></ion-datetime>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">Telefone</ion-label>
+              <ion-input type="tel" placeholder="Digite seu Telefone"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">E-mail</ion-label>
+              <ion-input type="email"  placeholder="Digite seu E-mail"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label class="labelEscolhaDogWalkerCadastro">Senha</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label class="labelEscolhaDogWalkerCadastro">Confirmar Senha</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+
+            <ion-button expand="block" class="botaoCadastrarCadastro" color="secondary"><b>Cadastrar</b></ion-button> <!--BOTÃO Cadastrar-->
+        </form>   
+      </ion-list>
+
+
+    </div>
+
+  
+</ion-content>
+
+

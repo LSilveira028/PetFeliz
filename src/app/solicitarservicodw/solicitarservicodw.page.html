@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary"><!--Toolbar-->
+    <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
+    <ion-title color="tertiary"> <b>Solicitar Serviço</b> <!-- <b> deixa o texto em negrito --> </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> <!--Conteúdo do app-->
+
+  <ion-item class="avatarSolicitarServicoDW">
+    <ion-avatar slot="start">
+      <img src="/assets/avatar_homemPerfil.jpg"> <!--Avatar do Dog Walker-->
+    </ion-avatar>
+    <ion-label><b> Vanderlei Silva dos Santos </b></ion-label>  <!--Nome Dog Walker-->
+      
+    <div slot="end" class="statusSolicitarServicoDW">
+      <b>Status</b> <!--Status-->
+    </div>
+  </ion-item>
+
+  <div class="cartaoSouNsolicitarServicoDW"> <!--Icone cartão-->
+    <ion-icon name="card" style="height: 25px; width: 25px;"></ion-icon> 
+  </div>
+
+    
+  <div class="aceitoSouNcartaoSolicitarServicoDW"> <!--Aceito cartao ou não-->
+    Aceito cartão (ou não)
+  </div>
+
+  <div class="textoPrecoPorCaoSolicitarServicoDW"> <!--Aceito cartao ou não-->
+    <b>Preço por cão: R$</b>
+  </div> 
+  
+
+  <div class="avaliacaoMediaSolicitarServicoDW"> <!--Avaliação média-->
+    <b>Avaliação média:</b> <br>
+    <b>Estrelas</b> <!--Estrelas (descobriremos como fazer)-->
+  </div>
+
+  <div class="preferenciasAvaliacaoMediaSolicitarServicoDW">  <!--Preferencias-->
+    <b>Preferências:</b> <br>
+     Preferências Dog Walker
+  </div>
+
+  <div class="selecionarCaesSolicitarServicoDW">
+    <b>Selecione os cães que serão levados para passear:</b> <!--Texto-->
+
+    <ion-item>
+        <ion-select multiple="true" cancelText="Cancelar" okText="Confirmar">
+          <ion-select-option>Cão 1</ion-select-option> <!--Select multiplo-->
+          <ion-select-option>Cão 2</ion-select-option>
+        </ion-select>
+    </ion-item>
+  </div>
+
+  <div class="valorTotalSolicitarServicoDW">
+    <b>Valor total: R$ </b>
+  </div>
+
+  <ion-button expand="block" color="secondary" class="botaoSolicitarServicoDW"><b>Solicitar</b></ion-button>
+
+</ion-content>

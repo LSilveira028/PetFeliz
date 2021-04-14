@@ -1,0 +1,46 @@
+
+.conteudo{
+    height: 100vh;
+    width: 100vw;
+
+    //Alinha os items um embaixo do outro
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.caixaBranca{
+    background-color: #ffffff;
+    height: 40vh;
+    width: 85vw;
+    border-radius: 5%;
+
+    //Alinha os items um embaixo do outro
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.title{
+    align-items: center;
+    font-size: 1.2em;
+
+    color: #000000;
+
+    margin-bottom: 10%;
+}
+
+.botaoLogar{
+    margin-top: 5%;
+
+    width: 250px;
+}
+
+.inputs{
+    width: 300px;
+}

@@ -1,0 +1,7 @@
+{
+  "name": "AppPetFeliz",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

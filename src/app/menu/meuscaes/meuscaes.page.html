@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary"><!--Toolbar-->
+    <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
+    <ion-title class="tituloToolBar" color="tertiary"> <b>Meus Cães</b> <!-- <b> deixa o texto em negrito --> </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="conteudo"> <!--Conteúdo do app-->
+  <h1 class="cadastreSeusCaesAqui"> <b>Cadastre seus cães aqui</b></h1>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating"  class="labelCadastreSeusCaesAqui">Nome</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"  class="labelCadastreSeusCaesAqui">Raça</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"  class="labelCadastreSeusCaesAqui">Idade</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"  class="labelCadastreSeusCaesAqui">Peso</ion-label>
+        <ion-select cancelText="Cancelar" okText="Confirmar">
+          <ion-select-option>0 - 4 kg </ion-select-option>
+          <ion-select-option>10 - 14 kg</ion-select-option>
+          <ion-select-option>15 - 19 kg</ion-select-option>
+          <ion-select-option>20 - 24 kg</ion-select-option>
+          <ion-select-option>25 - 29 kg</ion-select-option>
+          <ion-select-option>30 - 34 kg</ion-select-option>
+          <ion-select-option>35 - 39 kg</ion-select-option>
+          <ion-select-option>40 - 44 kg</ion-select-option>
+          <ion-select-option>45 - 49 kg</ion-select-option>
+          <ion-select-option>50 - 54 kg</ion-select-option>
+          <ion-select-option>55 - 59 kg</ion-select-option>
+          <ion-select-option>60 - 64 kg</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"  class="labelCadastreSeusCaesAqui">Porte</ion-label>
+        <ion-select cancelText="Cancelar" okText="Confirmar">
+          <ion-select-option>Pequeno</ion-select-option>
+          <ion-select-option>Médio</ion-select-option>
+          <ion-select-option>Grande</ion-select-option>
+        </ion-select>
+    </ion-item>  
+  </ion-list>
+  <br>
+  <ion-button expand="block" class="botaoCadastrarPet" color="secondary" (click)="metodoToast()"><b>Cadastrar Pet</b></ion-button> <!--BOTÃO-->
+  <ion-button expand="block" class="verPetsJaCadastrados" color="danger" (click)="abrirPagina(petsjacadastrados)"><b>Ver Pets já cadastrados</b></ion-button> <!--BOTÃO-->
+
+  <!-- <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button class="FabCadastreSeusCaesAqui" color="danger" (click)="funcoesFabCadastreSeusCaesAqui()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab> -->
+
+</ion-content>

@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary"><!--Toolbar-->
+    <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
+    <ion-title color="tertiary"> <b>Perfil</b> <!-- <b> deixa o texto em negrito --> </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> <!--Conteúdo do app-->
+
+  <div class="headerPerfil">   
+
+    <ion-item class="avatarNomePerfil">
+      <ion-avatar slot="start">
+        <img src="/assets/avatar_homemPerfil.jpg">
+      </ion-avatar>
+      <ion-label><b> Vanderlei </b></ion-label>
+    </ion-item>
+
+  </div>
+
+    <div class="parteMeioPerfil"> <!--Contém a Caixa de Texto "Sobre" -->
+
+      <div class="sobrePerfil"> <!--Texto "Sobre"-->
+        <b>Sobre</b>
+      </div>
+
+      <p class="textareaSobrePerfil"> <!--caixa de texto Sobre-->
+        <textarea name="textareaSobrePerfil" placeholder="Conte aqui sobre você, seu trabalho e suas experiências"></textarea>
+      </p>
+
+      <div class="precoPerfil"> <!-- Preço -->
+        <b>Preço</b>
+        <ion-item> <!-- Label para colocar o preço do serviço -->
+          <ion-label></ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+      </div>
+
+      <ion-item> <!-- ion-select "Aceita cartao?"-->
+        <ion-label>Aceita Cartão?</ion-label>
+          <ion-select cancelText="Cancelar" okText="Confirmar">
+            <ion-select-option>Sim</ion-select-option>
+            <ion-select-option>Não</ion-select-option>
+          </ion-select>
+      </ion-item>
+
+      <p class="textareaPreferenciasPerfil"> <!--caixa de texto Preferencias-->
+        <textarea name="textareaPreferenciasPerfil" placeholder="Conte aqui suas preferências: se prepere trabalhar com determinada raça, porte, idade ou qualquer outra preferência."></textarea>
+      </p>
+
+      <ion-button expand="block" class="botaoSalvarPerfil" color="secondary"  (click)="metodoToastSalvar()"><b>Salvar</b></ion-button> <!--BOTÃO Salvar-->
+    </div>
+
+</ion-content>
