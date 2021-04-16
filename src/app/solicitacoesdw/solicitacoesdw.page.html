@@ -6,31 +6,71 @@
 </ion-header>
 
 <ion-content>
- 
-    <ion-item class="avatarSolicitacoesDW">
-      <ion-avatar slot="start">
-        <img src="/assets/avatar_homemPerfil.jpg"> <!--Avatar do Proprietario-->
-      </ion-avatar>
-      <ion-label><b> Heitor Chaves </b></ion-label>  <!--Nome do Proprietario-->
+
+  <ion-list>
+    <ion-item>
+      <div class="item-listaSolicitacoesDW">
+        <div class="informacoes">
+          <div class="avatarSolicitarServicoDW">
+            <ion-avatar slot="start">
+              <img src="/assets/avatar_homemPerfil.jpg"> <!--Avatar do Proprietário-->
+            </ion-avatar>
+          </div>
+          
+          <div class="informacoesProprietario">
+            <div class="nomeSolicitacoesDW">
+              <div class="nomeProprietarioSolicitacoesDW">
+                <ion-label><b> Lucas Silveira </b></ion-label>  <!--Nome Proprietário-->
+              </div>
+
+            </div>
+            
+            <div class="linha1InfoSolicitacoesDW">
+              <div class="iconeTextoPasseio">
+                <div class="iconePasseioSolicitacoesDW">
+                  <img src="/assets/dogWalker.png" style="height: 20px; width: 20px;">
+                  <div class="textoPasseio" style="margin-left: 5px;">
+                    Passeio
+                  </div>
+                </div>
+
+              </div>
+              
+    
+              <div class="valorTotalSolicitacoesDW"> <!--preço total-->
+                <b>Valor total:</b>
+                <b style="margin-left: 10px; color:forestgreen ;">R$ 15.00</b>
+              </div> 
+        
+              <div class="mostrarCaesSolicitacoesDW">  <!--Preferencias-->
+                <b>Cães:</b> <br>
+                axaxas
+              </div>
+            </div>
+          </div>
+        </div>
+        
+  
+        <!--Botões-->
+        <div class="botoesSolicitacoesDW">
+  
+          <button class="botaoAceitarServicoSolicitacoesDW">
+            <b>Aceitar</b>
+          </button>
+  
+          <button class="botaoRecusarServicoSolicitacoesDW">
+            <b>Recusar</b>
+          </button>
+  
+          <button class="botaoWhatsappSolicitacoesDW">
+            <img src="/assets/whatsapp.png" style="height: 25px; width: 25px;">
+          </button>
+  
+        </div>
+      </div>
+  
+            
     </ion-item>
-
-    <div class="dataDoServicoSolicitacoesDW"> <!--Data do Serviço-->
-      <b>Data:</b>
-    </div>
-
-    <div class="enderecoDoServicoSolicitacoesDW"> <!--Endereço do Serviço-->
-      <b>Endereço:</b>
-    </div>
-
-    <div class="caesDoServicoSolicitacoesDW"> <!--Caes do Serviço-->
-      <b>Cães:</b>
-    </div>
-
-    <div class="valorTotalDoServicoSolicitacoesDW"> <!--Valor do Serviço-->
-      <b>Valor total: R$</b>
-    </div>
-
-    <ion-button expand="block" class="botaoAceitarServicoSolicitacoesDW" color="success"> <b>Aceitar</b> </ion-button> <!--BOTÃO Aceitar-->
-    <ion-button expand="block" class="botaoRecusarServicoSolicitacoesDW" color="danger"> <b>Recusar</b> </ion-button> <!--BOTÃO Recusar-->
+  </ion-list>
     
   </ion-content>

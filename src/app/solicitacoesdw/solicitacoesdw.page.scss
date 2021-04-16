@@ -1,38 +1,159 @@
-
-.avatarSolicitacoesDW{
-    position: absolute;
+.avatarSolicitarServicoDW{
     top: 5%;
     left: 0%;
 }
-.dataDoServicoSolicitacoesDW{
-    position: absolute;
+.statusSolicitacoesDW{
+    
+    color:rgb(75, 75, 75);
+    margin-left: 15%;
+
+}
+
+.aceitoSouNcartaoSolicitarServicoDW{
     top: 15%;
-    left: 20%;
+    left: 30%;
 }
-.enderecoDoServicoSolicitacoesDW{
-    position: absolute;
-    top: 20%;
-    left: 20%;
+.textoPrecoPorCaoSolicitarServicoDW{
+    top: 18%;
+    left: 21%;
 }
-.caesDoServicoSolicitacoesDW{
-    position: absolute;
-    top: 25%;
-    left: 20%;
-}
-.valorTotalDoServicoSolicitacoesDW{
-    position: absolute;
+
+.preferenciasAvaliacaoMediaSolicitarServicoDW{
     top: 30%;
-    left: 20%;
+    left: 21%;
 }
-.botaoAceitarServicoSolicitacoesDW{
-    position: absolute;
-    top: 35%;
-    left: 15%;
-    width: 30%;
+
+
+.valorTotalSolicitarServicoDW{
+    text-align: center;
+    top: 65%;
+    left: 30%;
 }
-.botaoRecusarServicoSolicitacoesDW{
-    position: absolute;
-    top: 35%;
-    right: 15%;
-    width: 30%;
+.botaoSolicitarServicoDW{
+    top: 70%;
+    left: 25%;
+    width:50%
+    
+}
+
+.informacoes
+{
+    height: 100%;
+    width: 120%;
+
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.item-listaSolicitacoesDW
+{
+    margin-bottom: 20px;
+}
+
+.informacoesProprietario
+{
+
+    margin-left: 5%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.nomeSolicitacoesDW
+{
+    width:100%;
+}
+
+.nomeProprietarioSolicitacoesDW
+{
+    max-width: 55%;
+    float: left;
+}
+
+.linha1InfoSolicitacoesDW
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.iconeTextoPasseio
+{
+    margin-top: 10px;
+    display: flex;
+}
+
+.iconePasseioSolicitacoesDW
+{
+    margin-left: 0%;
+    display: flex;
+    align-items: center;
+}
+.textoPasseio
+{
+    margin-top: 10px;
+}
+
+.distancia
+{
+    margin-left:30px ;
+    display: flex;
+    align-items: center;
+}
+
+.valorTotalSolicitacoesDW
+{
+    margin-top: 10px;
+}
+
+.avaliacao-dw
+{
+    margin-top: 10px;
+}
+
+.mostrarCaesSolicitacoesDW
+{
+    margin-top: 10px;
+}
+
+.botoesSolicitacoesDW
+{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.botaoAceitarServicoSolicitacoesDW
+{
+    margin-right: 13px;
+
+    font-size: 18px;
+    color: white;
+    height: 50px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: #47BE53;
+}
+
+.botaoRecusarServicoSolicitacoesDW
+{
+    margin-right: 13px;
+
+    font-size: 18px;
+    color: white;
+    height: 50px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: #E94F37;
+}
+
+.botaoWhatsappSolicitacoesDW
+{
+    height: 50px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: #FFF;
+    border: solid 2px rgb(110, 110, 110);
 }
