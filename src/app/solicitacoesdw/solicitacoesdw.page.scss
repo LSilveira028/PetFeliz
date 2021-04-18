@@ -98,11 +98,19 @@
 
 .botaoAbrirMapaSolicitacoesDW
 {
+    display:flex;
+    flex-direction: row;
+
+    align-items: center;
     height: 50px;
     width: 150px;
     border-radius: 25px;
     background-color: #FFF;
     border: solid 2px rgb(110, 110, 110);
+}
+.textoAbrirMapa
+{
+    font-size: 150%;
 }
 
 .valorTotalSolicitacoesDW
