@@ -65,6 +65,10 @@ const routes: Routes = [
   {
     path: 'solicitacoesdw',
     loadChildren: () => import('./solicitacoesdw/solicitacoesdw.module').then( m => m.SolicitacoesdwPageModule)
+  },
+  {
+    path: 'perfildwproprietario',
+    loadChildren: () => import('./perfildwproprietario/perfildwproprietario.module').then( m => m.PerfildwproprietarioPageModule)
   }
 
 ];
