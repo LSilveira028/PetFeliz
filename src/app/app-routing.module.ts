@@ -69,6 +69,10 @@ const routes: Routes = [
   {
     path: 'perfildwproprietario',
     loadChildren: () => import('./perfildwproprietario/perfildwproprietario.module').then( m => m.PerfildwproprietarioPageModule)
+  },
+  {
+    path: 'historicoservicos',
+    loadChildren: () => import('./historicoservicos/historicoservicos.module').then( m => m.HistoricoservicosPageModule)
   }
 
 ];

@@ -5,8 +5,8 @@
 .statusSolicitarServicoDW{
     
     color:rgb(75, 75, 75);
-    margin-left: 15%;
-
+    // margin-left: 10px;
+    float: right;
 }
 
 .aceitoSouNcartaoSolicitarServicoDW{
@@ -64,12 +64,13 @@
 
 .nomeStatus
 {
-    width:100%;
+    width: 245px;
+
 }
 
 .nomeDW
 {
-    max-width: 55%;
+    max-width: 52%;
     float: left;
 }
 
@@ -93,7 +94,6 @@
 
 .distancia
 {
-    margin-left:30px ;
     display: flex;
     align-items: center;
 }
