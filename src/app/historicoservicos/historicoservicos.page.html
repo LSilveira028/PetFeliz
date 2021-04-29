@@ -21,6 +21,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+
   <ion-list *ngIf="escolha=='escolhaGeral'">
 
   <ion-item *ngFor="let s of servicosGerais; let i = index">
@@ -116,6 +117,7 @@
   </ion-item>
 </ion-list>
 
+
 <!--Serviços finalizados-->
 <ion-list *ngIf="escolha=='escolhaFinalizados'" >
   <ion-item *ngFor="let sf of servicosFinalizados">
@@ -167,7 +169,7 @@
       </div>
     </div>
   </ion-item>
+  
 </ion-list>
-
-
 </ion-content>
+<app-tabs [tela]="tela" [teste]="teste"></app-tabs>

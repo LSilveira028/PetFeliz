@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
@@ -8,6 +8,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
   styleUrls: ['./procurar.page.scss'],
 })
 export class ProcurarPage implements OnInit {
+
+  @Output() tela: string = "procurar";
 
   dogWalkerInformacao: any;
 

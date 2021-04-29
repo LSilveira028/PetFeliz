@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ToastController, NavController } from '@ionic/angular';
 import { ServicoService, UsuariosServico } from '../services/servico.service';
 
@@ -8,6 +8,9 @@ import { ServicoService, UsuariosServico } from '../services/servico.service';
   styleUrls: ['./historicoservicos.page.scss'],
 })
 export class HistoricoservicosPage implements OnInit {
+
+  @Output() tela: string = "historico";
+  @Output() teste: string = "aaa"
 
   constructor(private service: ServicoService, private toast: ToastController,
               private nav: NavController) { }
