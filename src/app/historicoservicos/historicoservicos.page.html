@@ -1,0 +1,175 @@
+<ion-header>
+  <ion-toolbar color="primary"><!--Toolbar-->
+    <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
+    <ion-title color="tertiary"> <b>Histórico de Serviços</b> <!-- <b> deixa o texto em negrito --> </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> <!--Conteúdo do app-->
+
+  <ion-segment (ionChange)="segmentHistorico($event)">
+    <ion-segment-button value="escolhaGeral">
+      <ion-label>Geral</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="escolhaFinalizados">
+      <ion-label>Finalizados</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-refresher slot="fixed" pullFactor="0.5" pulMin="100" pulMax="200" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-list *ngIf="escolha=='escolhaGeral'">
+
+  <ion-item *ngFor="let s of servicosGerais; let i = index">
+    <div class="item-lista">
+      <div class="informacoes">
+        <div class="avatarSolicitarServicoDW">
+          <ion-avatar slot="start">
+            <img src=""> <!--Avatar do Dog Walker-->
+          </ion-avatar>
+        </div>
+        
+        <div class="informacoesDW">
+          <div class="nomeDW">
+            <ion-label><b>{{s.servico.usuarios[0].usuario.nome}}</b></ion-label>  <!--Nome Dog Walker-->
+          </div>
+
+         
+          <div class="preco-servico" id="estado-servico"> <!--Aceito cartao ou não-->
+            <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
+            <b style="margin-left: 10px; color:forestgreen ;">R$ {{s.servico.usuarios[0].usuario.servicoDogWalker.valorServico}}</b>
+          </div> 
+
+          <!--Todas os possiveis estados do serviço-->
+          <div class="estado-servico" *ngIf="s.servico.estado == 1">
+            <b>Estado: </b> Solicitado
+          </div>
+          <div class="estado-servico" *ngIf="s.servico.estado == 2">
+            <b>Estado: </b> Aceito
+          </div>
+          <div class="estado-servico" *ngIf="s.servico.estado == 3">
+            <b>Estado: </b> Recusado
+          </div>
+          <div class="estado-servico" *ngIf="s.servico.estado == 4">
+            <b>Estado: </b> Em andamento
+          </div>
+          <div class="estado-servico" *ngIf="s.servico.estado == 7">
+            <b>Estado: </b> Cancelado
+          </div>
+
+          <div class="data-hora-servico">
+            <b>Data: </b> {{s.servico.dataSolicitacao}}, {{s.servico.horaSolicitacao}}
+          </div>
+
+          <div class="inicio-servico" *ngIf="s.servico.horaInicio != null">
+            <b>Início: </b>{{s.servico.horaInicio}}
+          </div>
+
+          <div class="float-valor-total">
+            <div class="valor-total-servico">
+              <b>Valor total: &nbsp;</b> 
+              <div class="texto-valor" style="color:forestgreen ;"> 
+                <b>R$ {{s.servico.valorTotal}}</b>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!--Botões-->
+      <div id="botoes">
+        <div>
+          <button class="botao" style="background-color: #9D9D9D;"
+                  *ngIf="s.servico.estado == 1 || s.servico.estado == 2"
+                  (click)="cancelarServico(i)">
+            Cancelar
+          </button>
+
+          <button class="botao" style="background-color: #4CAC3C;"
+                  *ngIf="s.servico.estado == 2"
+                  (click)="iniciarServico(i)">
+            Iniciar
+          </button>
+
+          <button class="botao" style="background-color: #EA4242;"
+                  *ngIf="s.servico.estado == 4"
+                  (click)="finalizarServico(i)">
+            Finalizar
+          </button>
+
+          <div *ngIf="s.servico.estado == 7" style="color: gray;">
+            <b>Cancelado</b> 
+          </div>
+
+          <div *ngIf="s.servico.estado == 3" style="color: red;">
+            <b>Recusado</b>
+          </div>
+
+        </div>
+      </div>
+        
+    </div>
+  </ion-item>
+</ion-list>
+
+
+<!--Serviços finalizados-->
+<ion-list *ngIf="escolha=='escolhaFinalizados'" >
+  <ion-item *ngFor="let sf of servicosFinalizados">
+    <div class="item-lista">
+      <div class="informacoes">
+        <div class="avatarSolicitarServicoDW">
+          <ion-avatar slot="start">
+            <img src=""> <!--Avatar do Dog Walker-->
+          </ion-avatar>
+        </div>
+        
+        <div class="informacoesDW">
+          <div class="nomeDW">
+            <ion-label><b>{{sf.servico.usuarios[0].usuario.nome}}</b></ion-label>  <!--Nome Dog Walker-->
+          </div>
+
+         
+          <div class="preco-servico" id="estado-servico"> <!--Aceito cartao ou não-->
+            <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
+            <b style="margin-left: 10px; color:forestgreen ;">R$ {{sf.servico.usuarios[0].usuario.servicoDogWalker.valorServico}}</b>
+          </div> 
+
+          <div class="estado-servico">
+            <b>Estado: </b> Finalizado
+          </div>
+
+          <div class="data-hora-servico">
+            <b>Data: </b> {{sf.servico.dataSolicitacao}}, {{sf.servico.horaSolicitacao}}
+          </div>
+
+          <div class="inicio-servico" *ngIf="sf.servico.horaInicio != null">
+            <b>Início: </b>{{sf.servico.horaInicio}}
+          </div>
+
+          <div class="termino-servico">
+            <b>Término: </b>{{sf.servico.horaTermino}}
+          </div>
+
+          <div class="float-valor-total">
+            <div class="valor-total-servico">
+              <b>Valor total: &nbsp;</b> 
+              <div class="texto-valor" style="color:forestgreen ;"> 
+                <b>R$ {{sf.servico.valorTotal}}</b>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </ion-item>
+  
+</ion-list>
+</ion-content>
+<app-tabs [tela]="tela" [teste]="teste"></app-tabs>

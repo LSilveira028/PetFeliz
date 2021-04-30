@@ -1,0 +1,28 @@
+
+  <div class="tabs">
+
+    <div id="item-procurar" class="item" (click)="irParaProcurar()">
+      <img *ngIf="tela == 'historico'" src="/assets/pin.png" height="40px" width="40px" style="margin-top: 13px;">
+      <img *ngIf="tela == 'procurar'" src="/assets/pin-white.png" height="40px" width="40px" style="margin-top: 13px;">
+    </div>
+
+    <div class="item-line">
+      <img src="/assets/line.png">
+    </div>
+
+    <div id="item-historico" class="item" (click)="irParaHistorico()">
+      <img *ngIf="tela == 'historico'" src="/assets/white-history.png" height="40px" width="40px" style="margin-top: 13px;">
+      <img *ngIf="tela == 'procurar'" src="/assets/history.png" height="40px" width="40px" style="margin-top: 13px;">
+    </div>
+
+    <!-- <div class="items">
+
+      <div style="background-color: gray;">
+        <img *ngIf="tela == 'historico'" src="/assets/pin.png" height="40px" width="40px">
+      </div>  
+
+      <img src="/assets/line.png" style="margin: 0px 60px 0px 60px;">
+
+      <img *ngIf="tela == 'historico'" src="/assets/white-history.png" height="40px" width="40px">
+    </div> -->
+  </div>

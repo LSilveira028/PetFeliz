@@ -1,0 +1,74 @@
+.avatarSolicitarServicoDW{
+    top: 5%;
+    left: 0%;
+}
+
+.informacoes
+{
+    height: 100%;
+    width: 120%;
+
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.item-lista
+{
+    margin-bottom: 20px;
+}
+
+.informacoesDW
+{
+
+    margin-left: 5%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.nomeDW
+{
+    width: 245px;
+    max-width: 52%;
+    float: left;
+}
+
+.preco-servico, .estado-servico,
+.data-hora-servico, .inicio-servico, .valor-total-servico,
+.termino-servico
+{
+    margin-top: 10px;
+}
+
+.valor-total-servico
+{
+    float: right;
+    display: flex;
+
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.botao
+{
+    margin-left: 13px;
+
+    font-size: 18px;
+    color: white;
+    height: 50px;
+    width: 100px;
+    border-radius: 25px;
+}
+
+#botoes
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+
