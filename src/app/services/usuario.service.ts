@@ -29,7 +29,7 @@ export interface Usuario
 })
 export class UsuarioService {
 
-  tokenAnderson = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI4IiwibmFtZSI6IkFuZGVyc29uIiwibmJmIjoxNjE4MzM1OTU1LCJleHAiOjE2MTg3Njc5NTUsImlhdCI6MTYxODMzNTk1NX0.Wug9IyvsXhz5jlL-10ZYzBsdTWy_HayMny9X1ZoQZMKuzPW9tqzhFc9Xx8IkWEGjXLOB8Wz3xPqLd1s0viWHjQ"
+  tokenAnderson = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI4IiwibmFtZSI6IkFuZGVyc29uIiwibmJmIjoxNjE4NzYwODgyLCJleHAiOjE2MTkxOTI4ODIsImlhdCI6MTYxODc2MDg4Mn0.4QawpGiCFmhwDwJtekKdgHBV8ljHGeNpRoRI-D9E64wOf0RvhUnBwcYw26Mn7GTYv_TZ6xHwIUZNc7DnRnxd0A"
 
   header = new HttpHeaders({
     'Authorization': 'Bearer ' + this.tokenAnderson
