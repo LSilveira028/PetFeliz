@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'cadastro',
+    redirectTo: 'entraroucadastrar',
     pathMatch: 'full'
   },
   {
@@ -50,7 +50,8 @@ const routes: Routes = [
   {
     path: 'cadastro',
     loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
-  },  {
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
@@ -69,6 +70,10 @@ const routes: Routes = [
   {
     path: 'perfildwproprietario',
     loadChildren: () => import('./perfildwproprietario/perfildwproprietario.module').then( m => m.PerfildwproprietarioPageModule)
+  },
+  {
+    path: 'historicoservicos',
+    loadChildren: () => import('./historicoservicos/historicoservicos.module').then( m => m.HistoricoservicosPageModule)
   }
 
 ];

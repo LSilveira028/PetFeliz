@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ProcurarPageRoutingModule } from './procurar-routing.module';
 
 import { ProcurarPage } from './procurar.page';
+import { TabsComponent } from 'src/app/componentes/tabs/tabs.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ProcurarPage } from './procurar.page';
     IonicModule,
     ProcurarPageRoutingModule
   ],
-  declarations: [ProcurarPage]
+  declarations: [ProcurarPage, TabsComponent]
 })
 export class ProcurarPageModule {}

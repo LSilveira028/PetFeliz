@@ -7,12 +7,12 @@
 
 <ion-content> <!--Conteúdo do app-->
   <ion-list>
-  <ion-item *ngFor="let d of dogWalkers">
+  <ion-item *ngFor="let d of dogWalkers; let i = index">
     <div class="item-lista">
       <div class="informacoes">
         <div class="avatarSolicitarServicoDW">
           <ion-avatar slot="start">
-            <img src="/assets/avatar_homemPerfil.jpg"> <!--Avatar do Dog Walker-->
+            <img src=""> <!--Avatar do Dog Walker-->
           </ion-avatar>
         </div>
         
@@ -23,7 +23,7 @@
             </div>
               
             <div class="statusSolicitarServicoDW">
-              <b>Indisponivel</b> <!--Status-->
+              <b>{{d.textoDisponivel}}</b> <!--Status-->
             </div>
           </div>
           
@@ -32,14 +32,14 @@
               <div class="cartao">
                 <ion-icon name="card" style="width: 25px; height: 25px;"></ion-icon>
                 <div class="textoCartao" style="margin-left: 5px;">
-                  Não aceito cartão
+                  {{d.textoCartao}}
                 </div>
               </div>
   
-              <div class="distancia">
+              <div class="distancia" [ngStyle]="{'margin-left': definirMargem(d)}">
                 <img src="/assets/red-pin.png" style="width: 20px; height: 20px;">
-                <div class="texto-distancia" style="margin-left: 5px;">
-                  1 km
+                <div class="texto-distancia"  style="margin-left: 5px;">
+                  {{d.distancia}} km
                 </div>
               </div>
             </div>
@@ -47,7 +47,7 @@
   
             <div class="preco-servico"> <!--Aceito cartao ou não-->
               <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
-              <b style="margin-left: 10px; color:forestgreen ;">R$ 15.00</b>
+              <b style="margin-left: 10px; color:forestgreen ;">R$ {{d.servicoDogWalker.valorServico}}</b>
             </div> 
             
             <div class="avaliacao-dw"> <!--Avaliação média-->
@@ -71,7 +71,7 @@
           Solicitar <br> servico
         </button>
 
-        <button class="botao-whatsapp">
+        <button class="botao-whatsapp" (click)="enviarMensagem(i)">
           <img src="/assets/whatsapp.png" style="height: 25px; width: 25px;">
         </button>
 
@@ -84,3 +84,5 @@
   </ion-item>
 </ion-list>
 </ion-content>
+
+<app-tabs [tela]="tela"></app-tabs>

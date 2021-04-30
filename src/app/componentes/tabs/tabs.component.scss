@@ -1,0 +1,47 @@
+
+.tabs
+{
+    height: 70px;
+    width: 100%;
+
+    background-color: #E94F37;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#item-procurar
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+    width: 50%;
+    height: 70px;
+}
+
+#item-historico
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 50%;
+    height: 70px;
+}
+
+.item:hover
+{
+    background-color: brown;
+}
+
+.items
+{
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
