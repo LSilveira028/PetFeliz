@@ -69,7 +69,7 @@
 
 .nomeProprietarioSolicitacoesDW
 {
-    max-width: 55%;
+    max-width: 75%;
     float: left;
 }
 
@@ -99,23 +99,24 @@
 .botaoAbrirMapaSolicitacoesDW
 {
     display:flex;
-    flex-direction: row;
-
+    flex-direction: column;
     align-items: center;
-    height: 50px;
-    width: 150px;
+
+    height: 40px;
+    width: 130px;
     border-radius: 25px;
     background-color: #FFF;
     border: solid 2px rgb(110, 110, 110);
 }
 .textoAbrirMapa
 {
-    font-size: 150%;
+    font-size: 130%;
 }
 
 .valorTotalSolicitacoesDW
 {
     margin-top: 10px;
+    float: right;
 }
 
 .avaliacao-dw
@@ -166,4 +167,22 @@
     border-radius: 25px;
     background-color: #FFF;
     border: solid 2px rgb(110, 110, 110);
+}
+
+.botao-chamar-caes
+{
+    margin-top: 20px;
+
+    display: flex;
+    color: gray;
+    font-size: 105%;
+    background-color: transparent;
+    width: max-content;
+}
+
+.icon-arrow
+{
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg); 
+    transform: rotate(90deg);
 }

@@ -20,20 +20,13 @@
           <div class="informacoesProprietario">
             <div class="nomeSolicitacoesDW">
               <div class="nomeProprietarioSolicitacoesDW">
-                <ion-label><b> Lucas Silveira </b></ion-label>  <!--Nome Proprietário-->
+                <ion-label><b> Lucas Silveira Sampaio Souza Mendes</b></ion-label>  <!--Nome Proprietário-->
               </div>
 
             </div>
             
             <div class="linha1InfoSolicitacoesDW">
-              <div class="iconeTextoPasseio">
-                <div class="iconePasseioSolicitacoesDW">
-                  <img src="/assets/dogWalker.png" style="height: 20px; width: 20px;">
-                  <div class="textoPasseio" style="margin-left: 5px;">
-                    Passeio
-                  </div>
-                </div>
-              </div>
+              
               <br>
               <div class="dataServicoSolicitacoesDW"> <!--Data da solicitacao-->
                   <b>Data:</b> 26/11/2020, 15:36
@@ -41,21 +34,37 @@
               <br>
 
                 <button class="botaoAbrirMapaSolicitacoesDW"> <!--botao -->
-                  <img src="/assets/abrirmapa.png" style="height: 25px; width: 25px;">
-                  <div class="textoAbrirMapa">
-                    <b> Abrir Mapa </b>
+                  <div style="display: flex; flex-direction: row; align-items: center; margin-top: 6px;">
+                    <img src="/assets/abrirmapa.png" style="height: 20px; width: 20px;">
+                    <div class="textoAbrirMapa">
+                      <b> Abrir Mapa </b>
+                    </div>
                   </div>
                 </button>
-                            
-              <div class="mostrarCaesSolicitacoesDW">  <!--Preferencias-->
-                <b>Cães:</b> <br>
-                   axaxas
-              </div>
+                    
+                <button class="botao-chamar-caes">
+                  <div class="icon-arrow"> <b>></b></div>
+                  <b> &nbsp; Mostrar cães:</b> <br>
+                </button>
+                
+              <!--Cães-->
+              <ion-list>
+                <ion-item>
+                  <div class="mostrarCaesSolicitacoesDW">
+                       Billy - Labrador - 3 anos - 30kg
+                  </div>
+                </ion-item>
+              </ion-list>
+            
+              
 
-              <div class="valorTotalSolicitacoesDW"> <!--preço total-->
-                <b>Valor total:</b>
-                <b style="margin-left: 10px; color:forestgreen ;">R$ 15.00</b>
+              <div style="width: 80%;" >
+                <div class="valorTotalSolicitacoesDW"> <!--preço total-->
+                  <b>Valor total:</b>
+                  <b style="margin-left: 10px; color:forestgreen ;">R$ 15.00</b>
+                </div>
               </div>
+                
 
             </div>
           </div>
@@ -85,3 +94,4 @@
   </ion-list>
     
   </ion-content>
+<app-tabs></app-tabs>
