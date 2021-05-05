@@ -10,6 +10,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 export class ProcurarPage implements OnInit {
 
   @Output() tela: string = "procurar";
+  @Output() UsuarioP: string = "proprietario"
 
   dogWalkerInformacao: any;
 

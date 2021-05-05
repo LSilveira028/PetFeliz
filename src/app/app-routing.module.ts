@@ -74,7 +74,11 @@ const routes: Routes = [
   {
     path: 'historicoservicos',
     loadChildren: () => import('./historicoservicos/historicoservicos.module').then( m => m.HistoricoservicosPageModule)
+  },  {
+    path: 'caesservicopage',
+    loadChildren: () => import('./componentes/caesservicopage/caesservicopage.module').then( m => m.CaesservicopagePageModule)
   }
+
 
 ];
 

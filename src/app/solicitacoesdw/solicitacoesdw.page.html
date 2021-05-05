@@ -7,8 +7,12 @@
 
 <ion-content>
 
+  <ion-refresher slot="fixed" pullFactor="0.5" pulMin="100" pulMax="200" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-list>
-    <ion-item>
+    <ion-item *ngFor="let s of servicosSolicitados; let i = index">
       <div class="item-listaSolicitacoesDW">
         <div class="informacoes">
           <div class="avatarSolicitarServicoDW">
@@ -20,7 +24,7 @@
           <div class="informacoesProprietario">
             <div class="nomeSolicitacoesDW">
               <div class="nomeProprietarioSolicitacoesDW">
-                <ion-label><b> Lucas Silveira Sampaio Souza Mendes</b></ion-label>  <!--Nome Proprietário-->
+                <ion-label><b>{{s.servico.usuarios[0].usuario.nome}}</b></ion-label>  <!--Nome Proprietário-->
               </div>
 
             </div>
@@ -29,11 +33,11 @@
               
               <br>
               <div class="dataServicoSolicitacoesDW"> <!--Data da solicitacao-->
-                  <b>Data:</b> 26/11/2020, 15:36
+                  <b>Data:</b>{{s.servico.dataSolicitacao}}, {{s.servico.horaSolicitacao}}
               </div>
               <br>
 
-                <button class="botaoAbrirMapaSolicitacoesDW"> <!--botao -->
+                <button class="botaoAbrirMapaSolicitacoesDW" (click)="abrirMapa(i)"> <!--botao -->
                   <div style="display: flex; flex-direction: row; align-items: center; margin-top: 6px;">
                     <img src="/assets/abrirmapa.png" style="height: 20px; width: 20px;">
                     <div class="textoAbrirMapa">
@@ -42,31 +46,20 @@
                   </div>
                 </button>
                     
-                <button class="botao-chamar-caes">
-                  <div class="icon-arrow"> <b>></b></div>
-                  <b> &nbsp; Mostrar cães:</b> <br>
+                <button class="botao-chamar-caes" (click)="mostrarCaes(i)">
+                  <b> &nbsp; Mostrar cães</b> <br>
                 </button>
-                
-              <!--Cães-->
-              <ion-list>
-                <ion-item>
-                  <div class="mostrarCaesSolicitacoesDW">
-                       Billy - Labrador - 3 anos - 30kg
-                  </div>
-                </ion-item>
-              </ion-list>
-            
-              
-
-              <div style="width: 80%;" >
-                <div class="valorTotalSolicitacoesDW"> <!--preço total-->
-                  <b>Valor total:</b>
-                  <b style="margin-left: 10px; color:forestgreen ;">R$ 15.00</b>
-                </div>
-              </div>
-                
 
             </div>
+
+            <div style="width: 135%;" >
+              <div class="valorTotalSolicitacoesDW"> <!--preço total-->
+                <b>Valor total:</b>
+                <b style="margin-left: 10px; color:forestgreen ;">R$ {{s.servico.valorTotal}}</b>
+              </div>
+            </div>
+            
+
           </div>
         </div>
         
@@ -74,15 +67,15 @@
         <!--Botões-->
         <div class="botoesSolicitacoesDW">
   
-          <button class="botaoAceitarServicoSolicitacoesDW">
+          <button class="botaoAceitarServicoSolicitacoesDW" (click)="aceitarServico(i)">
             <b>Aceitar</b>
           </button>
   
-          <button class="botaoRecusarServicoSolicitacoesDW">
+          <button class="botaoRecusarServicoSolicitacoesDW" (click)="recusarServico(i)">
             <b>Recusar</b>
           </button>
   
-          <button class="botaoWhatsappSolicitacoesDW">
+          <button class="botaoWhatsappSolicitacoesDW" (click)="chamarWhatsApp(i)">
             <img src="/assets/whatsapp.png" style="height: 25px; width: 25px;">
           </button>
   
@@ -94,4 +87,4 @@
   </ion-list>
     
   </ion-content>
-<app-tabs></app-tabs>
+<app-tabs [tela]="tela" [Usuario]="Usuario"></app-tabs>

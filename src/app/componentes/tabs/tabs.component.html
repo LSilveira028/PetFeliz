@@ -1,6 +1,5 @@
 
-  <div class="tabs">
-
+  <div class="tabs" *ngIf="Usuario == 'proprietario'">
     <div id="item-procurar" class="item" (click)="irParaProcurar()">
       <img *ngIf="tela == 'historico'" src="/assets/pin.png" height="40px" width="40px" style="margin-top: 13px;">
       <img *ngIf="tela == 'procurar'" src="/assets/pin-white.png" height="40px" width="40px" style="margin-top: 13px;">
@@ -14,15 +13,21 @@
       <img *ngIf="tela == 'historico'" src="/assets/white-history.png" height="40px" width="40px" style="margin-top: 13px;">
       <img *ngIf="tela == 'procurar'" src="/assets/history.png" height="40px" width="40px" style="margin-top: 13px;">
     </div>
+  </div>
 
-    <!-- <div class="items">
+  <!--Dog Walker-->
+  <div class="tabs" *ngIf="Usuario == 'DogWalker'">
+    <div id="item-procurar" class="item">
+      <img *ngIf="tela == 'historico'" src="/assets/pin.png" height="40px" width="40px" style="margin-top: 13px;">
+      <img *ngIf="tela == 'solicitacoes'" src="/assets/white-bell.png" height="40px" width="40px" style="margin-top: 13px;">
+    </div>
 
-      <div style="background-color: gray;">
-        <img *ngIf="tela == 'historico'" src="/assets/pin.png" height="40px" width="40px">
-      </div>  
+    <div class="item-line">
+      <img src="/assets/line.png">
+    </div>
 
-      <img src="/assets/line.png" style="margin: 0px 60px 0px 60px;">
-
-      <img *ngIf="tela == 'historico'" src="/assets/white-history.png" height="40px" width="40px">
-    </div> -->
+    <div id="item-historico" class="item">
+      <img *ngIf="tela == 'historico'" src="/assets/white-history.png" height="40px" width="40px" style="margin-top: 13px;">
+      <img *ngIf="tela == 'solicitacoes'" src="/assets/history.png" height="40px" width="40px" style="margin-top: 13px;">
+    </div>
   </div>

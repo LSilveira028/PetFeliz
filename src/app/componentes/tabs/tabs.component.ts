@@ -11,13 +11,13 @@ import { NavController } from '@ionic/angular';
 export class TabsComponent implements OnInit {
 
   @Input() tela: string;
-  @Input() teste: string;
+  @Input() Usuario: string;
 
   constructor(private nav: NavController) { }
 
   ngOnInit() {
     console.log(this.tela)
-    console.log(this.teste)
+    console.log(this.Usuario)
   }
 
   irParaProcurar()

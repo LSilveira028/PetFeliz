@@ -103,7 +103,7 @@
     align-items: center;
 
     height: 40px;
-    width: 130px;
+    width: 135px;
     border-radius: 25px;
     background-color: #FFF;
     border: solid 2px rgb(110, 110, 110);
@@ -127,6 +127,8 @@
 .mostrarCaesSolicitacoesDW
 {
     margin-top: 10px;
+    word-wrap: break-word;
+    max-width: 240px;
 }
 
 .botoesSolicitacoesDW
@@ -146,6 +148,13 @@
     width: 100px;
     border-radius: 25px;
     background-color: #47BE53;
+
+    transition: background-color 0.5s;
+}
+
+.botaoAceitarServicoSolicitacoesDW:hover
+{
+    background-color: #2e8537;
 }
 
 .botaoRecusarServicoSolicitacoesDW
@@ -158,6 +167,13 @@
     width: 100px;
     border-radius: 25px;
     background-color: #E94F37;
+
+    transition: background-color 0.5s;
+}
+
+.botaoRecusarServicoSolicitacoesDW:hover
+{
+    background-color: #e4371d;
 }
 
 .botaoWhatsappSolicitacoesDW
@@ -180,9 +196,10 @@
     width: max-content;
 }
 
-.icon-arrow
+
+.item-cao
 {
-    -ms-transform: rotate(90deg);
-    -webkit-transform: rotate(90deg); 
-    transform: rotate(90deg);
+    display: flex;
+    flex-direction: column;
 }
+
