@@ -67,5 +67,9 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(this.api_url + 'DogWalkers', { headers: this.header})
   }
 
+  logarUsuario(usuario: Usuario)
+  {
+    return this.http.post(this.api_url + "Autenticar", usuario);
+  }
 
 }
