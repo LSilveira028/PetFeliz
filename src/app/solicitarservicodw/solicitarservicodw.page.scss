@@ -1,36 +1,24 @@
 .avatarSolicitarServicoDW{
-    position: absolute;
-    top: 5%;
+    top: 10%;
     left: 0%;
 }
 .statusSolicitarServicoDW{
-    color:rgb(75, 75, 75);
     
+    color:rgb(75, 75, 75);
+    // margin-left: 10px;
+    float: right;
 }
-.cartaoSouNsolicitarServicoDW{
-    position: absolute;
-    top: 13%;
-    left: 20%;
-}
+
 .aceitoSouNcartaoSolicitarServicoDW{
-    position: absolute;
-    top: 14%;
+    top: 15%;
     left: 30%;
 }
 .textoPrecoPorCaoSolicitarServicoDW{
-    position: absolute;
     top: 18%;
     left: 21%;
 }
 
-.avaliacaoMediaSolicitarServicoDW{
-    position: absolute;
-    top: 23%;
-    left: 21%;
-}
-
 .preferenciasAvaliacaoMediaSolicitarServicoDW{
-    position: absolute;
     top: 30%;
     left: 21%;
 }
@@ -55,4 +43,86 @@
     left: 25%;
     width:50%
     
+}
+.informacoes
+{
+    height: 100%;
+    width: 120%;
+
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.dogWalker
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} //aquele teste la
+.item-lista
+{
+    margin-bottom: 20px;
+}
+
+.informacoesDW
+{
+
+    margin-left: 5%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.nomeStatus
+{
+    width: 245px;
+
+}
+
+.nomeDW
+{
+    max-width: 52%;
+    float: left;
+}
+
+.linha1Info
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.cartao-distancia
+{
+    margin-top: 10px;
+    display: flex;
+}
+
+.cartao
+{
+    display: flex;
+    align-items: center;
+}
+
+.distancia
+{
+    display: flex;
+    align-items: center;
+}
+
+.preco-servico
+{
+    margin-top: 10px;
+}
+
+.avaliacao-dw
+{
+    margin-top: 10px;
+}
+
+.preferencias-dw
+{
+    margin-top: 10px;
 }

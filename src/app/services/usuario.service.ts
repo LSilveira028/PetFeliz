@@ -34,11 +34,7 @@ export class Usuario
 })
 export class UsuarioService {
 
-<<<<<<< HEAD
-  tokenAnderson = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI4IiwibmFtZSI6IkFuZGVyc29uIiwibmJmIjoxNjE4NzYwODgyLCJleHAiOjE2MTkxOTI4ODIsImlhdCI6MTYxODc2MDg4Mn0.4QawpGiCFmhwDwJtekKdgHBV8ljHGeNpRoRI-D9E64wOf0RvhUnBwcYw26Mn7GTYv_TZ6xHwIUZNc7DnRnxd0A"
-=======
   tokenAnderson = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI4IiwibmFtZSI6IkFuZGVyc29uIiwibmJmIjoxNjE5MjA1NjQyLCJleHAiOjE2MjA0MTUyNDIsImlhdCI6MTYxOTIwNTY0Mn0.vxze4DpFdTwHjOEGZ4tsjTIRL8JoV5PA-yTLEv9-GCbYiyXEm_PSipjOQloJsEli2OiIVgez0TSY5q-NOioRVw"
->>>>>>> 822398cb46a23ab1db33baa41072085bde662c71
 
   header = new HttpHeaders({
     'Authorization': 'Bearer ' + this.tokenAnderson
@@ -46,9 +42,9 @@ export class UsuarioService {
 
   
 
-  // private api_url = 'http://pet-feliz.somee.com/PetFeliz/Usuario/'
+  private api_url = 'http://pet-feliz.somee.com/PetFeliz/Usuario/'
 
-  private api_url = "http://localhost:5000/Usuario/"
+  //private api_url = "http://localhost:5000/Usuario/"
   
   private proprietario = 1;
   private dogWalker = 2;

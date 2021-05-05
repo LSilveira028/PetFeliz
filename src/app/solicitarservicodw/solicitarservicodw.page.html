@@ -6,41 +6,65 @@
 </ion-header>
 
 <ion-content> <!--Conteúdo do app-->
-
-  <ion-item class="avatarSolicitarServicoDW">
-    <ion-avatar slot="start">
-      <img src="/assets/avatar_homemPerfil.jpg"> <!--Avatar do Dog Walker-->
-    </ion-avatar>
-    <ion-label><b> Vanderlei Silva dos Santos </b></ion-label>  <!--Nome Dog Walker-->
-      
-    <div slot="end" class="statusSolicitarServicoDW">
-      <b>Status</b> <!--Status-->
-    </div>
-  </ion-item>
-
-  <div class="cartaoSouNsolicitarServicoDW"> <!--Icone cartão-->
-    <ion-icon name="card" style="height: 25px; width: 25px;"></ion-icon> 
-  </div>
-
+    <div class="dogWalker">
+      <div class="item-lista">
+        
+        <div class="informacoes">
+          <div class="avatarSolicitarServicoDW">
+            <ion-avatar slot="start">
+              <img src=""> <!--Avatar do Dog Walker-->
+            </ion-avatar>
+          </div>
+          
+          <div class="informacoesDW">
+            <div class="nomeStatus">
+              <div class="nomeDW">
+                <ion-label><b>Fulano</b></ion-label>  <!--Nome Dog Walker-->
+              </div>
+                
+              <div class="statusSolicitarServicoDW">
+                <b>Disponivel</b> <!--Status-->
+              </div>
+            </div>
+            
+            <div class="linha1Info">
+              <div class="cartao-distancia">
+                <div class="cartao">
+                  <ion-icon name="card" style="width: 25px; height: 25px;"></ion-icon>
+                  <div class="textoCartao" style="margin-left: 5px;">
+                    Aceito Cartão
+                  </div>
+                </div>
     
-  <div class="aceitoSouNcartaoSolicitarServicoDW"> <!--Aceito cartao ou não-->
-    Aceito cartão (ou não)
-  </div>
+                <div class="distancia">
+                  <img src="/assets/red-pin.png" style="width: 20px; height: 20px;">
+                  <div class="texto-distancia"  style="margin-left: 5px;">
+                    10
+                  </div>
+                </div>
+              </div>
+              
+    
+              <div class="preco-servico"> <!--Aceito cartao ou não-->
+                <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
+                <b style="margin-left: 10px; color:forestgreen ;">R$20</b>
+              </div> 
+              
+              <div class="avaliacao-dw"> <!--Avaliação média-->
+                <b>Avaliação média:</b> <br>
+                <b>estreças</b> <!--Estrelas (descobriremos como fazer)-->
+              </div>
+        
+              <div class="preferencias-dw">  <!--Preferencias-->
+                <b>Preferências:</b> <br>
+                 aaaaaaa 
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <div class="textoPrecoPorCaoSolicitarServicoDW"> <!--Aceito cartao ou não-->
-    <b>Preço por cão: R$</b>
-  </div> 
-  
-
-  <div class="avaliacaoMediaSolicitarServicoDW"> <!--Avaliação média-->
-    <b>Avaliação média:</b> <br>
-    <b>Estrelas</b> <!--Estrelas (descobriremos como fazer)-->
-  </div>
-
-  <div class="preferenciasAvaliacaoMediaSolicitarServicoDW">  <!--Preferencias-->
-    <b>Preferências:</b> <br>
-     Preferências Dog Walker
-  </div>
+      </div>
+    </div>
 
   <div class="selecionarCaesSolicitarServicoDW">
     <b>Selecione os cães que serão levados para passear:</b> <!--Texto-->

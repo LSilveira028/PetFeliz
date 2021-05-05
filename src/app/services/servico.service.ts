@@ -38,9 +38,9 @@ export class ServicoService {
     'Content-Type' : 'application/json'
   })
 
-  // private api_url = 'http://pet-feliz.somee.com/PetFeliz/Usuario/'
+  private api_url = 'http://pet-feliz.somee.com/Servico/'
 
-  private api_url = "http://localhost:5000/Servico/"
+  //private api_url = "http://localhost:5000/Servico/"
 
   constructor(private http: HttpClient) { }
 
