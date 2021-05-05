@@ -42,9 +42,9 @@ export class UsuarioService {
 
   
 
-  // private api_url = 'http://pet-feliz.somee.com/PetFeliz/Usuario/'
+  private api_url = 'http://pet-feliz.somee.com/PetFeliz/Usuario/'
 
-  private api_url = "http://localhost:5000/Usuario/"
+  //private api_url = "http://localhost:5000/Usuario/"
   
   private proprietario = 1;
   private dogWalker = 2;
