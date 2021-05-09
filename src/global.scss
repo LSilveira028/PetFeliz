@@ -35,3 +35,17 @@
     // position: absolute; 
     // display: block;  
 }
+
+//Estilos do alerta ao solicitar serviço
+.alerta-solicitar .botao-alert-neutro{
+    color: black;
+}
+.alerta-solicitar .botao-alert-danger{
+    color: red;
+}
+
+
+//Estilo do alerta: "Sem cão"
+.botao-alert-sem-cao .botao-alert-neutro{
+    color: black;
+}

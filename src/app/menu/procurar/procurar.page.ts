@@ -1,6 +1,8 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { ModalController } from '@ionic/angular';
+import { SolicitarservicodwPage } from 'src/app/solicitarservicodw/solicitarservicodw.page';
 
 @Component({
   selector: 'app-procurar',
@@ -18,7 +20,7 @@ export class ProcurarPage implements OnInit {
   
   dogWalkers: Usuario[] = new Array<Usuario>();
 
-  constructor(private service: UsuarioService, private geolocation: Geolocation) { }
+  constructor(private service: UsuarioService, private geolocation: Geolocation, private modalController: ModalController) { }
   
   latitudeUsuario;
   longitudeUsuario;
@@ -52,26 +54,10 @@ export class ProcurarPage implements OnInit {
           this.dogWalkers.forEach(element => {
             //pega a localização do dog walker
             this.latitudeDogWalker = element.latitude;
-            this.longitudeDogWalker = element.longitude;
-
-            //Verifica se o Dog Walker aceita cartão
-            this.opcaoCartao = element.servicoDogWalker.aceitaCartao
-            if(this.opcaoCartao == false)
-            {
-              element.textoCartao = "Não aceito cartão"
-            }
-            else
-              element.textoCartao = "Aceito cartão"
+            this.longitudeDogWalker = element.longitude;   
             
             this.whatsapp = element.whatsApp;
             console.log("whats: " + this.whatsapp)
-
-            //Verifica se o Dog Walker está disponível
-            this.opcaoDisponivel = element.disponivel;
-            if(this.opcaoDisponivel == false)
-              element.textoDisponivel = "Indisponível";
-            else
-              element.textoDisponivel = "Disponível";
 
             //armazena a distancia entre o proprietário e o dog walker
             this.distancia = calcularDistancia
@@ -125,10 +111,31 @@ export class ProcurarPage implements OnInit {
  
   definirMargem(d: Usuario)
   {
-    if(d.textoCartao == "Não aceito cartão")
+    if(d.servicoDogWalker.aceitaCartao == false)
       return '20px'
     else
       return '50px'
+  }
+
+  async modalSolicitar(dogWalker: Usuario, distancia: number)
+  {
+    const modal = await this.modalController.create({
+      component: SolicitarservicodwPage,
+      componentProps: {
+        dogWalker: dogWalker,
+        distancia: distancia 
+      },
+      swipeToClose: true,
+    });
+
+    return await modal.present()
+  }
+
+  irParaSolicitar(indexServico: number)
+  {
+    let dogwalker: Usuario = this.dogWalkers[indexServico];
+    console.log(dogwalker)
+    this.modalSolicitar(dogwalker, (this.distancia).toFixed(0));
   }
 
 }

@@ -22,8 +22,11 @@
               <ion-label><b> {{d.nome}}</b></ion-label>  <!--Nome Dog Walker-->
             </div>
               
-            <div class="statusSolicitarServicoDW">
-              <b>{{d.textoDisponivel}}</b> <!--Status-->
+            <div class="statusSolicitarServicoDW" *ngIf="d.disponivel == 1" style="color: green;">
+              <b>Disponível</b> <!--Status-->
+            </div>
+            <div class="statusSolicitarServicoDW" *ngIf="d.disponivel == 0" style="color: red;">
+              <b>Indisponível</b> <!--Status-->
             </div>
           </div>
           
@@ -31,8 +34,11 @@
             <div class="cartao-distancia">
               <div class="cartao">
                 <ion-icon name="card" style="width: 25px; height: 25px;"></ion-icon>
-                <div class="textoCartao" style="margin-left: 5px;">
-                  {{d.textoCartao}}
+                <div class="textoCartao" style="margin-left: 5px;" *ngIf="d.servicoDogWalker.aceitaCartao == 1">
+                  Aceito cartão
+                </div>
+                <div class="textoCartao" style="margin-left: 5px;" *ngIf="d.servicoDogWalker.aceitaCartao == 0">
+                  Não aceito cartão
                 </div>
               </div>
   
@@ -67,8 +73,11 @@
       <!--Botões-->
       <div class="botoes">
 
-        <button class="botao-solicitar">
-          Solicitar <br> servico
+        <button class="botao-solicitar-bloqueado" *ngIf="d.disponivel == false">
+          Solicitar <br> serviço
+        </button>
+        <button class="botao-solicitar" (click)="irParaSolicitar(i)" *ngIf="d.disponivel == true">
+          Solicitar <br> serviço
         </button>
 
         <button class="botao-whatsapp" (click)="enviarMensagem(i)">

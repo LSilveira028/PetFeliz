@@ -9,6 +9,13 @@ export interface CaoS
     porte: string;
 }
 
+export interface Servico
+{
+  valorTotal: number;
+  latitudeProp: number;
+  longitudeProp: number;
+}
+
 export interface CaesServico
 {
   cao: {
@@ -21,7 +28,8 @@ export interface CaesServico
 
 export class UsuariosServico
 {
-  servico: {
+  usuarioId: number;
+  servico?: {
     id: number;
     proprietarioId: number;
     estado: number;
@@ -58,9 +66,9 @@ export class UsuariosServico
 })
 export class ServicoService {
   //Proprietário
-  tokenAnderson = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI4IiwibmFtZSI6IkFuZGVyc29uIiwibmJmIjoxNjE5MjA1NjQyLCJleHAiOjE2MjA0MTUyNDIsImlhdCI6MTYxOTIwNTY0Mn0.vxze4DpFdTwHjOEGZ4tsjTIRL8JoV5PA-yTLEv9-GCbYiyXEm_PSipjOQloJsEli2OiIVgez0TSY5q-NOioRVw"
+  tokenAnderson = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI4IiwibmFtZSI6IkFuZGVyc29uIiwibmJmIjoxNjIwNDE4Mjc3LCJleHAiOjE2MjE2Mjc4NzcsImlhdCI6MTYyMDQxODI3N30.la3FOEgLmv8g1U-pKp6F0TCxeAK6QyTtfWtL6mhBbt-72jwX33km_gJ9S0bApYJ8zGUvI2apkIdB7xCJwxRfjg"
   //Dog Walker
-  tokenLucas = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI2IiwibmFtZSI6Ikx1Y2FzIiwibmJmIjoxNjE5NTU5NTExLCJleHAiOjE2MjA3NjkxMTEsImlhdCI6MTYxOTU1OTUxMX0.-sdM6L5ehiu25hOfWfZhGFCEYpiFu9ZT4alXHtA0nfWsepcFKrucMyQOA7Jw7vrnhxlggjkiQdI4FDmlkWgsWg";
+  tokenLucas = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI2IiwibmFtZSI6Ikx1Y2FzIiwibmJmIjoxNjIwNDE4MTY0LCJleHAiOjE2MjE2Mjc3NjQsImlhdCI6MTYyMDQxODE2NH0.Cd91j0_M_t0mVVGc-q1pWn_ifhMM_HgEtAnApNTZThfaVyXFVyW2atqIxsgpkAVJc4AnG9QmyOJEdw8WXAMAhA";
 
   header = new HttpHeaders({
     'Authorization': 'Bearer ' + this.tokenAnderson,
@@ -75,6 +83,7 @@ export class ServicoService {
   // private api_url = 'http://pet-feliz.somee.com/PetFeliz/Usuario/'
   // private api_url = 'http://pet-feliz.somee.com/PetFeliz/CaesServico'
 
+  private api_url_usuariosServico = "http://localhost:5000/UsuariosServico/"
   private api_url_caesServico = "http://localhost:5000/CaoServico/"
   private api_url = "http://localhost:5000/Servico/"
 
@@ -124,4 +133,22 @@ export class ServicoService {
    {
     return this.http.put(this.api_url + "Recusar/" + idServico, JSON.stringify(idServico), { headers: this.headerD });
    }
+
+   //Fazer solicitação do servico - 4 procedimentos
+   // 1 - Faz a solicitação do serviço
+   solicitarServico(servico: Servico)
+   {
+     return this.http.post(this.api_url + "Solicitar", servico, { headers: this.header })
+   }
+   // 2 - Associa o properitario ao serviço   
+   associarProprietarioServico()
+   {
+     return this.http.post(this.api_url_usuariosServico + "AssociarProprietario", UsuariosServico, { headers: this.header})
+   }
+   // 3 - Associa o dog walker ao serviço solicitado
+   associarDogWalkerServico(idDogWalker: number)
+   {
+     return this.http.post(this.api_url_usuariosServico + "AssociarDogWalker/" + idDogWalker, UsuariosServico, { headers: this.header })
+   }
+
 }
