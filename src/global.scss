@@ -36,6 +36,12 @@
     // display: block;  
 }
 
+.modal-loading .modal-wrapper {
+    width: 50%;
+    height: 28%;
+    background: rgb(223, 223, 223);
+}
+
 //Estilos do alerta ao solicitar serviço
 .alerta-solicitar .botao-alert-neutro{
     color: black;

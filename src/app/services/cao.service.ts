@@ -14,6 +14,12 @@ export interface Cao
   }
 }
 
+export class CaoServico
+{
+  caoId: number;
+  servicoId: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,11 +34,19 @@ export class CaoService {
   })
 
   // private api_url = 'http://pet-feliz.somee.com/PetFeliz/Cao/'
+  // private api_url_caoServico = 'http://pet-feliz.somee.com/PetFeliz/CaoServico/'
 
   private api_url = "http://localhost:5000/Cao/"
+  private api_url_caoServico = "http://localhost:5000/CaoServico/"
+
 
   listarCaesProprietario(idProp: number)
   {
     return this.http.get<Cao[]>(this.api_url + idProp, { headers: this.header})
+  }
+
+  associarCaoServico(idCao: number)
+  {
+    return this.http.post(this.api_url_caoServico + "AssociarCaoServico/" + idCao, CaoServico,{headers: this.header})
   }
 }

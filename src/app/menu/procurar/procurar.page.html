@@ -58,7 +58,8 @@
             
             <div class="avaliacao-dw"> <!--Avaliação média-->
               <b>Avaliação média:</b> <br>
-              <b>{{d.servicoDogWalker.avaliacaoMedia}}</b> <!--Estrelas (descobriremos como fazer)-->
+              <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 0">Nenhuma avaliação</div>
+                <b *ngIf="d.servicoDogWalker.avaliacaoMedia > 0">{{d.servicoDogWalker.avaliacaoMedia}}</b> <!--Estrelas (descobriremos como fazer)-->
             </div>
       
             <div class="preferencias-dw">  <!--Preferencias-->

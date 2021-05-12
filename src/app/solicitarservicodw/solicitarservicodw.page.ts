@@ -1,11 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController, ToastController } from '@ionic/angular';
 import { Cao, CaoService } from '../services/cao.service';
 import { Servico, ServicoService, UsuariosServico } from '../services/servico.service';
 import { Usuario, UsuarioService } from '../services/usuario.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { isNull } from '@angular/compiler/src/output/output_ast';
+import { LoadingComponent } from '../componentes/loading/loading.component';
+
+export interface CaesSelecionados
+{
+  id: number;
+}
 
 @Component({
   selector: 'app-solicitarservicodw',
@@ -25,7 +31,8 @@ export class SolicitarservicodwPage implements OnInit {
   valorTotal: number;
 
   constructor(private serviceCao: CaoService,private serviceUsuario: UsuarioService,
-              private modal: ModalController, private geolocation: Geolocation,
+              private modal: ModalController, private _modal: ModalController,
+              private geolocation: Geolocation, private toast: ToastController,
               private serviceServico: ServicoService, private alertController: AlertController,
               ) { }
 
@@ -77,8 +84,10 @@ export class SolicitarservicodwPage implements OnInit {
   async alertaSolicitar()
   {
 
-    if(this.caesSelecionados == null)
+    //Se não houver nenhuma cão selecionado
+    if(this.caesSelecionados == null || this.caesSelecionados.length == 0)
     {
+      //chamará o alerta o qual avisará que não há cães selecionados
       this.alertaSemCao();
     }
     else
@@ -93,8 +102,9 @@ export class SolicitarservicodwPage implements OnInit {
             role: 'sim',
             cssClass: 'botao-alert-neutro',
             handler: (action) => {
-              // this.solicitarServico();
-              this.teste()
+              //Ação que será feita ao clicar em 'Sim'
+              this.loadingModal();
+              this.solicitarServico();
             }
           },
           {
@@ -124,11 +134,6 @@ export class SolicitarservicodwPage implements OnInit {
     })
 
     await alert.present();
-  }
-
-  teste()
-  {
-    
   }
 
   solicitarServico()
@@ -164,15 +169,51 @@ export class SolicitarservicodwPage implements OnInit {
           this.serviceServico.associarDogWalkerServico(this.dogWalker.id).subscribe(dogWalkerServico => {
             console.log("Dog Walker Serviço");
             console.log(dogWalkerServico);
+
+            //Associa os cães ao serviço
+            //Quantidade de cães
+            let qtdCaes = this.caesSelecionados.length;
+
+            
+            for (let c = 0; c < qtdCaes; c++) {
+              const idCao = this.caesSelecionados[c];
+              
+              this.serviceCao.associarCaoServico(idCao).subscribe(e => {
+              })
+              
+            }
+            //Fecha o modal de loading
+            this._modal.dismiss();
+            //Fecha o modal de solicitar serviço
+            this.modal.dismiss();
+            //Emite alerta avisando que o serviço foi solicitado
+            this.avisoSolicitado();
+
           })
         })
       })
 
     });
+  }
 
-    
+  async loadingModal()
+  {
+    const modal = await this._modal.create({
+      component: LoadingComponent,
+      cssClass: 'modal-loading',
+      backdropDismiss: false
+    });
 
-    //  this.servico[0].valorTotal = this.valorTotal;
+    return await modal.present();
   }
   
+  async avisoSolicitado()
+  {
+    const toast = await this.toast.create({
+      message: 'Serviço solicitado com sucesso.',
+      duration: 4000
+    })
+    toast.present();
+  }
+
 }
