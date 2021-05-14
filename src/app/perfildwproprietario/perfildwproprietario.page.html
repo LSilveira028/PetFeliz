@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary"><!--Toolbar-->
     <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
-    <ion-title color="tertiary"> <b>Perfil do Dog Walker</b> <!-- <b> deixa o texto em negrito --> </ion-title>
+    <ion-title color="tertiary"> <!-- <b> deixa o texto em negrito --> </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -27,16 +27,6 @@
             </div>
             <div class="textoSobrePerfildwProprietario"> <!--Texto principal puxado do Banco-->
               Cuidar de animais é o que faço de melhor. Possuo formação em cuidado e adestramento de cães. Darei toda atenção que o seu cão precisar.
-            </div>
-        </div>
-
-        <div class="areaCursosPerfildwProprietario">
-            <div class="tituloCursosPerfildwProprietario">
-              <b>Cursos</b> <br>
-            </div>
-            <div class="cursosPerfildwProprietario">
-              Adestramento de cães - 2019 <br> <br>
-              Cuidador de cães - 2018 <br> <br>
             </div>
         </div>
 
@@ -83,7 +73,26 @@
             <div class="textoPreferenciasPerfildwProprietario">
               Cães de porte médio
             </div>
-        </div>        
+        </div>
+
+        <div class="areaCursosPerfildwProprietario">
+          <div class="tituloCursosPerfildwProprietario">
+            <b>Cursos</b> <br>
+          </div>
+          <div class="cursosPerfildwProprietario">
+            Adestramento de cães - 2019 <br> <br>
+            Cuidador de cães - 2018 <br> <br>
+          </div>
+      </div>    
+
+      <section id="botoes">
+        <ion-button expand="" color="secondary" (click)="abrirAlterarPerfil()">
+          <b>Alterar perfil</b>
+        </ion-button>
+        <ion-button expand="" color="secondary">
+          <b>Adicionar curso</b>
+        </ion-button>
+      </section>
     </div> <!--Fim DIV informações do perfil do DW--> <br>
     
     <ion-item-divider>

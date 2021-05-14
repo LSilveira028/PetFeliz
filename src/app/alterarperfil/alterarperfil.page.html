@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="primary"><!--Toolbar-->
+    <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
+    <ion-title color="tertiary"> <b>Alterar Perfil</b> <!-- <b> deixa o texto em negrito --> </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> <!--Conteúdo do app-->
+
+  <!--Nome e foto do Dog Walker-->
+  <section id="foto-nome">
+    <div>
+      <img src="/assets/retanguloCinzaFoto.png" width="60px" height="60px" style="border-radius: 30px;">
+      <b>Lucas Silveira de Castro Ramos</b>
+    </div>
+  </section>
+
+  <div id="informacoes">
+    <!--Descrição sobre o Dog Walker-->
+    <section id="sobre">
+      <b>Sobre</b>
+      <textarea cols="38" rows="5" placeholder="Conte aqui sobre você, seu trabalho e suas experiências!"></textarea>
+    </section>
+
+    <!--Valor do serviço do Dog Walker-->
+    <section id="preco">
+      <b>Preço</b>
+
+      <ion-item>
+        <ion-label position="floating">R$</ion-label>
+        <ion-input type="number" placeholder="Ex: R$ 45"></ion-input>
+      </ion-item>
+    </section>
+
+    <!--Dog Walker aceita ou não aceita cartão-->
+    <section id="aceita-cartao">
+      <b>Aceita cartão</b>
+      <ion-item> <!-- ion-select "Aceita cartao?"-->
+        <ion-label>Aceita Cartão?</ion-label>
+        
+        <ion-select cancelText="Cancelar" okText="Confirmar">
+          <ion-select-option>Sim</ion-select-option>
+          <ion-select-option>Não</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </section>
+
+    <section id="preferencias">
+      <b>Preferências</b>
+
+      <textarea cols="38" rows="5" placeholder="Escreva aqui sobre suas preferências: se prefere trabalhar com determinada raça, porte, idade, ou qualquer outra preferência."></textarea>
+    </section>
+    
+    <!-- <section>
+      <b>Cursos</b>
+
+
+    </section> -->
+
+    <!--Botão salvar-->
+    <div id="area-botao">
+      <button id="botao-salvar">
+        Salvar
+      </button>
+    </div>
+
+  </div>
+</ion-content>

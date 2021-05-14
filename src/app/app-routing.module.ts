@@ -77,6 +77,14 @@ const routes: Routes = [
   },  {
     path: 'caesservicopage',
     loadChildren: () => import('./componentes/caesservicopage/caesservicopage.module').then( m => m.CaesservicopagePageModule)
+  },
+  {
+    path: 'alterarperfil',
+    loadChildren: () => import('./alterarperfil/alterarperfil.module').then( m => m.AlterarperfilPageModule)
+  },
+  {
+    path: 'avaliacoes',
+    loadChildren: () => import('./menu/avaliacoes/avaliacoes.module').then( m => m.AvaliacoesPageModule)
   }
 
 

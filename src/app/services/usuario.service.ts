@@ -34,6 +34,7 @@ export interface Usuario
 export class UsuarioService {
 
   tokenAnderson = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI4IiwibmFtZSI6IkFuZGVyc29uIiwibmJmIjoxNjIwNDE4Mjc3LCJleHAiOjE2MjE2Mjc4NzcsImlhdCI6MTYyMDQxODI3N30.la3FOEgLmv8g1U-pKp6F0TCxeAK6QyTtfWtL6mhBbt-72jwX33km_gJ9S0bApYJ8zGUvI2apkIdB7xCJwxRfjg"
+  tokenLucas = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI2IiwibmFtZSI6Ikx1Y2FzIiwibmJmIjoxNjIwNDE4MTY0LCJleHAiOjE2MjE2Mjc3NjQsImlhdCI6MTYyMDQxODE2NH0.Cd91j0_M_t0mVVGc-q1pWn_ifhMM_HgEtAnApNTZThfaVyXFVyW2atqIxsgpkAVJc4AnG9QmyOJEdw8WXAMAhA"
 
   header = new HttpHeaders({
     'Authorization': 'Bearer ' + this.tokenAnderson

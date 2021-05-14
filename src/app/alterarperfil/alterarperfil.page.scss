@@ -1,0 +1,55 @@
+section b{
+    font-size: 18px;
+}
+
+#foto-nome div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+//Disntancia entre o nome e a foto
+#foto-nome div b{
+    margin-top: 10px;
+
+    max-width: 200px;
+    text-align: center;
+}
+
+#sobre, #preco, #aceita-cartao, #preferencias{
+    margin-left: 20px;
+    margin-top: 15px;
+}
+#sobre textarea, #preferencias textarea{
+    margin-top: 5px;
+
+    //impede que o tamanho seja alterado
+    resize: none;
+}
+
+#preco, #aceita-cartao, #preferencias{
+    margin-right: 20px;
+}
+ 
+#area-botao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#botao-salvar{
+    background-color: #E94F37;
+    color: white;
+
+    font-size: 18px;
+
+    border-radius: 10px;
+
+    height: 50px;
+    width: 160px;
+}

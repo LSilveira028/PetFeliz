@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-perfildwproprietario',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfildwproprietarioPage implements OnInit {
 
-  constructor() { }
+  constructor(private nav: NavController, private modal: ModalController) { }
 
   ngOnInit() {
+  }
+
+  abrirAlterarPerfil()
+  {
+    this.nav.navigateForward('alterarperfil');
   }
 
 }

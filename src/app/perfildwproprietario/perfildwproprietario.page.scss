@@ -127,3 +127,34 @@
     margin-left: 15%;
     margin-right: 10%;
 }
+
+#botoes{
+    display: flex;
+    flex-direction: column;
+}
+
+
+#botao-fechar
+{   
+    display: flex;
+    align-items: center;
+    align-content: center;
+
+    background: white;
+    width: 50px;
+    height: 50px;
+    float: right;
+
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
+#botao-fechar:hover{
+    background: rgb(194, 194, 194);
+    transition-duration: 0.5s;
+}
+
+
+#botao-fechar img{
+    margin-left: 10px;
+}
