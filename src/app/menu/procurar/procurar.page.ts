@@ -3,6 +3,8 @@ import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { ModalController } from '@ionic/angular';
 import { SolicitarservicodwPage } from 'src/app/solicitarservicodw/solicitarservicodw.page';
+import { StorageService } from 'src/app/services/local-storage/storage.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-procurar',
@@ -20,7 +22,8 @@ export class ProcurarPage implements OnInit {
   
   dogWalkers: Usuario[] = new Array<Usuario>();
 
-  constructor(private service: UsuarioService, private geolocation: Geolocation, private modalController: ModalController) { }
+  constructor(private service: UsuarioService, private geolocation: Geolocation,
+              private modalController: ModalController, private storageService: StorageService) { }
   
   latitudeUsuario;
   longitudeUsuario;
@@ -38,42 +41,55 @@ export class ProcurarPage implements OnInit {
   ngOnInit() {
 
       parseFloat(this.longitudeDogWalker)
-      //Pega a longitude e latitude do usuário
-      this.geolocation.getCurrentPosition().then((resp) => {
-      
-        this.latitudeUsuario =  resp.coords.latitude
-        this.longitudeUsuario = resp.coords.longitude
-        // parseFloat(this.latitudeUsuario);
+
+      this.storageService.buscarToken().then(tokenStorage => {
+
+        let token = tokenStorage;
+
+        const header = new HttpHeaders ({
+          'Authorization': 'Bearer ' + token
+        });
+
+        //Pega a longitude e latitude do usuário
+        this.geolocation.getCurrentPosition().then((resp) => {
         
-        console.log(this.latitudeUsuario);
-        console.log(this.longitudeUsuario);
+          this.latitudeUsuario =  resp.coords.latitude
+          this.longitudeUsuario = resp.coords.longitude
+          // parseFloat(this.latitudeUsuario);
+          
+          console.log(this.latitudeUsuario);
+          console.log(this.longitudeUsuario);
 
-        this.service.procurarDogWalkers().subscribe(response => {
-          this.dogWalkers = response;
+          this.service.procurarDogWalkers(header).subscribe(response => {
+            this.dogWalkers = response;
 
-          this.dogWalkers.forEach(element => {
-            //pega a localização do dog walker
-            this.latitudeDogWalker = element.latitude;
-            this.longitudeDogWalker = element.longitude;   
-            
-            this.whatsapp = element.whatsApp;
-            console.log("whats: " + this.whatsapp)
+            this.dogWalkers.forEach(element => {
+              //pega a localização do dog walker
+              this.latitudeDogWalker = element.latitude;
+              this.longitudeDogWalker = element.longitude;   
+              
+              this.whatsapp = element.whatsApp;
+              console.log("whats: " + this.whatsapp)
 
-            //armazena a distancia entre o proprietário e o dog walker
-            this.distancia = calcularDistancia
-            (this.latitudeUsuario, this.longitudeUsuario, this.latitudeDogWalker, this.longitudeDogWalker)
+              //armazena a distancia entre o proprietário e o dog walker
+              this.distancia = calcularDistancia
+              (this.latitudeUsuario, this.longitudeUsuario, this.latitudeDogWalker, this.longitudeDogWalker)
 
-            element.distancia = (this.distancia).toFixed(0);
+              element.distancia = (this.distancia).toFixed(0);
 
-            console.log("distancia: " + this.distancia)
-  
-            });
-            
+              console.log("distancia: " + this.distancia)
+    
+              });
+              
+          })
+
+        }).catch((error) => {
+          console.log('Error getting location', error);
+        });
+
         })
 
-      }).catch((error) => {
-        console.log('Error getting location', error);
-      });
+
 
     
 

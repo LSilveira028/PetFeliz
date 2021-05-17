@@ -7,6 +7,8 @@ import { Usuario, UsuarioService } from '../services/usuario.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { isNull } from '@angular/compiler/src/output/output_ast';
 import { LoadingComponent } from '../componentes/loading/loading.component';
+import { StorageService } from '../services/local-storage/storage.service';
+import { HttpHeaders } from '@angular/common/http';
 
 export interface CaesSelecionados
 {
@@ -34,6 +36,7 @@ export class SolicitarservicodwPage implements OnInit {
               private modal: ModalController, private _modal: ModalController,
               private geolocation: Geolocation, private toast: ToastController,
               private serviceServico: ServicoService, private alertController: AlertController,
+              private storageService: StorageService
               ) { }
 
   //Estilização do select de cães
@@ -44,18 +47,35 @@ export class SolicitarservicodwPage implements OnInit {
 
   ngOnInit() {
 
-    this.serviceUsuario.informacoesUsuario().subscribe(infoUsu => {
+    //Busca o token do usuário logado
+    this.storageService.buscarToken().then(tokenStorage => {
+      
+      let header = this.headerRequisicao(tokenStorage);
 
-      let usuario: Usuario;
-      usuario = infoUsu;
-      let idUsuario = usuario.id
+      //busca as informações do proprietário de modo que se possa
+      //obter seu id, e assim possa buscar seus cães
+      this.storageService.buscarInformacoesUsuario().then(infoUsu => {
 
-      this.serviceCao.listarCaesProprietario(idUsuario).subscribe(caes => {
-        this.caes = caes;
-        
+        let usuario: Usuario = infoUsu;
+        let idUsuario = usuario.id
+
+        //busca os cães do proprietário
+        this.serviceCao.listarCaesProprietario(idUsuario, header).subscribe(caes => {
+          this.caes = caes;
+        })
       })
+    })
+      
+  }
 
-    });
+  //Header que será enviado na requisição
+  headerRequisicao(token: any)
+  {
+    let header = new HttpHeaders ({
+      'Authorization': 'Bearer ' + token
+    })
+
+    return header;
   }
 
   definirMargem()
@@ -141,8 +161,6 @@ export class SolicitarservicodwPage implements OnInit {
     let latitudeP: number;
     let longitudeP: number;
 
-    
-
     //Busca a geolocalização do usuário
     this.geolocation.getCurrentPosition().then((resp) => {
       latitudeP = resp.coords.latitude;
@@ -155,40 +173,44 @@ export class SolicitarservicodwPage implements OnInit {
         longitudeProp: longitudeP
       }
 
-      //Faz a solicitação do serviço
-      this.serviceServico.solicitarServico(servico).subscribe(servico => {
-        console.log("Serviço solicitado")
-        console.log(servico)
+      this.storageService.buscarToken().then(tokenStorage => {
+        
+        let header = this.headerRequisicao(tokenStorage);
 
-        //Associa o proprietário ao serviço
-        this.serviceServico.associarProprietarioServico().subscribe(proprietarioServico => {
-          console.log("Proprietário associado")
-          console.log(proprietarioServico);
-
-          // Associa o Dog Walker ao serviço
-          this.serviceServico.associarDogWalkerServico(this.dogWalker.id).subscribe(dogWalkerServico => {
-            console.log("Dog Walker Serviço");
-            console.log(dogWalkerServico);
-
-            //Associa os cães ao serviço
-            //Quantidade de cães
-            let qtdCaes = this.caesSelecionados.length;
-
+        //Faz a solicitação do serviço
+        this.serviceServico.solicitarServico(servico, header).subscribe(servico => {
+          console.log("Serviço solicitado")
+          console.log(servico)
+          
+          //Associa o proprietário ao serviço
+          this.serviceServico.associarProprietarioServico(header).subscribe(proprietarioServico => {
+            console.log("Proprietário associado")
+            console.log(proprietarioServico);
             
-            for (let c = 0; c < qtdCaes; c++) {
-              const idCao = this.caesSelecionados[c];
+            // Associa o Dog Walker ao serviço
+            this.serviceServico.associarDogWalkerServico(this.dogWalker.id, header).subscribe(dogWalkerServico => {
+              console.log("Dog Walker Serviço");
+              console.log(dogWalkerServico);
               
-              this.serviceCao.associarCaoServico(idCao).subscribe(e => {
-              })
+              //Associa os cães ao serviço
+              //Quantidade de cães
+              let qtdCaes = this.caesSelecionados.length;
               
-            }
-            //Fecha o modal de loading
-            this._modal.dismiss();
-            //Fecha o modal de solicitar serviço
-            this.modal.dismiss();
-            //Emite alerta avisando que o serviço foi solicitado
-            this.avisoSolicitado();
-
+              for (let c = 0; c < qtdCaes; c++) {
+                const idCao = this.caesSelecionados[c];
+                
+                this.serviceCao.associarCaoServico(idCao, header).subscribe(e => {
+                })
+                
+              }
+              //Fecha o modal de loading
+              this._modal.dismiss();
+              //Fecha o modal de solicitar serviço
+              this.modal.dismiss();
+              //Emite alerta avisando que o serviço foi solicitado
+              this.avisoSolicitado();
+              
+            })
           })
         })
       })

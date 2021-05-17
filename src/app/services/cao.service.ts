@@ -40,13 +40,13 @@ export class CaoService {
   private api_url_caoServico = "http://localhost:5000/CaoServico/"
 
 
-  listarCaesProprietario(idProp: number)
+  listarCaesProprietario(idProp: number, header: HttpHeaders)
   {
-    return this.http.get<Cao[]>(this.api_url + idProp, { headers: this.header})
+    return this.http.get<Cao[]>(this.api_url + idProp, { headers: header })
   }
 
-  associarCaoServico(idCao: number)
+  associarCaoServico(idCao: number, header: HttpHeaders)
   {
-    return this.http.post(this.api_url_caoServico + "AssociarCaoServico/" + idCao, CaoServico,{headers: this.header})
+    return this.http.post(this.api_url_caoServico + "AssociarCaoServico/" + idCao, CaoServico,{headers: header})
   }
 }

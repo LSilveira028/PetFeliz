@@ -89,29 +89,29 @@ export class ServicoService {
 
   constructor(private http: HttpClient) { }
 
-   listarServicosGerais()
+   listarServicosGerais(header: HttpHeaders)
    {
-     return this.http.get<UsuariosServico[]>(this.api_url + 'ListarServicosGerais', { headers: this.header});
+     return this.http.get<UsuariosServico[]>(this.api_url + 'ListarServicosGerais', { headers: header});
    }
 
-   listarServicosFinalizados()
+   listarServicosFinalizados(header: HttpHeaders)
    {
-     return this.http.get<UsuariosServico[]>(this.api_url + 'ListarServicosFinalizados', { headers: this.header})
+     return this.http.get<UsuariosServico[]>(this.api_url + 'ListarServicosFinalizados', { headers: header})
    }
 
-   cancelarServico(id: number)
+   cancelarServico(id: number, header: HttpHeaders)
    {
-     return this.http.put(this.api_url + "Cancelar/" + id, JSON.stringify(id), { headers: this.header });
+     return this.http.put(this.api_url + "Cancelar/" + id, JSON.stringify(id), { headers: header });
    }
 
-   iniciarServico(id:number)
+   iniciarServico(id:number, header: HttpHeaders)
    {
-     return this.http.put(this.api_url + "Iniciar/" + id, JSON.stringify(id), { headers: this.header })
+     return this.http.put(this.api_url + "Iniciar/" + id, JSON.stringify(id), { headers: header })
    }
 
-   finalizarServico(id: number)
+   finalizarServico(id: number, header: HttpHeaders)
    {
-     return this.http.put(this.api_url + "Finalizar/" + id, JSON.stringify(id), { headers: this.header })
+     return this.http.put(this.api_url + "Finalizar/" + id, JSON.stringify(id), { headers: header })
    }
 
    listarServicosSolicitados()
@@ -134,21 +134,21 @@ export class ServicoService {
     return this.http.put(this.api_url + "Recusar/" + idServico, JSON.stringify(idServico), { headers: this.headerD });
    }
 
-   //Fazer solicitação do servico - 4 procedimentos
+   //Fazer solicitação do servico - 4 procedimentos - O 4° está no service do cão
    // 1 - Faz a solicitação do serviço
-   solicitarServico(servico: Servico)
+   solicitarServico(servico: Servico, header: HttpHeaders)
    {
-     return this.http.post(this.api_url + "Solicitar", servico, { headers: this.header })
+     return this.http.post(this.api_url + "Solicitar", servico, { headers: header })
    }
    // 2 - Associa o properitario ao serviço   
-   associarProprietarioServico()
+   associarProprietarioServico(header: HttpHeaders)
    {
-     return this.http.post(this.api_url_usuariosServico + "AssociarProprietario", UsuariosServico, { headers: this.header})
+     return this.http.post(this.api_url_usuariosServico + "AssociarProprietario", UsuariosServico, { headers: header})
    }
    // 3 - Associa o dog walker ao serviço solicitado
-   associarDogWalkerServico(idDogWalker: number)
+   associarDogWalkerServico(idDogWalker: number, header: HttpHeaders)
    {
-     return this.http.post(this.api_url_usuariosServico + "AssociarDogWalker/" + idDogWalker, UsuariosServico, { headers: this.header })
+     return this.http.post(this.api_url_usuariosServico + "AssociarDogWalker/" + idDogWalker, UsuariosServico, { headers: header })
    }
 
 }

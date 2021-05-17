@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { StorageService } from '../services/local-storage/storage.service';
 
 @Component({
   selector: 'app-entraroucadastrar',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntraroucadastrarPage implements OnInit {
 
-  constructor() { }
+  constructor(private storageService: StorageService, private nav: NavController) { }
 
   ngOnInit() {
+    // this.storageService.gravarNome("Anderson")
+    this.storageService.mostrarNome();
+  }
+
+  abrirPaginaEntrar()
+  {
+    this.nav.navigateForward('login')
+  }
+
+  abrirPaginaCadastrar()
+  {
+    this.nav.navigateForward('cadastro')
   }
 
 }

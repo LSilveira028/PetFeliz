@@ -24,9 +24,14 @@
                         <ion-label position="floating">Senha</ion-label>
                         <ion-input type="password"
                                     placeholder="Digite sua senha"
-                                    ngModel name="PasswordString"></ion-input>
+                                    ngModel name="passwordString"></ion-input>
                     </ion-item>
                 </ion-list>
+
+                <div *ngIf="resultado == 1" class="dados-invalidos">
+                    E-mail ou senha inválidos.
+                </div>
+
                 
                 <ion-button expand="block" color="secondary" class="botaoLogar" type="submit"><b>Entrar</b></ion-button>
             
