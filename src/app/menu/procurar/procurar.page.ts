@@ -1,7 +1,7 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit, Output } from '@angular/core';
 import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { ModalController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 import { SolicitarservicodwPage } from 'src/app/solicitarservicodw/solicitarservicodw.page';
 import { StorageService } from 'src/app/services/local-storage/storage.service';
 import { HttpHeaders } from '@angular/common/http';
@@ -11,10 +11,11 @@ import { HttpHeaders } from '@angular/common/http';
   templateUrl: './procurar.page.html',
   styleUrls: ['./procurar.page.scss'],
 })
-export class ProcurarPage implements OnInit {
+export class ProcurarPage implements OnInit, OnDestroy {
 
   @Output() tela: string = "procurar";
-  @Output() UsuarioP: string = "proprietario"
+  //Usuario logado
+  @Output() UsuarioL: string;
 
   dogWalkerInformacao: any;
 
@@ -23,7 +24,8 @@ export class ProcurarPage implements OnInit {
   dogWalkers: Usuario[] = new Array<Usuario>();
 
   constructor(private service: UsuarioService, private geolocation: Geolocation,
-              private modalController: ModalController, private storageService: StorageService) { }
+              private modalController: ModalController, private storageService: StorageService,
+              private menuCtrl: MenuController) { }
   
   latitudeUsuario;
   longitudeUsuario;
@@ -40,8 +42,16 @@ export class ProcurarPage implements OnInit {
 
   ngOnInit() {
 
-      parseFloat(this.longitudeDogWalker)
+    this.storageService.buscarInformacoesUsuario().then(usuInfo => {
+      if (usuInfo.tipoConta == 2) {
+        this.UsuarioL = "dogWalker"
+      }
+      else
+        this.UsuarioL = "proprietario"
+    })
 
+      parseFloat(this.longitudeDogWalker)
+  
       this.storageService.buscarToken().then(tokenStorage => {
 
         let token = tokenStorage;
@@ -115,10 +125,24 @@ export class ProcurarPage implements OnInit {
     {
       return deg * (Math.PI/180);
     }
-
-     
   }
   
+  ngOnDestroy()
+  {
+    // this.menuCtrl.enable(true)
+  }
+
+  // Habilita o sidemenu
+  // ionViewDidEnter() {
+  //   this.menuCtrl.enable(true);
+  // }
+  // ionViewDidLeave() {
+  //   this.menuCtrl.enable(true);
+  // }
+  // ionViewWillEnter() {
+  //   this.menuCtrl.enable(true);
+  // }
+
   enviarMensagem(i: any)
   {
     this.dogWalkerInformacao = this.dogWalkers[i];

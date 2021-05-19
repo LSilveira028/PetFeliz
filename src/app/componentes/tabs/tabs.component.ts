@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UsuariosServico } from 'src/app/services/servico.service';
 import { NavController } from '@ionic/angular';
+import { Usuario } from 'src/app/services/usuario.service';
+import { StorageService } from 'src/app/services/local-storage/storage.service';
 
 
 @Component({
@@ -12,12 +14,20 @@ export class TabsComponent implements OnInit {
 
   @Input() tela: string;
   @Input() Usuario: string;
+  UsuarioL: Usuario;
 
-  constructor(private nav: NavController) { }
+  constructor(private nav: NavController, private storeService: StorageService) { }
 
   ngOnInit() {
+
+    this.storeService.buscarInformacoesUsuario().then(infoUsu => {
+      this.UsuarioL = infoUsu;
+      console.log("AA")
+      console.log(infoUsu)
+    })
+
     console.log(this.tela)
-    console.log(this.Usuario)
+    // console.log(this.Usuario)
   }
 
   irParaProcurar()
@@ -25,9 +35,20 @@ export class TabsComponent implements OnInit {
     this.nav.navigateForward('procurar');
   }
 
+  irParaSolicitacoes()
+  {
+    this.nav.navigateForward('solicitacoesdw');
+  }
+
   irParaHistorico()
   {
     this.nav.navigateForward('historicoservicos');
+  }
+
+  segundaVerificacaoProprietario()
+  {
+    if(this.Usuario == 'proprietario' && this.tela == 'procurar')
+      return true;
   }
 
 }

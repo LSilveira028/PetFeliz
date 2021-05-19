@@ -85,6 +85,10 @@ const routes: Routes = [
   {
     path: 'avaliacoes',
     loadChildren: () => import('./menu/avaliacoes/avaliacoes.module').then( m => m.AvaliacoesPageModule)
+  },
+  {
+    path: 'deletarconta',
+    loadChildren: () => import('./deletarconta/deletarconta.module').then( m => m.DeletarcontaPageModule)
   }
 
 

@@ -38,10 +38,15 @@
             <ion-label><b>{{s.servico.usuarios[0].usuario.nome}}</b></ion-label>  <!--Nome Dog Walker-->
           </div>
 
-         
-          <div class="preco-servico" id="estado-servico"> <!--Aceito cartao ou não-->
+          <!--Se o usuário logado for proprietário-->
+          <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 1"> <!--Aceito cartao ou não-->
             <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
             <b style="margin-left: 10px; color:forestgreen ;">R$ {{s.servico.usuarios[0].usuario.servicoDogWalker.valorServico}}</b>
+          </div>
+          <!--Se o usuário logado for Dog Walker-->
+          <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 2"> <!--Aceito cartao ou não-->
+            <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
+            <b style="margin-left: 10px; color:forestgreen ;">R$ {{usuario.servicoDogWalker.valorServico}}</b>
           </div> 
 
           <!--Todas os possiveis estados do serviço-->
@@ -61,6 +66,8 @@
             <b>Estado: </b> Cancelado
           </div>
 
+          
+
           <div class="data-hora-servico">
             <b>Data: </b> {{s.servico.dataSolicitacao}}, {{s.servico.horaSolicitacao}}
           </div>
@@ -68,6 +75,22 @@
           <div class="inicio-servico" *ngIf="s.servico.horaInicio != null">
             <b>Início: </b>{{s.servico.horaInicio}}
           </div>
+          <br>
+          <button class="botaoAbrirMapaSolicitacoesDW" (click)="abrirMapa(i)" 
+                  *ngIf="usuario.tipoConta == 2 && s.servico.estado == 1 || s.servico.estado == 2 || s.servico.estado == 4"> <!--botao -->
+            <div style="display: flex; flex-direction: row; align-items: center; margin-top: 6px;">
+              <img src="/assets/abrirmapa.png" style="height: 20px; width: 20px;">
+              <div class="textoAbrirMapa">
+                <b> Abrir Mapa </b>
+              </div>
+            </div>
+          </button>
+            
+
+          <button class="botao-chamar-caes" (click)="mostrarCaes(i)" 
+                  *ngIf="s.servico.estado ==  1 || s.servico.estado == 2 || s.servico.estado == 4">
+            <b> &nbsp; Mostrar cães</b> <br>
+          </button>
 
           <div>
             <div class="valor-total-servico">
@@ -84,33 +107,41 @@
       <!--Botões-->
       <div id="botoes">
         <div>
+          <!--Ações do proprietário-->
           <button class="botao" style="background-color: #9D9D9D;"
                   *ngIf="s.servico.estado == 1 || s.servico.estado == 2"
                   (click)="cancelarServico(i)">
             Cancelar
           </button>
-
           <button class="botao" style="background-color: #4CAC3C;"
-                  *ngIf="s.servico.estado == 2"
+                  *ngIf="s.servico.estado == 2 && usuario.tipoConta == 1"
                   (click)="iniciarServico(i)">
             Iniciar
           </button>
-
           <button class="botao" style="background-color: #EA4242;"
-                  *ngIf="s.servico.estado == 4"
+                  *ngIf="s.servico.estado == 4 && usuario.tipoConta == 1"
                   (click)="finalizarServico(i)">
             Finalizar
+          </button>   
+          
+          <button class="botao-whatsapp" (click)="chamarWhatsApp(i)" 
+                  *ngIf="usuario.tipoConta == 2 && 
+                  (s.servico.estado == 1 || s.servico.estado == 2 || s.servico.estado == 4)">
+            <img src="/assets/whatsapp.png" style="height: 25px; width: 25px;">
           </button>
 
-          <div *ngIf="s.servico.estado == 7" style="color: gray;">
-            <b>Cancelado</b> 
-          </div>
-
-          <div *ngIf="s.servico.estado == 3" style="color: red;">
-            <b>Recusado</b>
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div *ngIf="s.servico.estado == 7" style="color: gray;">
+              <b>Cancelado</b> 
+            </div>
+    
+            <div *ngIf="s.servico.estado == 3" style="color: red;">
+              <b>Recusado</b>
+            </div>
           </div>
 
         </div>
+        
       </div>
         
     </div>
@@ -134,10 +165,15 @@
             <ion-label><b>{{sf.servico.usuarios[0].usuario.nome}}</b></ion-label>  <!--Nome Dog Walker-->
           </div>
 
-         
-          <div class="preco-servico" id="estado-servico"> <!--Aceito cartao ou não-->
+          <!--Se o usuáriologado for Proprietário-->
+          <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 1"> <!--Aceito cartao ou não-->
             <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
             <b style="margin-left: 10px; color:forestgreen ;">R$ {{sf.servico.usuarios[0].usuario.servicoDogWalker.valorServico}}</b>
+          </div> 
+          <!--Se o usuário logado for Dog Walker-->
+          <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 2"> <!--Aceito cartao ou não-->
+            <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
+            <b style="margin-left: 10px; color:forestgreen ;">R$ {{usuario.servicoDogWalker.valorServico}}</b>
           </div> 
 
           <div class="estado-servico">
@@ -156,6 +192,7 @@
             <b>Término: </b>{{sf.servico.horaTermino}}
           </div>
 
+
           <div class="float-valor-total">
             <div class="valor-total-servico">
               <b>Valor total: &nbsp;</b> 
@@ -172,4 +209,4 @@
   
 </ion-list>
 </ion-content>
-<app-tabs [tela]="tela"></app-tabs>
+<app-tabs [tela]="tela" [Usuario]="UsuarioL"></app-tabs>

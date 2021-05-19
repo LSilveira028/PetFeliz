@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 import { StorageService } from '../services/local-storage/storage.service';
 import { Usuario, UsuarioLogin, UsuarioService } from '../services/usuario.service';
 
@@ -10,7 +10,7 @@ import { Usuario, UsuarioLogin, UsuarioService } from '../services/usuario.servi
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit, OnDestroy {
 
   nome: string = "Anderson";
 
@@ -20,20 +20,35 @@ export class LoginPage implements OnInit {
   resultado: number = 0;
 
   constructor(private service: UsuarioService, private storageService: StorageService,
-             private nav: NavController) { }
+             private nav: NavController, private menuCtrl: MenuController) { }
 
   ngOnInit() {
+
     // this.storageService.gravarLogin(false);
 
-    //Verifica se o usuário está logado
-    this.storageService.verificarLogin().then(v => {
+    // //Verifica se o usuário está logado
+    // this.storageService.verificarLogin().then(v => {
       
-      if (v == true) {
-        this.nav.navigateRoot('procurar')
-      }
-      console.log(v)
-    })
+    //   if (v == true) {
+    //     this.nav.navigateRoot('procurar')
+    //   }
+    //   console.log(v)
+    // })
   }
+  
+  ngOnDestroy()
+  {
+    console.log("Ativado login")
+    this.menuCtrl.enable(true);
+  }
+
+  // ionViewDidLeave() {
+  //   this.menuCtrl.enable(true);
+  // }
+
+  // ionViewWillEnter() {
+  //   this.menuCtrl.enable(false);
+  // }
 
   logarUsuario(form: NgForm)
   {

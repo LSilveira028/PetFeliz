@@ -88,4 +88,9 @@ export class UsuarioService {
     return this.http.post(this.api_url + "Autenticar", usuario, { observe: 'response', responseType: 'text'});
   }
 
+  atualizarLocalizacao(header: HttpHeaders, geolocalizacao: Usuario)
+  {
+    return this.http.put(this.api_url + "AtualizarLocalizacao", geolocalizacao, { headers: header })
+  }
+
 }

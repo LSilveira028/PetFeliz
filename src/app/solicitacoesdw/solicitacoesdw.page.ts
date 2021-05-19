@@ -1,8 +1,11 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { ModalController, ToastController } from '@ionic/angular';
+import { MenuController, ModalController, ToastController } from '@ionic/angular';
 import { CaoS ,CaesServico, ServicoService, UsuariosServico } from '../services/servico.service';
 import { CaesservicopagePage } from '../componentes/caesservicopage/caesservicopage.page';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { UsuarioService, Usuario } from '../services/usuario.service';
+import { StorageService } from '../services/local-storage/storage.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-solicitacoesdw',
@@ -11,11 +14,13 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 })
 export class SolicitacoesdwPage implements OnInit {
 
-  @Output() Usuario: string = "DogWalker"
   @Output() tela: string = "solicitacoes";
+  @Output() UsuarioL: string;
 
   constructor(private service: ServicoService, public modalController: ModalController,
-     private geolocation: Geolocation, private toast: ToastController) { }
+     private geolocation: Geolocation, private toast: ToastController,
+     private menuCtrl: MenuController, private serviceUsuario: UsuarioService,
+     private storageService: StorageService) { }
 
   caesServico: CaesServico[];
   nomeProprietario: string;
@@ -31,7 +36,62 @@ export class SolicitacoesdwPage implements OnInit {
   ngOnInit() {
 
     this.listarServicosSolicitados();
+
+    this.storageService.buscarInformacoesUsuario().then(usuInfo => {
+      if (usuInfo.tipoConta == 2) {
+        this.UsuarioL = "dogWalker"
+      }
+      else
+        this.UsuarioL = "proprietario"
+    })
+
+    this.storageService.buscarToken().then(tokenStorage => {
+      let token = tokenStorage;
+
+      let header = this.headerRequisicao(token);
+
+      this.geolocation.getCurrentPosition().then(resp => {
+
+        let latitude = resp.coords.latitude;
+        let longitude = resp.coords.longitude;
+
+        console.log("LATITUDE")
+        console.log(latitude)
+        console.log("LONGITUDE")
+        console.log(longitude)
+
+        const geolocalizacao: Usuario = ({
+          'latitude': latitude,
+          'longitude': longitude
+        })      
+  
+        this.serviceUsuario.atualizarLocalizacao(header, geolocalizacao).subscribe(resp => {
+          console.log(resp);
+        })
+      })
+
+    })
+
+    // this.serviceUsuario.atualizarLocalizacao()
   }
+
+  //Header que será enviado na requisição
+  headerRequisicao(token: any)
+  {
+    let header = new HttpHeaders ({
+      'Authorization': 'Bearer ' + token
+    })
+
+    return header;
+  }
+
+  //Habilita o sidemenu
+  // ionViewDidEnter() {
+  //   this.menuCtrl.enable(true);
+  // }
+  // ionViewDidLeave() {
+  //   this.menuCtrl.enable(true);
+  // }
 
   async mostrarCaes(indexServico: number)
   {

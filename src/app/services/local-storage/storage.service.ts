@@ -39,6 +39,12 @@ export class StorageService {
      await this.storage.set('token', token);
    }
 
+   public async apagarToken()
+   {
+     let string: string = "a"
+     await this.storage.set('token', string);
+   }
+
    public async buscarToken()
    {
      const token = await this.storage.get('token');
@@ -54,6 +60,11 @@ export class StorageService {
   {
     const usu = this.storage.get('infoUsu');
     return usu;
+  }
+
+  public async apagarInformacoesUsuario()
+  {
+    await this.storage.remove('infoUsu')
   }
 
   //Gravará valores booleanos para verificar e o usuário está logado
