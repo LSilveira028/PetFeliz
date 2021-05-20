@@ -32,12 +32,12 @@ export class TabsComponent implements OnInit {
 
   irParaProcurar()
   {
-    this.nav.navigateForward('procurar');
+    this.nav.navigateBack('procurar');
   }
 
   irParaSolicitacoes()
   {
-    this.nav.navigateForward('solicitacoesdw');
+    this.nav.navigateBack('solicitacoesdw');
   }
 
   irParaHistorico()

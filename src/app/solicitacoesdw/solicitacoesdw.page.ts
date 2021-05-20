@@ -100,11 +100,19 @@ export class SolicitacoesdwPage implements OnInit {
 
     console.log("MOSTRAR ID SERVIÇO")
     
-    this.service.listarCaesServico(this.idServico).subscribe(caes => {
-      this.caesServico = caes;
-      console.log(this.caesServico)
-      this.modalCaes();
-    });
+    this.storageService.buscarToken().then(tokenStorage => {
+
+      const header = this.headerRequisicao(tokenStorage)
+
+      this.service.listarCaesServico(this.idServico, header).subscribe(caes => {
+        this.caesServico = caes;
+        console.log(this.caesServico)
+        this.modalCaes();
+      });
+
+    })
+
+    
 
   }
 
@@ -157,11 +165,18 @@ export class SolicitacoesdwPage implements OnInit {
   {
     let idServico = this.servicosSolicitados[indexServico].servico.id;
 
-    this.service.aceitarServico(idServico).subscribe(aceitarS => {
+    this.storageService.buscarToken().then(tokenStorage => {
 
-      //logo após aceitar o serviço, buscará novamente os serviços solicitados
-      this.listarServicosSolicitados();
-    });
+      const header = this.headerRequisicao(tokenStorage);
+
+      this.service.aceitarServico(idServico,header).subscribe(aceitarS => {
+
+        //logo após aceitar o serviço, buscará novamente os serviços solicitados
+        this.listarServicosSolicitados();
+      });
+    })
+
+      
 
     this.alertaToast("Serviço aceito");
   }
@@ -170,21 +185,37 @@ export class SolicitacoesdwPage implements OnInit {
   {
     let idServico = this.servicosSolicitados[indexServico].servico.id;
 
-    this.service.recusarServico(idServico).subscribe(recusarS => {
+    this.storageService.buscarToken().then(tokenStorage => {
 
-      //logo após aceitar o serviço, buscará novamente os serviços solicitados
-      this.listarServicosSolicitados();
+      const header = this.headerRequisicao(tokenStorage);
+
+      this.service.recusarServico(idServico, header).subscribe(recusarS => {
+
+        //logo após aceitar o serviço, buscará novamente os serviços solicitados
+        this.listarServicosSolicitados();
+      })
+
     })
+
+    
     this.alertaToast("Serviço recusado");
   }
 
   listarServicosSolicitados()
   {
-    this.service.listarServicosSolicitados().subscribe(servicosS => {
-      this.servicosSolicitados = servicosS;
-      console.log("listar Serviços");
-      console.log(this.servicosSolicitados);
-    });
+
+    this.storageService.buscarToken().then(tokenStorage => {
+
+      const header = this.headerRequisicao(tokenStorage)
+
+      this.service.listarServicosSolicitados(header).subscribe(servicosS => {
+        this.servicosSolicitados = servicosS;
+        console.log("listar Serviços");
+        console.log(this.servicosSolicitados);
+      });
+    })
+
+    
   }
 
   doRefresh(event)

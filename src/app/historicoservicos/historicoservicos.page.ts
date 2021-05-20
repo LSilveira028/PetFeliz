@@ -127,7 +127,14 @@ export class HistoricoservicosPage implements OnInit {
         //logo que fizer a requisição, atualizará a página trazendo a lista atualizada
         this.buscarServicosGerais();
       })
-    })     
+
+      this.service.listarServicosFinalizados(header).subscribe(servF => {
+        this.servicosFinalizados = servF;
+      })
+    }) 
+    
+    
+
   }
 
   async alertaServicoCancelado()
@@ -217,10 +224,19 @@ export class HistoricoservicosPage implements OnInit {
     let idServico = this.servicosGerais[indexServico].servico.id;
     this.nomeProprietario = this.servicosGerais[indexServico].servico.usuarios[0].usuario.nome;
 
-    this.service.listarCaesServico(idServico).subscribe(caes => {
-      this.caesServico = caes;
-      this.modalCaes();
+    this.storageService.buscarToken().then(tokenStorage => {
+
+      const header = new HttpHeaders ({
+        'Authorization': 'Bearer ' + tokenStorage
+      })
+
+      this.service.listarCaesServico(idServico, header).subscribe(caes => {
+        this.caesServico = caes;
+        this.modalCaes();
+      })
     })
+
+     
 
   }
 

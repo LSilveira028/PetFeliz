@@ -114,24 +114,24 @@ export class ServicoService {
      return this.http.put(this.api_url + "Finalizar/" + id, JSON.stringify(id), { headers: header })
    }
 
-   listarServicosSolicitados()
+   listarServicosSolicitados(header: HttpHeaders)
    {
-      return this.http.get<UsuariosServico[]>(this.api_url + "ListarServicosSolicitados", { headers: this.headerD })
+      return this.http.get<UsuariosServico[]>(this.api_url + "ListarServicosSolicitados", { headers: header })
    }
 
-   listarCaesServico(idServico: number)
+   listarCaesServico(idServico: number, header: HttpHeaders)
    {
-     return this.http.get<CaesServico[]>(this.api_url_caesServico + idServico, { headers: this.headerD });
+     return this.http.get<CaesServico[]>(this.api_url_caesServico + idServico, { headers: header });
    }
 
-   aceitarServico(idServico: number)
+   aceitarServico(idServico: number, header: HttpHeaders)
    {
-     return this.http.put(this.api_url + "Aceitar/" + idServico, JSON.stringify(idServico) ,{ headers: this.headerD });
+     return this.http.put(this.api_url + "Aceitar/" + idServico, JSON.stringify(idServico) ,{ headers: header });
    }  
 
-   recusarServico(idServico: number)
+   recusarServico(idServico: number, header: HttpHeaders)
    {
-    return this.http.put(this.api_url + "Recusar/" + idServico, JSON.stringify(idServico), { headers: this.headerD });
+    return this.http.put(this.api_url + "Recusar/" + idServico, JSON.stringify(idServico), { headers: header });
    }
 
    //Fazer solicitação do servico - 4 procedimentos - O 4° está no service do cão
