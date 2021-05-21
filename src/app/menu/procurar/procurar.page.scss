@@ -1,7 +1,20 @@
 .avatarSolicitarServicoDW{
-    top: 5%;
-    left: 0%;
+    // top: 5%;
+    // left: 0%;
+    margin-right: 15px;
 }
+
+.status-distancia{
+    // background: chartreuse;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.status-distancia .status{
+    float: right;
+}
+
 .statusSolicitarServicoDW{
     
     color:rgb(75, 75, 75);
@@ -9,37 +22,12 @@
     float: right;
 }
 
-.aceitoSouNcartaoSolicitarServicoDW{
-    top: 15%;
-    left: 30%;
-}
-.textoPrecoPorCaoSolicitarServicoDW{
-    top: 18%;
-    left: 21%;
-}
-
-.preferenciasAvaliacaoMediaSolicitarServicoDW{
-    top: 30%;
-    left: 21%;
-}
-
-
-.valorTotalSolicitarServicoDW{
-    text-align: center;
-    top: 65%;
-    left: 30%;
-}
-.botaoSolicitarServicoDW{
-    top: 70%;
-    left: 25%;
-    width:50%
-    
-}
 
 .informacoes
 {
-    height: 100%;
-    width: 120%;
+    // height: 100%;
+    // width: 120%;
+    font-size: 15px;
 
     display: flex;
     flex-direction: row;
@@ -50,13 +38,22 @@
 
 .item-lista
 {
+    //
+    width: 100%;
+
     margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
 }
 
 .informacoesDW
 {
-
-    margin-left: 5%;
+    // background: coral;
+    // margin-left: 5%;
+    width: 50%;
 
     display: flex;
     flex-direction: column;
@@ -84,6 +81,7 @@
 {
     margin-top: 10px;
     display: flex;
+    flex-direction: row;
 }
 
 .cartao
@@ -94,8 +92,11 @@
 
 .distancia
 {
+    margin-top: 10px;
+
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    // align-items: center;
 }
 
 .preco-servico
@@ -115,8 +116,22 @@
 
 .botoes
 {
+    //
+    // background: chartreuse;
+    width: 100vw;
+
     margin-top: 20px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botoes div
+{
+    // background: chocolate;
+
+    display: flex;
+    flex-direction: row;
     align-items: center;
 }
 

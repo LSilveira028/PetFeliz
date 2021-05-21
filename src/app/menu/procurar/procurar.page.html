@@ -11,7 +11,7 @@
     <div class="item-lista">
       <div class="informacoes">
         <div class="avatarSolicitarServicoDW">
-          <ion-avatar slot="start">
+          <ion-avatar slot="start" >
             <img src=""> <!--Avatar do Dog Walker-->
           </ion-avatar>
         </div>
@@ -22,12 +22,7 @@
               <ion-label><b> {{d.nome}}</b></ion-label>  <!--Nome Dog Walker-->
             </div>
               
-            <div class="statusSolicitarServicoDW" *ngIf="d.disponivel == 1" style="color: green;">
-              <b>Disponível</b> <!--Status-->
-            </div>
-            <div class="statusSolicitarServicoDW" *ngIf="d.disponivel == 0" style="color: red;">
-              <b>Indisponível</b> <!--Status-->
-            </div>
+            
           </div>
           
           <div class="linha1Info">
@@ -42,12 +37,7 @@
                 </div>
               </div>
   
-              <div class="distancia" [ngStyle]="{'margin-left': definirMargem(d)}">
-                <img src="/assets/red-pin.png" style="width: 20px; height: 20px;">
-                <div class="texto-distancia"  style="margin-left: 5px;">
-                  {{d.distancia}} km
-                </div>
-              </div>
+              
             </div>
             
   
@@ -68,27 +58,55 @@
             </div>
           </div>
         </div>
+
+        <div class="status-distancia">
+          <div class="status">
+            <div class="statusSolicitarServicoDW" *ngIf="d.disponivel == 1">
+              <div style="height: 18px; width: 18px; border-radius: 9px; background: #47BE53;">
+              </div>
+              <!-- <b>Disponível</b> Status -->
+            </div>
+            <div class="statusSolicitarServicoDW" *ngIf="d.disponivel == 0" >
+              <div style="height: 18px; width: 18px; border-radius: 9px; background: #f73434;">
+              </div>
+              <!-- <b>Indisponível</b> Status -->
+            </div>
+          </div>
+            
+          <!-- [ngStyle]="{'margin-left': definirMargem(d)}" -->
+          <div>
+            <div class="distancia">
+              <img src="/assets/red-pin.png" style="width: 20px; height: 20px;">
+              <div class="texto-distancia"  style="margin-left: 5px;">
+                {{d.distancia}} km
+              </div>
+            </div>
+          </div>
+            
+        </div>
+         
       </div>
       
 
       <!--Botões-->
       <div class="botoes">
 
-        <button class="botao-solicitar-bloqueado" *ngIf="d.disponivel == false">
-          Solicitar <br> serviço
-        </button>
-        <button class="botao-solicitar" (click)="irParaSolicitar(i)" *ngIf="d.disponivel == true">
-          Solicitar <br> serviço
-        </button>
-
-        <button class="botao-whatsapp" (click)="enviarMensagem(i)">
-          <img src="/assets/whatsapp.png" style="height: 25px; width: 25px;">
-        </button>
-
-        <button class="botao-tornar-favorito">
-          <img src="/assets/like-white.png" style="height: 25px; width: 25px;">
-        </button>
-
+        <div>
+          <button class="botao-solicitar-bloqueado" *ngIf="d.disponivel == false">
+            Solicitar <br> serviço
+          </button>
+          <button class="botao-solicitar" (click)="irParaSolicitar(i)" *ngIf="d.disponivel == true">
+            Solicitar <br> serviço
+          </button>
+  
+          <button class="botao-whatsapp" (click)="enviarMensagem(i)">
+            <img src="/assets/whatsapp.png" style="height: 25px; width: 25px;">
+          </button>
+  
+          <button class="botao-tornar-favorito">
+            <img src="/assets/like-white.png" style="height: 25px; width: 25px;">
+          </button>
+        </div>  
       </div>
     </div>
   </ion-item>
