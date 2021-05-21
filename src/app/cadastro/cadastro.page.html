@@ -5,101 +5,105 @@
 </ion-header>
 
 <ion-content> <!--Conteúdo do app-->
-  
-  <div class="fundoRosaCadastro"> <!--"Fundo rosa"-->
 
+  <div class="textoCadastro"> <!-- "Cadastro."-->
+    <br>
+    <b>Cadastro</b>
   </div>
+
+  <div class="textoVoceE">
+    <br>
+    <br>
+    <b>Você é:</b>
+  </div>
+  <ion-segment (ionChange)="alterarVoceECadastro($event)" class="segment">
+    <ion-segment-button value="EscolhaDogWalkerCadastro">
+      <img src="/assets/dogWalker.png" class="imgEscolhaDogWalkerCadastro" >
+      <ion-label>DogWalker</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="EscolhaProprietarioCadastro">
+      <img src="/assets/proprietario.png" class="imgEscolhaProprietarioCadastro">
+      <ion-label>Proprietário</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="fundo-rosa">
     
     <div class="fundoBrancoCadastro"> <!--fundo branco-->
 
-      <div class="textoCadastro"> <!-- "Cadastro."-->
-        <br>
-        <b>Cadastro</b>
-      </div>
-
-      <div class="textoVoceE">
-        <br>
-        <br>
-        <b>Você é:</b>
-      </div>
-
-      <ion-segment (ionChange)="alterarVoceECadastro($event)">
-        <ion-segment-button value="EscolhaDogWalkerCadastro">
-          <img src="/assets/dogWalker.png" class="imgEscolhaDogWalkerCadastro">
-          <ion-label>DogWalker</ion-label>
-        </ion-segment-button>
-    
-        <ion-segment-button value="EscolhaProprietarioCadastro">
-          <img src="/assets/proprietario.png" class="imgEscolhaProprietarioCadastro">
-          <ion-label>Proprietário</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-
-      
       <ion-list *ngIf="escolha=='EscolhaDogWalkerCadastro'">
         <form #f="ngForm" (ngSubmit)="cadastrarUsuario(f)">
             <ion-item>
               <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">Nome</ion-label>
-              <ion-input type="text" placeholder="Digite seu nome" ngModel name="nome"></ion-input>
+              <ion-input type="text" placeholder="Digite seu nome" ngModel name="nome" class="inputs"></ion-input>
             </ion-item>
                 
             <ion-item>
               <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">Data de Nascimento</ion-label>
               <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" 
                             max="2002-12-31" 
-                            ngModel name="dataNascimento">
+                            ngModel name="dataNascimento"
+                            class="inputs">
               </ion-datetime>
             </ion-item>
         
             <ion-item>
               <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">Telefone</ion-label>
-              <ion-input type="tel" ngModel name="whatsapp" placeholder="Digite seu Telefone"></ion-input>
+              <ion-input type="tel" ngModel name="whatsapp" placeholder="Digite seu Telefone" class="inputs"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">E-mail</ion-label>
-              <ion-input type="email" ngModel name="email" placeholder="Digite seu E-mail"></ion-input>
+              <ion-input type="email" ngModel name="email" placeholder="Digite seu E-mail" class="inputs"></ion-input>
             </ion-item>
         
-            <ion-item>
+            <ion-item class="senha-margin">
               <ion-label class="labelEscolhaDogWalkerCadastro">Senha</ion-label>
-              <ion-input type="password" ngModel name="PasswordString"></ion-input>
+              <ion-input type="password" ngModel name="PasswordString" class="inputs"></ion-input>
             </ion-item>
             
             <ion-button expand="block"
                         class="botaoCadastrarCadastro"
                         color="secondary"
-                        type="submit">
+                        type="submit"
+                        class="botao-cadastrar">
               <b>Cadastrar</b>
             </ion-button> <!--BOTÃO Cadastrar-->
         </form>
       </ion-list>
+    </div>
+
+    <div class="fundoBrancoCadastro"> <!--fundo branco-->
 
       <ion-list *ngIf="escolha=='EscolhaProprietarioCadastro'">
         <form #f="ngForm" (ngSubmit)="cadastrarUsuario(f)">
+
+          
+
             <ion-item>
               <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">Nome</ion-label>
-              <ion-input type="text" placeholder="Digite seu nome" ngModel name="nome"></ion-input>
+              <ion-input type="text" placeholder="Digite seu nome" ngModel name="nome" class="inputs"></ion-input>
             </ion-item>
                 
             <ion-item>
               <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">Data de Nascimento</ion-label>
-              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" max="2002-12-31" ngModel name="dataNascimento"></ion-datetime>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" max="2002-12-31" ngModel name="dataNascimento" class="inputs"></ion-datetime>
             </ion-item>
         
             <ion-item>
               <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">Telefone</ion-label>
-              <ion-input type="tel" placeholder="Digite seu Telefone" ngModel name="whatsapp"></ion-input>
+              <ion-input type="tel" placeholder="Digite seu Telefone" ngModel name="whatsapp" class="inputs"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label position="floating" class="labelEscolhaDogWalkerCadastro">E-mail</ion-label>
-              <ion-input type="email"  placeholder="Digite seu E-mail" ngModel name="email"></ion-input>
+              <ion-input type="email"  placeholder="Digite seu E-mail" ngModel name="email" class="inputs"></ion-input>
             </ion-item>
         
             <ion-item>
               <ion-label class="labelEscolhaDogWalkerCadastro">Senha</ion-label>
-              <ion-input type="password" ngModel name="PasswordString"></ion-input>
+              <ion-input type="password" ngModel name="PasswordString" class="inputs"></ion-input>
             </ion-item>
 
             <ion-button expand="block"
@@ -109,9 +113,7 @@
             </ion-button> <!--BOTÃO Cadastrar-->
         </form>   
       </ion-list>
-
-
     </div>
+  </div>
 
-  
 </ion-content>

@@ -78,5 +78,14 @@ export class StorageService {
     return await this.storage.get('logado');
   }
 
+  public async gravarReload(recarregar: boolean)
+  {
+    await this.storage.set('reload', recarregar)
+  }
+
+  public async verificarReload()
+  {
+    return await this.storage.get('reload');
+  }
    
 }

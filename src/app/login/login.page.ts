@@ -24,6 +24,8 @@ export class LoginPage implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    this.storageService.gravarReload(true);
+
     // this.storageService.gravarLogin(false);
 
     // //Verifica se o usuário está logado

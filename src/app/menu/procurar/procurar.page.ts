@@ -41,6 +41,29 @@ export class ProcurarPage implements OnInit, OnDestroy {
   whatsapp: string;
 
   ngOnInit() {
+    // this.storageService.gravarReload(true);
+
+
+    //Verifica se pode atualizar a página
+    this.storageService.verificarReload().then(resp => {
+      
+      //Se puder, atualiza
+      if (resp == true) {
+
+        //Diz que a página não pode ser mais atualizada.
+        //Isso foi feito para não dar loop, carregar a página inifinitamente
+        this.storageService.gravarReload(false).then(() => {
+
+          //Atualiza a página
+          location.reload();
+
+        });
+      }
+    })
+
+    // for (let loop = 0; loop < 2; loop++) {
+    //   location.reload();
+    // }
 
     this.storageService.buscarInformacoesUsuario().then(usuInfo => {
       if (usuInfo.tipoConta == 2) {
@@ -48,6 +71,8 @@ export class ProcurarPage implements OnInit, OnDestroy {
       }
       else
         this.UsuarioL = "proprietario"
+
+      
     })
 
       parseFloat(this.longitudeDogWalker)

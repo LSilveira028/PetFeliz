@@ -16,6 +16,8 @@ export class EntraroucadastrarPage implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    this.storageService.gravarReload(true);
+
     // this.storageService.gravarNome("Anderson")
     this.storageService.mostrarNome();
 

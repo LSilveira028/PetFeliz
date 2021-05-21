@@ -35,6 +35,23 @@ export class SolicitacoesdwPage implements OnInit {
 
   ngOnInit() {
 
+    //Verifica se pode atualizar a página
+    this.storageService.verificarReload().then(resp => {
+      
+      //Se puder, atualiza
+      if (resp == true) {
+
+        //Diz que a página não pode ser mais atualizada.
+        //Isso foi feito para não dar loop, carregar a página inifinitamente
+        this.storageService.gravarReload(false).then(() => {
+
+          //Atualiza a página
+          location.reload();
+
+        });
+      }
+    })
+
     this.listarServicosSolicitados();
 
     this.storageService.buscarInformacoesUsuario().then(usuInfo => {
