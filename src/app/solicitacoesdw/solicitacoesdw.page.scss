@@ -36,10 +36,39 @@
     
 }
 
+.box-informacoes{
+    width: 100%;
+}
+
 .informacoes
 {
-    height: 100%;
-    width: 120%;
+    display: flex;
+    flex-direction: row;
+
+    font-size: 15px;
+
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+    margin-right: 10%;
+
+}
+
+.item-listaSolicitacoesDW
+{
+    width: 100%;
+
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+
+}
+
+.informacoes{
+    font-size: 15px;
 
     display: flex;
     flex-direction: row;
@@ -48,13 +77,10 @@
     margin-bottom: 10px;
 }
 
-.item-listaSolicitacoesDW
-{
-    margin-bottom: 20px;
-}
-
 .informacoesProprietario
 {
+    //
+
 
     margin-left: 5%;
 
@@ -119,6 +145,10 @@
     float: right;
 }
 
+.valor-total{
+   width: 100%;
+}
+
 .avaliacao-dw
 {
     margin-top: 10px;
@@ -131,11 +161,24 @@
     max-width: 240px;
 }
 
-.botoesSolicitacoesDW
+.botoes
 {
+
+    width: 100vw;
+
     margin-top: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
+
+}
+
+.botoes div{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
 }
 
 .botaoAceitarServicoSolicitacoesDW

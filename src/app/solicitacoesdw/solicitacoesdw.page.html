@@ -14,71 +14,74 @@
   <ion-list>
     <ion-item *ngFor="let s of servicosSolicitados; let i = index">
       <div class="item-listaSolicitacoesDW">
-        <div class="informacoes">
-          <div class="avatarSolicitarServicoDW">
-            <ion-avatar slot="start">
-              <img src=""> <!--Avatar do Proprietário-->
-            </ion-avatar>
-          </div>
-          
-          <div class="informacoesProprietario">
-            <div class="nomeSolicitacoesDW">
-              <div class="nomeProprietarioSolicitacoesDW">
-                <ion-label><b>{{s.servico.usuarios[0].usuario.nome}}</b></ion-label>  <!--Nome Proprietário-->
-              </div>
 
+        <div class="box-informacoes">
+          <div class="informacoes">
+            <div class="avatarSolicitarServicoDW">
+              <ion-avatar slot="start">
+                <img src=""> <!--Avatar do Proprietário-->
+              </ion-avatar>
             </div>
             
-            <div class="linha1InfoSolicitacoesDW">
+            <div class="informacoesProprietario">
+              <div class="nomeSolicitacoesDW">
+                <div class="nomeProprietarioSolicitacoesDW">
+                  <ion-label><b>{{s.servico.usuarios[0].usuario.nome}}</b></ion-label>  <!--Nome Proprietário-->
+                </div>
+  
+              </div>
               
-              <br>
-              <div class="dataServicoSolicitacoesDW"> <!--Data da solicitacao-->
-                  <b>Data:</b>{{s.servico.dataSolicitacao}}, {{s.servico.horaSolicitacao}}
-              </div>
-              <br>
-
-                <button class="botaoAbrirMapaSolicitacoesDW" (click)="abrirMapa(i)"> <!--botao -->
-                  <div style="display: flex; flex-direction: row; align-items: center; margin-top: 6px;">
-                    <img src="/assets/abrirmapa.png" style="height: 20px; width: 20px;">
-                    <div class="textoAbrirMapa">
-                      <b> Abrir Mapa </b>
+              <div class="linha1InfoSolicitacoesDW">
+                
+                <br>
+                <div class="dataServicoSolicitacoesDW"> <!--Data da solicitacao-->
+                    <b>Data:</b>{{s.servico.dataSolicitacao}}, {{s.servico.horaSolicitacao}}
+                </div>
+                <br>
+  
+                  <button class="botaoAbrirMapaSolicitacoesDW" (click)="abrirMapa(i)"> <!--botao -->
+                    <div style="display: flex; flex-direction: row; align-items: center; margin-top: 6px;">
+                      <img src="/assets/abrirmapa.png" style="height: 20px; width: 20px;">
+                      <div class="textoAbrirMapa">
+                        <b> Abrir Mapa </b>
+                      </div>
                     </div>
-                  </div>
-                </button>
-                    
-                <button class="botao-chamar-caes" (click)="mostrarCaes(i)">
-                  <b> &nbsp; Mostrar cães</b> <br>
-                </button>
-
-            </div>
-
-            <div style="width: 135%;" >
-              <div class="valorTotalSolicitacoesDW"> <!--preço total-->
-                <b>Valor total:</b>
-                <b style="margin-left: 10px; color:forestgreen ;">R$ {{s.servico.valorTotal}}</b>
+                  </button>
+                      
+                  <button class="botao-chamar-caes" (click)="mostrarCaes(i)">
+                    <b> &nbsp; Mostrar cães</b> <br>
+                  </button>
+  
               </div>
             </div>
-            
+          </div>
+        </div>
 
+        
+
+        <div class="valor-total">
+          <div class="valorTotalSolicitacoesDW"> <!--preço total-->
+            <b>Valor total:</b>
+            <b style="margin-left: 10px; color:forestgreen ;">R$ {{s.servico.valorTotal}}</b>
           </div>
         </div>
         
   
         <!--Botões-->
-        <div class="botoesSolicitacoesDW">
-  
-          <button class="botaoAceitarServicoSolicitacoesDW" (click)="aceitarServico(i)">
-            <b>Aceitar</b>
-          </button>
-  
-          <button class="botaoRecusarServicoSolicitacoesDW" (click)="recusarServico(i)">
-            <b>Recusar</b>
-          </button>
-  
-          <button class="botaoWhatsappSolicitacoesDW" (click)="chamarWhatsApp(i)">
-            <img src="/assets/whatsapp.png" style="height: 25px; width: 25px;">
-          </button>
-  
+        <div class="botoes">
+          <div>
+            <button class="botaoAceitarServicoSolicitacoesDW" (click)="aceitarServico(i)">
+              <b>Aceitar</b>
+            </button>
+    
+            <button class="botaoRecusarServicoSolicitacoesDW" (click)="recusarServico(i)">
+              <b>Recusar</b>
+            </button>
+    
+            <button class="botaoWhatsappSolicitacoesDW" (click)="chamarWhatsApp(i)">
+              <img src="/assets/whatsapp.png" style="height: 25px; width: 25px;">
+            </button>
+          </div>
         </div>
       </div>
   

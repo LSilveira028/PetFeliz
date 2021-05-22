@@ -1,14 +1,16 @@
 .avatarSolicitarServicoDW{
-    // top: 5%;
-    // left: 0%;
     margin-right: 15px;
 }
 
 .status-distancia{
-    // background: chartreuse;
 
     display: flex;
     flex-direction: column;
+
+    font-size: 15px;
+    float: right;
+
+    margin-top: 20px;
 }
 
 .status-distancia .status{
@@ -22,23 +24,28 @@
     float: right;
 }
 
+.box-informacoes{
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 .informacoes
 {
-    // height: 100%;
-    // width: 120%;
+    width: 75%;
+
     font-size: 15px;
 
     display: flex;
     flex-direction: row;
 
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .item-lista
 {
-    //
     width: 100%;
 
     margin-bottom: 20px;
@@ -51,10 +58,6 @@
 
 .informacoesDW
 {
-    // background: coral;
-    // margin-left: 5%;
-    width: 50%;
-
     display: flex;
     flex-direction: column;
 }
@@ -96,7 +99,6 @@
 
     display: flex;
     flex-direction: row;
-    // align-items: center;
 }
 
 .preco-servico

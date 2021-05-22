@@ -26,81 +26,82 @@
 
   <ion-item *ngFor="let s of servicosGerais; let i = index">
     <div class="item-lista">
-      <div class="informacoes">
-        <div class="avatarSolicitarServicoDW">
-          <ion-avatar slot="start">
-            <img src=""> <!--Avatar do Dog Walker-->
-          </ion-avatar>
-        </div>
-        
-        <div class="informacoesDW">
-          <div class="nomeDW">
-            <ion-label><b>{{s.servico.usuarios[0].usuario.nome}}</b></ion-label>  <!--Nome Dog Walker-->
+      
+      <div class="box-informacoes">
+        <div class="informacoes">
+          <div class="avatarSolicitarServicoDW">
+            <ion-avatar slot="start">
+              <img src=""> <!--Avatar do Dog Walker-->
+            </ion-avatar>
           </div>
-
-          <!--Se o usuário logado for proprietário-->
-          <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 1"> <!--Aceito cartao ou não-->
-            <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
-            <b style="margin-left: 10px; color:forestgreen ;">R$ {{s.servico.usuarios[0].usuario.servicoDogWalker.valorServico}}</b>
-          </div>
-          <!--Se o usuário logado for Dog Walker-->
-          <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 2"> <!--Aceito cartao ou não-->
-            <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
-            <b style="margin-left: 10px; color:forestgreen ;">R$ {{usuario.servicoDogWalker.valorServico}}</b>
-          </div> 
-
-          <!--Todas os possiveis estados do serviço-->
-          <div class="estado-servico" *ngIf="s.servico.estado == 1">
-            <b>Estado: </b> Solicitado
-          </div>
-          <div class="estado-servico" *ngIf="s.servico.estado == 2">
-            <b>Estado: </b> Aceito
-          </div>
-          <div class="estado-servico" *ngIf="s.servico.estado == 3">
-            <b>Estado: </b> Recusado
-          </div>
-          <div class="estado-servico" *ngIf="s.servico.estado == 4">
-            <b>Estado: </b> Em andamento
-          </div>
-          <div class="estado-servico" *ngIf="s.servico.estado == 7">
-            <b>Estado: </b> Cancelado
-          </div>
-
           
-
-          <div class="data-hora-servico">
-            <b>Data: </b> {{s.servico.dataSolicitacao}}, {{s.servico.horaSolicitacao}}
-          </div>
-
-          <div class="inicio-servico" *ngIf="s.servico.horaInicio != null">
-            <b>Início: </b>{{s.servico.horaInicio}}
-          </div>
-          <br>
-          <button class="botaoAbrirMapaSolicitacoesDW" (click)="abrirMapa(i)" 
-                  *ngIf="usuario.tipoConta == 2 && s.servico.estado == 1 || s.servico.estado == 2 || s.servico.estado == 4"> <!--botao -->
-            <div style="display: flex; flex-direction: row; align-items: center; margin-top: 6px;">
-              <img src="/assets/abrirmapa.png" style="height: 20px; width: 20px;">
-              <div class="textoAbrirMapa">
-                <b> Abrir Mapa </b>
-              </div>
+          <div class="informacoesDW">
+            <div class="nomeDW">
+              <ion-label><b>{{s.servico.usuarios[0].usuario.nome}}</b></ion-label>  <!--Nome Dog Walker-->
             </div>
-          </button>
+  
+            <!--Se o usuário logado for proprietário-->
+            <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 1"> <!--Aceito cartao ou não-->
+              <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
+              <b style="margin-left: 10px; color:forestgreen ;">R$ {{s.servico.usuarios[0].usuario.servicoDogWalker.valorServico}}</b>
+            </div>
+            <!--Se o usuário logado for Dog Walker-->
+            <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 2"> <!--Aceito cartao ou não-->
+              <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
+              <b style="margin-left: 10px; color:forestgreen ;">R$ {{usuario.servicoDogWalker.valorServico}}</b>
+            </div> 
+  
+            <!--Todas os possiveis estados do serviço-->
+            <div class="estado-servico" *ngIf="s.servico.estado == 1">
+              <b>Estado: </b> Solicitado
+            </div>
+            <div class="estado-servico" *ngIf="s.servico.estado == 2">
+              <b>Estado: </b> Aceito
+            </div>
+            <div class="estado-servico" *ngIf="s.servico.estado == 3">
+              <b>Estado: </b> Recusado
+            </div>
+            <div class="estado-servico" *ngIf="s.servico.estado == 4">
+              <b>Estado: </b> Em andamento
+            </div>
+            <div class="estado-servico" *ngIf="s.servico.estado == 7">
+              <b>Estado: </b> Cancelado
+            </div>
+  
             
-
-          <button class="botao-chamar-caes" (click)="mostrarCaes(i)" 
-                  *ngIf="s.servico.estado ==  1 || s.servico.estado == 2 || s.servico.estado == 4">
-            <b> &nbsp; Mostrar cães</b> <br>
-          </button>
-
-          <div>
-            <div class="valor-total-servico">
-              <b>Valor total: &nbsp;</b> 
-              <div class="texto-valor" style="color:forestgreen ;"> 
-                <b>R$ {{s.servico.valorTotal}}</b>
-              </div>
+  
+            <div class="data-hora-servico">
+              <b>Data: </b> {{s.servico.dataSolicitacao}}, {{s.servico.horaSolicitacao}}
             </div>
+  
+            <div class="inicio-servico" *ngIf="s.servico.horaInicio != null">
+              <b>Início: </b>{{s.servico.horaInicio}}
+            </div>
+            <br>
+            <button class="botaoAbrirMapaSolicitacoesDW" (click)="abrirMapa(i)" 
+                    *ngIf="usuario.tipoConta == 2 && s.servico.estado == 1 || s.servico.estado == 2 || s.servico.estado == 4"> <!--botao -->
+              <div style="display: flex; flex-direction: row; align-items: center; margin-top: 6px;">
+                <img src="/assets/abrirmapa.png" style="height: 20px; width: 20px;">
+                <div class="textoAbrirMapa">
+                  <b> Abrir Mapa </b>
+                </div>
+              </div>
+            </button>
+              
+  
+            <button class="botao-chamar-caes" (click)="mostrarCaes(i)" 
+                    *ngIf="s.servico.estado ==  1 || s.servico.estado == 2 || s.servico.estado == 4">
+              <b> &nbsp; Mostrar cães</b> <br>
+            </button>
+  
           </div>
+        </div>
+      </div>
 
+      <div class="valor-total">
+        <div class="valorTotalSolicitacoesDW"> <!--preço total-->
+          <b>Valor total:</b>
+          <b style="margin-left: 10px; color:forestgreen ;">R$ {{s.servico.valorTotal}}</b>
         </div>
       </div>
 
@@ -153,57 +154,59 @@
 <ion-list *ngIf="escolha=='escolhaFinalizados'" >
   <ion-item *ngFor="let sf of servicosFinalizados">
     <div class="item-lista">
-      <div class="informacoes">
-        <div class="avatarSolicitarServicoDW">
-          <ion-avatar slot="start">
-            <img src=""> <!--Avatar do Dog Walker-->
-          </ion-avatar>
-        </div>
-        
-        <div class="informacoesDW">
-          <div class="nomeDW">
-            <ion-label><b>{{sf.servico.usuarios[0].usuario.nome}}</b></ion-label>  <!--Nome Dog Walker-->
+
+      <div class="box-informacoes">
+        <div class="informacoes">
+          <div class="avatarSolicitarServicoDW">
+            <ion-avatar slot="start">
+              <img src=""> <!--Avatar do Dog Walker-->
+            </ion-avatar>
           </div>
-
-          <!--Se o usuáriologado for Proprietário-->
-          <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 1"> <!--Aceito cartao ou não-->
-            <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
-            <b style="margin-left: 10px; color:forestgreen ;">R$ {{sf.servico.usuarios[0].usuario.servicoDogWalker.valorServico}}</b>
-          </div> 
-          <!--Se o usuário logado for Dog Walker-->
-          <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 2"> <!--Aceito cartao ou não-->
-            <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
-            <b style="margin-left: 10px; color:forestgreen ;">R$ {{usuario.servicoDogWalker.valorServico}}</b>
-          </div> 
-
-          <div class="estado-servico">
-            <b>Estado: </b> Finalizado
-          </div>
-
-          <div class="data-hora-servico">
-            <b>Data: </b> {{sf.servico.dataSolicitacao}}, {{sf.servico.horaSolicitacao}}
-          </div>
-
-          <div class="inicio-servico" *ngIf="sf.servico.horaInicio != null">
-            <b>Início: </b>{{sf.servico.horaInicio}}
-          </div>
-
-          <div class="termino-servico">
-            <b>Término: </b>{{sf.servico.horaTermino}}
-          </div>
-
-
-          <div class="float-valor-total">
-            <div class="valor-total-servico">
-              <b>Valor total: &nbsp;</b> 
-              <div class="texto-valor" style="color:forestgreen ;"> 
-                <b>R$ {{sf.servico.valorTotal}}</b>
-              </div>
+          
+          <div class="informacoesDW">
+            <div class="nomeDW">
+              <ion-label><b>{{sf.servico.usuarios[0].usuario.nome}}</b></ion-label>  <!--Nome Dog Walker-->
+            </div>
+  
+            <!--Se o usuáriologado for Proprietário-->
+            <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 1"> <!--Aceito cartao ou não-->
+              <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
+              <b style="margin-left: 10px; color:forestgreen ;">R$ {{sf.servico.usuarios[0].usuario.servicoDogWalker.valorServico}}</b>
+            </div> 
+            <!--Se o usuário logado for Dog Walker-->
+            <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 2"> <!--Aceito cartao ou não-->
+              <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
+              <b style="margin-left: 10px; color:forestgreen ;">R$ {{usuario.servicoDogWalker.valorServico}}</b>
+            </div> 
+  
+            <div class="estado-servico">
+              <b>Estado: </b> Finalizado
+            </div>
+  
+            <div class="data-hora-servico">
+              <b>Data: </b> {{sf.servico.dataSolicitacao}}, {{sf.servico.horaSolicitacao}}
+            </div>
+  
+            <div class="inicio-servico" *ngIf="sf.servico.horaInicio != null">
+              <b>Início: </b>{{sf.servico.horaInicio}}
+            </div>
+  
+            <div class="termino-servico">
+              <b>Término: </b>{{sf.servico.horaTermino}}
             </div>
           </div>
-
         </div>
       </div>
+
+      
+
+      <div class="valor-total">
+        <div class="valorTotalSolicitacoesDW"> <!--preço total-->
+          <b>Valor total:</b>
+          <b style="margin-left: 10px; color:forestgreen ;">R$ {{sf.servico.valorTotal}}</b>
+        </div>
+      </div>
+
     </div>
   </ion-item>
   
