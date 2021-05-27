@@ -40,6 +40,7 @@ export class UsuariosServico
     valorTotal: number;
     usuarios: [{
       usuario: {
+        id: number;
         nome: string;
         whatsApp: string;
         servicoDogWalker: {

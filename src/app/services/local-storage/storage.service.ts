@@ -58,7 +58,7 @@ export class StorageService {
 
   public async buscarInformacoesUsuario()
   {
-    const usu = this.storage.get('infoUsu');
+    const usu = await this.storage.get('infoUsu');
     return usu;
   }
 

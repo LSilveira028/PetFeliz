@@ -74,7 +74,8 @@ const routes: Routes = [
   {
     path: 'historicoservicos',
     loadChildren: () => import('./historicoservicos/historicoservicos.module').then( m => m.HistoricoservicosPageModule)
-  },  {
+  },
+  {
     path: 'caesservicopage',
     loadChildren: () => import('./componentes/caesservicopage/caesservicopage.module').then( m => m.CaesservicopagePageModule)
   },
@@ -89,7 +90,11 @@ const routes: Routes = [
   {
     path: 'deletarconta',
     loadChildren: () => import('./deletarconta/deletarconta.module').then( m => m.DeletarcontaPageModule)
+  },  {
+    path: 'avaliar-servico',
+    loadChildren: () => import('./avaliar-servico/avaliar-servico.module').then( m => m.AvaliarServicoPageModule)
   }
+
 
 
 ];

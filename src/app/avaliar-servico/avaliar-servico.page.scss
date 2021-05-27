@@ -1,0 +1,43 @@
+#wrapper{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#estrelas{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#alerta{
+    margin-bottom: 20px;
+    color: red;
+}
+
+textarea{
+    margin-bottom: 30px;
+    resize: none;
+}
+
+button{
+    background: #E94F37;
+    width: 150px;
+    height: 50px;
+
+    color: white;
+    font-size: 18px;
+    border-radius: 25px;
+    margin-right: 10px;
+    transition-duration: 0.7s;
+}
+
+button:hover{
+    background: #b13724;
+    // background-color: brown;
+}
+
+
+

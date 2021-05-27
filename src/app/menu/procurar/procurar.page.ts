@@ -5,6 +5,7 @@ import { MenuController, ModalController } from '@ionic/angular';
 import { SolicitarservicodwPage } from 'src/app/solicitarservicodw/solicitarservicodw.page';
 import { StorageService } from 'src/app/services/local-storage/storage.service';
 import { HttpHeaders } from '@angular/common/http';
+import { PerfilPage } from '../perfil/perfil.page';
 
 @Component({
   selector: 'app-procurar',
@@ -201,6 +202,20 @@ export class ProcurarPage implements OnInit, OnDestroy {
     let dogwalker: Usuario = this.dogWalkers[indexServico];
     console.log(dogwalker)
     this.modalSolicitar(dogwalker, (this.distancia).toFixed(0));
+  }
+
+  async modalPerfilDogWalker(i: number)
+  {
+    var dogWalker = this.dogWalkers[i];
+
+    const modalPerfilDogWalker = await this.modalController.create({
+      component: PerfilPage,
+      componentProps: {
+        dogWalker: dogWalker
+      }
+    });
+
+    return await modalPerfilDogWalker.present();
   }
 
 }

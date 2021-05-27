@@ -6,6 +6,7 @@ import { CaesServico, ServicoService, UsuariosServico } from '../services/servic
 import { Usuario } from '../services/usuario.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { CaesservicopagePage } from '../componentes/caesservicopage/caesservicopage.page';
+import { AvaliarServicoPage } from '../avaliar-servico/avaliar-servico.page';
 
 @Component({
   selector: 'app-historicoservicos',
@@ -47,6 +48,8 @@ export class HistoricoservicosPage implements OnInit {
     this.storageService.gravarLogin(false)
 
     this.storageService.buscarToken().then(tokenStorage => {
+      console.log("TOKEN");
+      console.log(tokenStorage);
       //chama a função que busca os servicos gerais
       this.buscarServicosGerais();
 
@@ -123,14 +126,21 @@ export class HistoricoservicosPage implements OnInit {
       //id so serviço selecionado e que será finalizado
       var idServico = this.servicosGerais[indexServico].servico.id;
 
-      this.service.finalizarServico(idServico, header).subscribe(servicoGe => {
-        //logo que fizer a requisição, atualizará a página trazendo a lista atualizada
-        this.buscarServicosGerais();
-      })
+      let dogW = this.servicosGerais[indexServico].servico.usuarios[0].usuario;
 
-      this.service.listarServicosFinalizados(header).subscribe(servF => {
-        this.servicosFinalizados = servF;
-      })
+      let nomeDogW = this.servicosGerais[indexServico].servico.usuarios[0].usuario.nome;
+      let idDogW = this.servicosGerais[indexServico].servico.usuarios[0].usuario.id;
+
+      this.modalAvaliarServico(nomeDogW, idDogW);
+
+      // this.service.finalizarServico(idServico, header).subscribe(servicoGe => {
+      //   //logo que fizer a requisição, atualizará a página trazendo a lista atualizada
+      //   this.buscarServicosGerais();
+      // })
+
+      // this.service.listarServicosFinalizados(header).subscribe(servF => {
+      //   this.servicosFinalizados = servF;
+      // })
     }) 
     
     
@@ -253,5 +263,20 @@ export class HistoricoservicosPage implements OnInit {
 
     return await modal.present();
   }
+
+  async modalAvaliarServico(nomeDogW: string, idDogW: number)
+  {
+    const modalAvaliar = await this.modalController.create({
+      component: AvaliarServicoPage,
+      cssClass: 'modal-avaliar',
+      componentProps: {
+        nomeDogWalker: nomeDogW,
+        idDogWalker: idDogW, 
+      }
+    })
+
+    return await modalAvaliar.present();
+  }
+
 
 }

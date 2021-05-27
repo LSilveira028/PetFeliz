@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     // { title: 'Termos de Uso', url: '/termosdeuso', icon: 'book' },
     // { title: 'Política de Privacidade', url: '/politicadeprivacidade', icon: 'lock-closed' },
   ];
+
   //public labels = ['Termos de Uso', 'Política de Privacidade'];
   constructor(private storage: StorageService, private service: UsuarioService,
              private menuCtrl: MenuController) {
@@ -47,7 +48,8 @@ export class AppComponent implements OnInit {
       else
       {
         this.appPages = [
-          { title: 'Perfil', url: '/perfildwproprietario', icon: 'person' },
+          { title: 'Perfil', url: '/perfil', icon: 'person' },
+          { title: 'Solicitações', url: '/solicitacoesdw', icon: 'notifications' },
           { title: 'Avaliações', url: '/avaliacoes', icon: 'star' },
           { title: 'Conta', url: '/conta', icon: 'cog' },
           { title: 'Sair', url: '/sair', icon: 'log-out' },
