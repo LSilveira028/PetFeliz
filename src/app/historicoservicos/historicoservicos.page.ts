@@ -7,6 +7,7 @@ import { Usuario } from '../services/usuario.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { CaesservicopagePage } from '../componentes/caesservicopage/caesservicopage.page';
 import { AvaliarServicoPage } from '../avaliar-servico/avaliar-servico.page';
+import { AvaliacaoService } from '../services/avaliacao/avaliacao.service';
 
 @Component({
   selector: 'app-historicoservicos',
@@ -20,7 +21,7 @@ export class HistoricoservicosPage implements OnInit {
 
   constructor(private service: ServicoService, private toast: ToastController,
               private nav: NavController, private storageService: StorageService,
-              private geolocation: Geolocation, private modalController: ModalController) { }
+              private geolocation: Geolocation, private modalController: ModalController,) { }
   
   servicosGerais: UsuariosServico[];
   servicosFinalizados: UsuariosServico[];
@@ -131,16 +132,18 @@ export class HistoricoservicosPage implements OnInit {
       let nomeDogW = this.servicosGerais[indexServico].servico.usuarios[0].usuario.nome;
       let idDogW = this.servicosGerais[indexServico].servico.usuarios[0].usuario.id;
 
-      this.modalAvaliarServico(nomeDogW, idDogW);
+      
+      this.service.finalizarServico(idServico, header).subscribe(servicoGe => {
 
-      // this.service.finalizarServico(idServico, header).subscribe(servicoGe => {
-      //   //logo que fizer a requisição, atualizará a página trazendo a lista atualizada
-      //   this.buscarServicosGerais();
-      // })
+        //ao finalizar o serviço, aparecerá o modal para avaliar o serviços
+        this.modalAvaliarServico(nomeDogW, idDogW);
+        //logo que fizer a requisição, atualizará a página trazendo a lista atualizada
+        this.buscarServicosGerais();
+      })
 
-      // this.service.listarServicosFinalizados(header).subscribe(servF => {
-      //   this.servicosFinalizados = servF;
-      // })
+      this.service.listarServicosFinalizados(header).subscribe(servF => {
+        this.servicosFinalizados = servF;
+      })
     }) 
     
     

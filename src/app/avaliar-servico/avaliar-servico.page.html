@@ -24,7 +24,12 @@
     Por favor, escolha a nota em estrelas acima.
   </div>
 
-  <textarea placeholder="Deixe um comentário (opcional)" cols="38" rows="5" >
+  <textarea placeholder="Deixe um comentário (opcional)" 
+            cols="38" 
+            rows="5"
+            name="comentario"
+            [(ngModel)]="comentario" 
+            maxlength="350">
   </textarea>
   
   <div id="area-botao">

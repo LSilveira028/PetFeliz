@@ -1,4 +1,8 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { Avaliacao, AvaliacaoService } from '../services/avaliacao/avaliacao.service';
+import { StorageService } from '../services/local-storage/storage.service';
 
 @Component({
   selector: 'app-avaliar-servico',
@@ -11,12 +15,17 @@ export class AvaliarServicoPage implements OnInit {
   @Input() idDogWalker: number;
 
   nota: number;
+  comentario: string;
   //esta variável dirá ao HTML se há uma nota escolhida, ao enviar a avaliação;
   aviso: boolean = false;
 
-  constructor() { }
+  constructor(private avaliacao: AvaliacaoService, private storage: StorageService,
+              private modal: ModalController) { }
 
   ngOnInit() {
+
+    
+
 
     console.log(this.nomeDogWalker)
     console.log(this.idDogWalker)
@@ -108,7 +117,57 @@ export class AvaliarServicoPage implements OnInit {
       this.aviso = true;
       console.log("SELECIONE UM VALOR")
     }
+    else
+    {
+
+      let data = new Date;
+
+      let avaliacao : Avaliacao = {
+        'nota':        this.nota,
+        'comentario':  this.comentario,
+        'dataAvaliacao': data
+      }
+
+      this.storage.buscarToken().then(token => {
+
+        let header = this.criarHeader(token);
+
+        //Faz a avaliação
+        this.avaliacao.enviarAvaliacao(avaliacao, header).subscribe(resp => {
+          //Associa o proprietário à avaliação
+          this.avaliacao.associarProprietario(header).subscribe(resp => {
+
+            console.log("Proprietário")
+            console.log(resp);
+
+            //Associa o dog walker à avaliação
+            this.avaliacao.associarDogWalker(this.idDogWalker, header).subscribe(resp => {
+
+              console.log("Dog Walker")
+              console.log(resp);
+
+              this.modal.dismiss();
+
+            })
+
+          })
+
+        })
+
+      })
+
+    }
   }
+
+  criarHeader(token)
+  {
+    const header = new HttpHeaders ({
+      'Authorization': 'Bearer ' + token
+    })
+
+    return header;
+  }
+
 
 
 }

@@ -84,13 +84,13 @@ export class ServicoService {
   // private api_url = 'http://pet-feliz.somee.com/PetFeliz/Usuario/'
   // private api_url = 'http://pet-feliz.somee.com/PetFeliz/CaesServico'
 
-  private api_url_usuariosServico = "http://pet-feliz.somee.com/PetFeliz/UsuariosServico/"
-  private api_url_caesServico = "http://pet-feliz.somee.com/PetFeliz/CaoServico/"
-  private api_url = "http://pet-feliz.somee.com/PetFeliz/Servico/"
+  // private api_url_usuariosServico = "http://pet-feliz.somee.com/PetFeliz/UsuariosServico/"
+  // private api_url_caesServico = "http://pet-feliz.somee.com/PetFeliz/CaoServico/"
+  // private api_url = "http://pet-feliz.somee.com/PetFeliz/Servico/"
 
-  // private api_url_usuariosServico = "http://localhost:5000/UsuariosServico/"
-  // private api_url_caesServico = "http://localhost:5000/CaoServico/"
-  // private api_url = "http://localhost:5000/Servico/"
+  private api_url_usuariosServico = "http://localhost:5000/UsuariosServico/"
+  private api_url_caesServico = "http://localhost:5000/CaoServico/"
+  private api_url = "http://localhost:5000/Servico/"
 
   constructor(private http: HttpClient) { }
 
