@@ -42,6 +42,8 @@ export class ProcurarPage implements OnInit, OnDestroy {
   whatsapp: string;
 
   ngOnInit() {
+
+
     // this.storageService.gravarReload(true);
 
 
@@ -115,6 +117,32 @@ export class ProcurarPage implements OnInit, OnDestroy {
 
               console.log("distancia: " + this.distancia)
     
+              //Verificação das avaliações em estrelas
+                var valorDecimal = element.servicoDogWalker.avaliacaoMedia % 1;
+                var valorInteiro = element.servicoDogWalker.avaliacaoMedia - valorDecimal;
+                
+                console.log(valorInteiro);
+
+                if (valorDecimal > 0.3 && valorDecimal < 0.8 ) {
+                  valorDecimal = 0.5;
+                  element.servicoDogWalker.avaliacaoMedia = valorInteiro + valorDecimal;
+                }
+                else
+                {
+                  if (valorDecimal > 0.8) {
+                    valorInteiro = valorInteiro + 1;
+                    element.servicoDogWalker.avaliacaoMedia = valorInteiro + 1;
+                    valorDecimal = 0.0;
+                  }
+              
+                  if (valorDecimal < 0.3) {
+                    element.servicoDogWalker.avaliacaoMedia = valorInteiro;
+                    valorDecimal = 0.0;
+                  }
+                }
+
+
+
               });
               
           })
@@ -124,7 +152,6 @@ export class ProcurarPage implements OnInit, OnDestroy {
         });
 
         })
-
 
 
     
@@ -153,6 +180,17 @@ export class ProcurarPage implements OnInit, OnDestroy {
     }
   }
   
+   //Quando a página carregar
+   ionViewWillEnter()
+   {
+    //  this.verificarAvaliacaoMedia();
+   }
+
+   ionViewDidEnter()
+   {
+    // this.verificarAvaliacaoMedia();
+   }
+
   ngOnDestroy()
   {
     // this.menuCtrl.enable(true)
@@ -216,6 +254,144 @@ export class ProcurarPage implements OnInit, OnDestroy {
     });
 
     return await modalPerfilDogWalker.present();
+  }
+
+  verificarAvaliacaoMedia()
+  {
+
+    this.dogWalkers.forEach(dogWalker => {
+      
+      //Pega os elementos que representam as estrelas
+
+      var star1 = document.getElementById('star1');
+      var star2 = document.getElementById('star2');
+      var star3 = document.getElementById('star3');
+      var star4 = document.getElementById('star4');
+      var star5 = document.getElementById('star5');
+
+
+      var valorDecimal = dogWalker.servicoDogWalker.avaliacaoMedia % 1;
+      var valorInteiro = dogWalker.servicoDogWalker.avaliacaoMedia - valorDecimal;
+      
+      console.log(valorInteiro);
+      console.log(star1);
+
+      if (valorDecimal > 0.3 && valorDecimal < 0.7 ) {
+        valorDecimal = 0.5;
+      }
+      else
+      {
+        if (valorDecimal > 0.7) {
+          valorInteiro = valorInteiro + 1;
+          valorDecimal = 0.0;
+        }
+    
+        if (valorDecimal < 0.3) {
+          valorDecimal = 0.0;
+        }
+      }
+
+      console.log(valorInteiro);
+
+      if (valorInteiro == 0) {
+        star1.setAttribute("src", "/assets/star1.png");
+
+        star2.setAttribute("src", "/assets/star1.png");
+
+        star3.setAttribute("src", "/assets/star1.png");
+
+        star4.setAttribute("src", "/assets/star1.png")
+
+        star5.setAttribute("src", "/assets/star1.png")
+      }
+      else
+      {
+        if (valorInteiro == 1) {
+          star1.setAttribute("src", "/assets/star2.png");
+    
+          if (valorDecimal == 0.5)
+            star2.setAttribute("src", "/assets/star3.png");
+          else
+            star2.setAttribute("src", "/assets/star1.png");
+    
+    
+          star3.setAttribute("src", "/assets/star1.png");
+    
+          star4.setAttribute("src", "/assets/star1.png")
+    
+          star5.setAttribute("src", "/assets/star1.png")
+        }
+        else
+        {
+          if (valorInteiro == 2) {
+            star1.setAttribute("src", "/assets/star2.png");
+    
+            star2.setAttribute("src", "/assets/star2.png");
+            
+            if (valorDecimal == 0.5) {
+              star3.setAttribute("src", "/assets/star3.png");
+            }
+            else
+              star3.setAttribute("src", "/assets/star1.png");
+      
+            star4.setAttribute("src", "/assets/star1.png")
+      
+            star5.setAttribute("src", "/assets/star1.png")
+          }
+          else
+          {
+            if (valorInteiro == 3) {
+              star1.setAttribute("src", "/assets/star2.png");
+    
+              star2.setAttribute("src", "/assets/star2.png");
+        
+              star3.setAttribute("src", "/assets/star2.png");
+        
+              if (valorDecimal == 0.5) {
+                star4.setAttribute("src", "/assets/star3.png")
+              }
+              else
+                star4.setAttribute("src", "/assets/star1.png")
+        
+              star5.setAttribute("src", "/assets/star1.png")
+            }
+            else
+            {
+              if (valorInteiro == 4) {
+                star1.setAttribute("src", "/assets/star2.png");
+    
+                star2.setAttribute("src", "/assets/star2.png");
+          
+                star3.setAttribute("src", "/assets/star2.png");
+          
+                star4.setAttribute("src", "/assets/star2.png")
+          
+                if (valorDecimal == 0.5) {
+                  star5.setAttribute("src", "/assets/star3.png")
+                }
+                else
+                  star5.setAttribute("src", "/assets/star1.png")
+              }
+              else
+              {
+                star1.setAttribute("src", "/assets/star2.png");
+    
+                star2.setAttribute("src", "/assets/star2.png");
+          
+                star3.setAttribute("src", "/assets/star2.png");
+          
+                star4.setAttribute("src", "/assets/star2.png")
+          
+                star5.setAttribute("src", "/assets/star2.png")
+              }
+            }
+          }
+        }
+      }
+
+
+    });
+
   }
 
 }

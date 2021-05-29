@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Avaliacao, AvaliacaoService } from '../services/avaliacao/avaliacao.service';
 import { StorageService } from '../services/local-storage/storage.service';
+import { UsuarioService } from '../services/usuario.service';
 
 @Component({
   selector: 'app-avaliar-servico',
@@ -20,7 +21,7 @@ export class AvaliarServicoPage implements OnInit {
   aviso: boolean = false;
 
   constructor(private avaliacao: AvaliacaoService, private storage: StorageService,
-              private modal: ModalController) { }
+              private modal: ModalController, private usuario: UsuarioService) { }
 
   ngOnInit() {
 
@@ -145,7 +146,11 @@ export class AvaliarServicoPage implements OnInit {
 
               console.log("Dog Walker")
               console.log(resp);
-
+              
+              //Atualiza a avaliação média do dog walker
+              this.usuario.atualizarAvaliacaoMedia(this.idDogWalker, header).subscribe(() => {})
+              
+              //fecha o modal
               this.modal.dismiss();
 
             })

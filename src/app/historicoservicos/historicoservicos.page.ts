@@ -21,7 +21,8 @@ export class HistoricoservicosPage implements OnInit {
 
   constructor(private service: ServicoService, private toast: ToastController,
               private nav: NavController, private storageService: StorageService,
-              private geolocation: Geolocation, private modalController: ModalController,) { }
+              private geolocation: Geolocation, private modalController: ModalController,
+              private avaliacao: AvaliacaoService) { }
   
   servicosGerais: UsuariosServico[];
   servicosFinalizados: UsuariosServico[];
@@ -35,6 +36,7 @@ export class HistoricoservicosPage implements OnInit {
   verificarServico;
 
   ngOnInit() {
+
 
     this.storageService.buscarInformacoesUsuario().then(usuInfo => {
       if (usuInfo.tipoConta == 2) {
@@ -134,9 +136,21 @@ export class HistoricoservicosPage implements OnInit {
 
       
       this.service.finalizarServico(idServico, header).subscribe(servicoGe => {
+        
+        //verifica se o dog walker pode ser avaliado, ou seja, se o proprietário nunca
+        //o avaliou
+        this.avaliacao.verificarAvaliacao(idDogW, header).subscribe(resp => {
+          
+          //Se o proprietário nunca o avaliou, então abriráo modal para fazer a avaliação
+          if (resp == true) {
+            //ao finalizar o serviço, aparecerá o modal para avaliar o serviços
+            this.modalAvaliarServico(nomeDogW, idDogW);
+          }
 
-        //ao finalizar o serviço, aparecerá o modal para avaliar o serviços
-        this.modalAvaliarServico(nomeDogW, idDogW);
+        })
+
+
+        
         //logo que fizer a requisição, atualizará a página trazendo a lista atualizada
         this.buscarServicosGerais();
       })

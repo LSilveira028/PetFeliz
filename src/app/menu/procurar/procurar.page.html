@@ -50,8 +50,91 @@
               
               <div class="avaliacao-dw"> <!--Avaliação média-->
                 <b>Avaliação média:</b> <br>
-                <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 0">Nenhuma avaliação</div>
-                  <b *ngIf="d.servicoDogWalker.avaliacaoMedia > 0">{{d.servicoDogWalker.avaliacaoMedia}}</b> <!--Estrelas (descobriremos como fazer)-->
+                <!-- Aparecerá esta mensagem caso não houver avaliações -->
+                <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 0">
+                  Nenhuma avaliação
+                </div>
+                <!-- Aparecerá as estrelas caso o dog walker tenha avaliaçãoes -->
+                <div *ngIf="d.servicoDogWalker.avaliacaoMedia != 0">
+
+                  <!-- Se a avaliacao média for igual a 1 -->
+                  <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 1">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                  </div>
+                    <!-- Se a avaliação média for igual a 1.5 -->
+                    <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 1.5">
+                      <img src="/assets/star2.png" height="17" width="22">
+                      <img src="/assets/star3.png" height="17" width="22">
+                      <img src="/assets/star1.png" height="17" width="22">
+                      <img src="/assets/star1.png" height="17" width="22">
+                      <img src="/assets/star1.png" height="17" width="22">
+                    </div>
+
+                  <!-- Se a avaliacao média for igual a 2 -->
+                  <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 2">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                  </div>
+                    <!-- Se a avaliação média for igual a 2.5 -->
+                    <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 2.5">
+                      <img src="/assets/star2.png" height="17" width="22">
+                      <img src="/assets/star2.png" height="17" width="22">
+                      <img src="/assets/star3.png" height="17" width="22">
+                      <img src="/assets/star1.png" height="17" width="22">
+                      <img src="/assets/star1.png" height="17" width="22">
+                    </div>
+
+                    <!-- Se a avaliacao média for igual a 3 -->
+                  <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 3">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                  </div>
+                    <!-- Se a avaliação média for igual a 3.5 -->
+                    <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 3.5">
+                      <img src="/assets/star2.png" height="17" width="22">
+                      <img src="/assets/star2.png" height="17" width="22">
+                      <img src="/assets/star2.png" height="17" width="22">
+                      <img src="/assets/star3.png" height="17" width="22">
+                      <img src="/assets/star1.png" height="17" width="22">
+                    </div>
+                  
+                    <!-- Se a avaliacao média for igual a 4 -->
+                  <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 4">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                  </div>
+                    <!-- Se a avaliação média for igual a 4.5 -->
+                    <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 4.5">
+                      <img src="/assets/star2.png" height="17" width="22">
+                      <img src="/assets/star2.png" height="17" width="22">
+                      <img src="/assets/star2.png" height="17" width="22">
+                      <img src="/assets/star3.png" height="17" width="22">
+                      <img src="/assets/star1.png" height="17" width="22">
+                    </div>
+
+                  <!-- Se a avaliacao média for igual a 5 -->
+                  <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 5">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                  </div>
+
+                  </div> <!--Estrelas (descobriremos como fazer)-->
               </div>
         
               <div class="preferencias-dw">  <!--Preferencias-->

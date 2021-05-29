@@ -28,27 +28,16 @@ export class PerfilPage implements OnInit {
   valorServico: number;
   aceitaCartao: string;
   preferencias: string;
-
-  pessoas: any[] = [{
-    'nome': 'Fi de gato',
-    'idade': '80'
-  },
-  {
-    'nome': 'Fi de papamé',
-    'idade': '81'
-  }
-  ]
-
-  pessoa: any = {'nome':'Anderson Tester', 'idade': '17'}
+  avaliacaoMedia: number;
 
   ngOnInit() {
-    
+
     //Busca as informações do usuário logado
     this.storage.buscarInformacoesUsuario().then(infoUsu => {
       this.dogW[0] = infoUsu;
 
-      console.log(infoUsu)
-      console.log(this.dogW);
+      // console.log(infoUsu)
+      // console.log(this.dogW);
 
       //Se o usuário logado for um proprietário
       if (infoUsu.tipoConta == 1) {
@@ -57,7 +46,10 @@ export class PerfilPage implements OnInit {
         //então a página receberá as informações do input
         this.dogW[0] = this.dogWalker;
         console.log(this.dogW);
-        
+
+        //Atribui a avaliação média a propriedade avaliaçãoMedia desta classe
+        this.avaliacaoMedia = this.dogWalker.servicoDogWalker.avaliacaoMedia;
+
       }
       if (infoUsu.tipoConta == 2) {
         this.idUsuarioLogado = 2;
@@ -67,9 +59,149 @@ export class PerfilPage implements OnInit {
 
   }
 
+  //Quando a página carregar
+  ionViewDidEnter()
+  {
+    this.verificarAvaliacaoMedia();
+  }
+
   fecharModalPerfil()
   {
     this.modal.dismiss();
+  }
+
+
+  verificarAvaliacaoMedia()
+  {
+    //Pega os elementos que representam as estrelas
+
+    var star1 = document.getElementById('star1');
+    var star2 = document.getElementById('star2');
+    var star3 = document.getElementById('star3');
+    var star4 = document.getElementById('star4');
+    var star5 = document.getElementById('star5');
+
+
+    var valorDecimal = this.avaliacaoMedia % 1;
+    var valorInteiro = this.avaliacaoMedia - valorDecimal;
+    
+    // console.log(valorInteiro);
+    // console.log(star1);
+
+    if (valorDecimal > 0.3 && valorDecimal < 0.7 ) {
+      valorDecimal = 0.5;
+    }
+    else
+    {
+      if (valorDecimal > 0.7) {
+        valorInteiro = valorInteiro + 1;
+        valorDecimal = 0.0;
+      }
+  
+      if (valorDecimal < 0.3) {
+        valorDecimal = 0.0;
+      }
+    }
+
+
+    if (valorInteiro == 0) {
+      star1.setAttribute("src", "/assets/star1.png");
+
+      star2.setAttribute("src", "/assets/star1.png");
+
+      star3.setAttribute("src", "/assets/star1.png");
+
+      star4.setAttribute("src", "/assets/star1.png")
+
+      star5.setAttribute("src", "/assets/star1.png")
+    }
+    else
+    {
+      if (valorInteiro == 1) {
+        star1.setAttribute("src", "/assets/star2.png");
+  
+        if (valorDecimal == 0.5)
+          star2.setAttribute("src", "/assets/star3.png");
+        else
+          star2.setAttribute("src", "/assets/star1.png");
+  
+  
+        star3.setAttribute("src", "/assets/star1.png");
+  
+        star4.setAttribute("src", "/assets/star1.png")
+  
+        star5.setAttribute("src", "/assets/star1.png")
+      }
+      else
+      {
+        if (valorInteiro == 2) {
+          star1.setAttribute("src", "/assets/star2.png");
+  
+          star2.setAttribute("src", "/assets/star2.png");
+          
+          if (valorDecimal == 0.5) {
+            star3.setAttribute("src", "/assets/star3.png");
+          }
+          else
+            star3.setAttribute("src", "/assets/star1.png");
+    
+          star4.setAttribute("src", "/assets/star1.png")
+    
+          star5.setAttribute("src", "/assets/star1.png")
+        }
+        else
+        {
+          if (valorInteiro == 3) {
+            star1.setAttribute("src", "/assets/star2.png");
+  
+            star2.setAttribute("src", "/assets/star2.png");
+      
+            star3.setAttribute("src", "/assets/star2.png");
+      
+            if (valorDecimal == 0.5) {
+              star4.setAttribute("src", "/assets/star3.png")
+            }
+            else
+              star4.setAttribute("src", "/assets/star1.png")
+      
+            star5.setAttribute("src", "/assets/star1.png")
+          }
+          else
+          {
+            if (valorInteiro == 4) {
+              star1.setAttribute("src", "/assets/star2.png");
+  
+              star2.setAttribute("src", "/assets/star2.png");
+        
+              star3.setAttribute("src", "/assets/star2.png");
+        
+              star4.setAttribute("src", "/assets/star2.png")
+        
+              if (valorDecimal == 0.5) {
+                star5.setAttribute("src", "/assets/star3.png")
+              }
+              else
+                star5.setAttribute("src", "/assets/star1.png")
+            }
+            else
+            {
+              star1.setAttribute("src", "/assets/star2.png");
+  
+              star2.setAttribute("src", "/assets/star2.png");
+        
+              star3.setAttribute("src", "/assets/star2.png");
+        
+              star4.setAttribute("src", "/assets/star2.png")
+        
+              star5.setAttribute("src", "/assets/star2.png")
+            }
+          }
+        }
+      }
+    }
+
+    
+
   }
 
   // async metodoToastSalvar() {

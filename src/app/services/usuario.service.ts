@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { NumericValueAccessor } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { StorageService } from './local-storage/storage.service';
+import { DecimalPipe } from '@angular/common';
 
 export class UsuarioLogin
 {
@@ -10,7 +10,7 @@ export class UsuarioLogin
   passwordString: string;
 }
 
-export interface Usuario
+export class Usuario
 {
     id?: number;
     tipoConta?: number;
@@ -23,7 +23,7 @@ export interface Usuario
     PasswordString?: string;
     disponivel?: number;
     servicoDogWalker?: {
-      avaliacaoMedia: Float32Array;
+      avaliacaoMedia: number;
       sobre: string;
       preferencias: string;
       valorServico: number;
@@ -93,4 +93,8 @@ export class UsuarioService {
     return this.http.put(this.api_url + "AtualizarLocalizacao", geolocalizacao, { headers: header })
   }
 
+  atualizarAvaliacaoMedia(idDogW: number, header: HttpHeaders)
+  {
+    return this.http.put(this.api_url + "AtualizarAvaliacaoMedia/" + idDogW, Usuario, {headers: header})
+  }
 }

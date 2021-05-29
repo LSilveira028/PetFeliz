@@ -51,4 +51,9 @@ export class AvaliacaoService {
     return this.http.post(this.api_url_usuarioAvaliacao + "AssociarDogWalker/" + idDogW, UsuarioAvaliacao ,{ headers: header })
   }
 
+  verificarAvaliacao(idDogW: number, header: HttpHeaders)
+  {
+    return this.http.get(this.api_url_usuarioAvaliacao + "VerificarAvaliacao/" + idDogW, { headers: header })
+  }
+
 }

@@ -73,10 +73,10 @@ export class LoginPage implements OnInit, OnDestroy {
 
       //Busca as informações do usuário logado
       this.service.informacoesUsuario(header).subscribe(infoUsu => {
-
+  
         //Faz a gravação das informações do usuário
         this.storageService.gravarInformacoesUsuario(infoUsu);
-
+        
         //Diz ao app que o usuário está logado
         this.storageService.gravarLogin(true);
 

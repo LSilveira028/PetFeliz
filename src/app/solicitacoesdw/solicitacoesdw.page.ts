@@ -83,7 +83,6 @@ export class SolicitacoesdwPage implements OnInit {
         })      
   
         this.serviceUsuario.atualizarLocalizacao(header, geolocalizacao).subscribe(resp => {
-          console.log(resp);
         })
       })
 
