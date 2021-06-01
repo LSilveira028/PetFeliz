@@ -75,7 +75,7 @@ export class UsuarioService {
     usuario.tipoConta = tipoU;
 
     //Faz a requisição para cadastrar o usuário
-    return this.http.post(this.api_url + 'Cadastrar', usuario);
+    return this.http.post(this.api_url + 'Cadastrar', usuario, {responseType: 'text'});
   }
 
   procurarDogWalkers(header: HttpHeaders)

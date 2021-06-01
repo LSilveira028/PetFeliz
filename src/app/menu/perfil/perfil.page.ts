@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, NavController, ToastController } from '@ionic/angular';
 import { StorageService } from 'src/app/services/local-storage/storage.service';
 import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
+import { AvaliacoesPage } from '../avaliacoes/avaliacoes.page';
 
 @Component({
   selector: 'app-perfil',
@@ -15,7 +16,8 @@ export class PerfilPage implements OnInit {
 
   constructor(public toastSalvarCtrl: ToastController, private storage: StorageService,
               private usuarioService: UsuarioService, private nav: NavController,
-              private modal: ModalController) { }
+              private modal: ModalController, private usuario: UsuarioService,
+              private modal_: ModalController) { }
 
   idUsuarioLogado: number;
   @Input() dogWalker: Usuario;
@@ -31,11 +33,12 @@ export class PerfilPage implements OnInit {
   avaliacaoMedia: number;
 
   ngOnInit() {
-
+    
+    
     //Busca as informações do usuário logado
     this.storage.buscarInformacoesUsuario().then(infoUsu => {
       this.dogW[0] = infoUsu;
-
+      
       // console.log(infoUsu)
       // console.log(this.dogW);
 
@@ -50,19 +53,59 @@ export class PerfilPage implements OnInit {
         //Atribui a avaliação média a propriedade avaliaçãoMedia desta classe
         this.avaliacaoMedia = this.dogWalker.servicoDogWalker.avaliacaoMedia;
 
+        this.avaliacaoEstrelas();
+
+
       }
       if (infoUsu.tipoConta == 2) {
         this.idUsuarioLogado = 2;
+
+        console.log(this.dogW[0])
+        //Atribui a avaliação média a propriedade avaliaçãoMedia desta classe
+        this.avaliacaoMedia = this.dogW[0].servicoDogWalker.avaliacaoMedia;
+        console.log(this.avaliacaoMedia);
+
+        this.storage.buscarToken().then(token => {
+
+          var header = new HttpHeaders ({
+            'Authorization': 'Bearer ' + token
+          })
+
+          this.usuario.informacoesUsuario(header).subscribe(dogwLogado => {
+
+            this.storage.gravarInformacoesUsuario(dogwLogado).then(() => {
+
+              this.dogW[0] = dogwLogado;
+
+              this.avaliacaoEstrelas();
+
+              // this.dogW[0].servicoDogWalker.avaliacaoMedia = this.avaliacaoEstrelas();
+            })
+
+          });
+        
+        })
+
+
       }
 
+
     })
+
+    
+
+  }
+
+  ionViewWillEnter()
+  {
 
   }
 
   //Quando a página carregar
   ionViewDidEnter()
   {
-    this.verificarAvaliacaoMedia();
+    // this.verificarAvaliacaoMedia();
+
   }
 
   fecharModalPerfil()
@@ -70,138 +113,67 @@ export class PerfilPage implements OnInit {
     this.modal.dismiss();
   }
 
-
-  verificarAvaliacaoMedia()
+  avaliacaoEstrelas()
   {
-    //Pega os elementos que representam as estrelas
-
-    var star1 = document.getElementById('star1');
-    var star2 = document.getElementById('star2');
-    var star3 = document.getElementById('star3');
-    var star4 = document.getElementById('star4');
-    var star5 = document.getElementById('star5');
-
-
-    var valorDecimal = this.avaliacaoMedia % 1;
-    var valorInteiro = this.avaliacaoMedia - valorDecimal;
-    
-    // console.log(valorInteiro);
-    // console.log(star1);
-
-    if (valorDecimal > 0.3 && valorDecimal < 0.7 ) {
-      valorDecimal = 0.5;
-    }
-    else
-    {
-      if (valorDecimal > 0.7) {
-        valorInteiro = valorInteiro + 1;
-        valorDecimal = 0.0;
-      }
   
-      if (valorDecimal < 0.3) {
-        valorDecimal = 0.0;
-      }
-    }
 
+    this.dogW.forEach(dogWalker => {
+      
+      // var valorDecimal = dogWalker.servicoDogWalker.avaliacaoMedia % 1;
+      // var valorInteiro = dogWalker.servicoDogWalker.avaliacaoMedia - valorDecimal;
 
-    if (valorInteiro == 0) {
-      star1.setAttribute("src", "/assets/star1.png");
+      
 
-      star2.setAttribute("src", "/assets/star1.png");
+      //Verificação das avaliações em estrelas
+      var valorDecimal = dogWalker.servicoDogWalker.avaliacaoMedia % 1;
+      var valorInteiro = dogWalker.servicoDogWalker.avaliacaoMedia - valorDecimal;
+      
+      console.log("valor decimal");
+      console.log(valorDecimal);
+     
+      console.log("valor inteiro");
+      console.log(valorInteiro);
+      
 
-      star3.setAttribute("src", "/assets/star1.png");
+      console.log(valorInteiro);
 
-      star4.setAttribute("src", "/assets/star1.png")
-
-      star5.setAttribute("src", "/assets/star1.png")
-    }
-    else
-    {
-      if (valorInteiro == 1) {
-        star1.setAttribute("src", "/assets/star2.png");
-  
-        if (valorDecimal == 0.5)
-          star2.setAttribute("src", "/assets/star3.png");
-        else
-          star2.setAttribute("src", "/assets/star1.png");
-  
-  
-        star3.setAttribute("src", "/assets/star1.png");
-  
-        star4.setAttribute("src", "/assets/star1.png")
-  
-        star5.setAttribute("src", "/assets/star1.png")
+      if (valorDecimal >= 0.2999999999999998 && valorDecimal < 0.7999999999999998 ) {
+        valorDecimal = 0.5;
+        dogWalker.servicoDogWalker.avaliacaoMedia = valorInteiro + valorDecimal;
       }
       else
       {
-        if (valorInteiro == 2) {
-          star1.setAttribute("src", "/assets/star2.png");
-  
-          star2.setAttribute("src", "/assets/star2.png");
-          
-          if (valorDecimal == 0.5) {
-            star3.setAttribute("src", "/assets/star3.png");
-          }
-          else
-            star3.setAttribute("src", "/assets/star1.png");
-    
-          star4.setAttribute("src", "/assets/star1.png")
-    
-          star5.setAttribute("src", "/assets/star1.png")
+        if (valorDecimal >= 0.7999999999999998) {
+          valorInteiro = valorInteiro + 1;
+          dogWalker.servicoDogWalker.avaliacaoMedia = valorInteiro + 1;
+          valorDecimal = 0.0;
         }
-        else
-        {
-          if (valorInteiro == 3) {
-            star1.setAttribute("src", "/assets/star2.png");
-  
-            star2.setAttribute("src", "/assets/star2.png");
-      
-            star3.setAttribute("src", "/assets/star2.png");
-      
-            if (valorDecimal == 0.5) {
-              star4.setAttribute("src", "/assets/star3.png")
-            }
-            else
-              star4.setAttribute("src", "/assets/star1.png")
-      
-            star5.setAttribute("src", "/assets/star1.png")
-          }
-          else
-          {
-            if (valorInteiro == 4) {
-              star1.setAttribute("src", "/assets/star2.png");
-  
-              star2.setAttribute("src", "/assets/star2.png");
-        
-              star3.setAttribute("src", "/assets/star2.png");
-        
-              star4.setAttribute("src", "/assets/star2.png")
-        
-              if (valorDecimal == 0.5) {
-                star5.setAttribute("src", "/assets/star3.png")
-              }
-              else
-                star5.setAttribute("src", "/assets/star1.png")
-            }
-            else
-            {
-              star1.setAttribute("src", "/assets/star2.png");
-  
-              star2.setAttribute("src", "/assets/star2.png");
-        
-              star3.setAttribute("src", "/assets/star2.png");
-        
-              star4.setAttribute("src", "/assets/star2.png")
-        
-              star5.setAttribute("src", "/assets/star2.png")
-            }
-          }
+    
+        if (valorDecimal < 0.2999999999999998) {
+          dogWalker.servicoDogWalker.avaliacaoMedia = valorInteiro;
+          valorDecimal = 0.0;
         }
       }
-    }
 
-    
+      console.log("valor decimal");
+      console.log(valorDecimal);
+     
+      console.log("valor inteiro");
+      console.log(valorInteiro);
 
+    });
+  }
+
+  async navegarParaAvaliacoes()
+  {
+    const modalAvaliacoes = await this.modal_.create({
+      component: AvaliacoesPage,
+      componentProps: {
+        'dogWalker': this.dogWalker,
+      }
+    })
+
+    return await modalAvaliacoes.present();
   }
 
   // async metodoToastSalvar() {

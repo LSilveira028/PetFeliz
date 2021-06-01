@@ -14,7 +14,7 @@ export class UsuarioAvaliacao
 {
   avaliacao: {
     id: number;
-    nota: string;
+    nota: number;
     comentario: string;
     dataAvaliacao: Date;
     usuarioAvaliacao: [{
@@ -54,6 +54,11 @@ export class AvaliacaoService {
   verificarAvaliacao(idDogW: number, header: HttpHeaders)
   {
     return this.http.get(this.api_url_usuarioAvaliacao + "VerificarAvaliacao/" + idDogW, { headers: header })
+  }
+
+  listarAvaliacoesDogWalker(idDogW: number, header: HttpHeaders)
+  {
+    return this.http.get<UsuarioAvaliacao[]>(this.api_url + "ListarAvaliacoes/" + idDogW, { headers: header })
   }
 
 }

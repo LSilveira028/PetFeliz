@@ -30,8 +30,12 @@
             
             <div class="areaNomeDataEntrouEmPerfildwProprietario">
               <div><b>{{ d.nome }}</b></div>  <!--Nome DW-->
-              <div>
-                <img src="/assets/star1.png" id="star1" class="star1" height="17" width="22">
+              <div style="font-style: italic;" *ngIf="d.servicoDogWalker.avaliacaoMedia == 0">
+                Nenhuma avaliação
+              </div>
+              <!-- Se a avaliação média for igual a 1 -->
+              <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 1">
+                <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
 
                 <img src="/assets/star1.png" id="star2" height="17" width="22">
 
@@ -40,8 +44,108 @@
                 <img src="/assets/star1.png" id="star4" height="17" width="22">
 
                 <img src="/assets/star1.png" id="star5" height="17" width="22">
-
               </div>
+                <!-- Se a avaliação média for igual a 1.5 -->
+                <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 1.5">
+                  <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+  
+                  <img src="/assets/star3.png" id="star2" height="17" width="22">
+  
+                  <img src="/assets/star1.png" id="star3" height="17" width="22">
+  
+                  <img src="/assets/star1.png" id="star4" height="17" width="22">
+  
+                  <img src="/assets/star1.png" id="star5" height="17" width="22">
+                </div>
+
+              <!-- Se a avaliação média for igual a 2 -->
+              <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 2">
+                <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star2" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star3" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star4" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star5" height="17" width="22">
+              </div>
+                <!-- Se a avaliação média for igual a 2.5 -->
+                <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 2.5">
+                  <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+  
+                  <img src="/assets/star2.png" id="star2" height="17" width="22">
+  
+                  <img src="/assets/star3.png" id="star3" height="17" width="22">
+  
+                  <img src="/assets/star1.png" id="star4" height="17" width="22">
+  
+                  <img src="/assets/star1.png" id="star5" height="17" width="22">
+                </div>
+
+               <!-- Se a avaliação média for igual a 3 -->
+               <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 3">
+                <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star2" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star3" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star4" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star5" height="17" width="22">
+              </div>
+                <!-- Se a avaliação média for igual a 3.5 -->
+                <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 3.5">
+                  <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+  
+                  <img src="/assets/star2.png" id="star2" height="17" width="22">
+  
+                  <img src="/assets/star2.png" id="star3" height="17" width="22">
+  
+                  <img src="/assets/star3.png" id="star4" height="17" width="22">
+  
+                  <img src="/assets/star1.png" id="star5" height="17" width="22">
+                </div>
+
+              <!-- Se a avaliação média for igual a 4 -->
+              <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 4">
+                <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star2" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star3" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star4" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star5" height="17" width="22">
+              </div>
+                <!-- Se a avaliação média for igual a 4.5 -->
+                <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 4.5">
+                  <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+  
+                  <img src="/assets/star2.png" id="star2" height="17" width="22">
+  
+                  <img src="/assets/star2.png" id="star3" height="17" width="22">
+  
+                  <img src="/assets/star2.png" id="star4" height="17" width="22">
+  
+                  <img src="/assets/star3.png" id="star5" height="17" width="22">
+                </div>
+
+              <!-- Se a avaliação média for igual a 5 -->
+              <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 5">
+                <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star2" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star3" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star4" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star5" height="17" width="22">
+              </div>
+              
               <div>Entrou em: {{d.dataCadastro | date: 'dd/MM/yyyy'}}</div>  <!--Entrou em: e data -->
             </div>
         </div>
@@ -130,39 +234,10 @@
             <div class="tituloAvaliacoesDWPerfildwProprietario">
               <b>Avaliações</b>
             </div>
-            <div class="subtituloAvaliacoesDWPerfildwProprietario">
-                Avaliação média:
-            </div>
             
-            <ion-list>
-              <ion-item>
-                <div class="avatarNomeAvaliadorPerfildwProprietario"> <!--Area que contem o avatar e o nome do Proprietario que avaliou-->
-                  <ion-avatar  style="height: 30px; width: 30px;">
-                    <img src="/assets/avatar_homemPerfil.jpg"> <!--Avatar do Proprietario que avaliou-->
-                  </ion-avatar> &nbsp;&nbsp; <!--Dá um espaço horizontal-->
-                  
-                  
-                  <div class="areaNomeDataAvaliadorPerfildwProprietario">
-                    <ion-label><b> Heitor Chaves </b></ion-label>  <!--Nome Proprietario que avaliou--> <br>
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <!--Dá um espaço horizontal-->
-
-                    <ion-label> 24/11/2020 </ion-label> <!--Data que a avaliação foi feita -->
-                  </div>
-                </div>
-              </ion-item>
-                                                                                          
-              <div class="areaEstrelasAvaliadorPerfildwProprietario">
-                estrelas <!--Tentei de tudo quanto é jeito posicionar pelo css mas não pegou nada, tive que apelar-->
-              </div>
-
-              <div class="areaTextoAvaliacaoAvaliadorPerfildwProprietario">
-                Além de bem preparado, é bem competente e cuidadoso <!--Tentei de tudo quanto é jeito posicionar pelo css mas não pegou nada, tive que apelar-->
-              </div>
-              
-            </ion-list>
-
-            
+            <button id="botao-ver-avaliacoes" (click)="navegarParaAvaliacoes()">
+              Ver avaliações
+            </button>
         </div>
   </div> <!--Fim DIV perfil inteiro do DW-->
  
