@@ -60,6 +60,10 @@ export class PerfilPage implements OnInit {
       if (infoUsu.tipoConta == 2) {
         this.idUsuarioLogado = 2;
 
+        if (infoUsu.servicoDogWalker == null) {
+          this.nav.navigateRoot('alterarperfil');
+        }
+
         console.log(this.dogW[0])
         //Atribui a avaliação média a propriedade avaliaçãoMedia desta classe
         this.avaliacaoMedia = this.dogW[0].servicoDogWalker.avaliacaoMedia;
@@ -111,6 +115,11 @@ export class PerfilPage implements OnInit {
   fecharModalPerfil()
   {
     this.modal.dismiss();
+  }
+
+  abrirAlterarPerfil()
+  {
+    this.nav.navigateForward('alterarperfil');
   }
 
   avaliacaoEstrelas()

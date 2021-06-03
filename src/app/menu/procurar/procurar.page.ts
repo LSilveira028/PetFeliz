@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, Output } from '@angular/core';
 import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { MenuController, ModalController } from '@ionic/angular';
+import { MenuController, ModalController, NavController } from '@ionic/angular';
 import { SolicitarservicodwPage } from 'src/app/solicitarservicodw/solicitarservicodw.page';
 import { StorageService } from 'src/app/services/local-storage/storage.service';
 import { HttpHeaders } from '@angular/common/http';
@@ -26,7 +26,7 @@ export class ProcurarPage implements OnInit, OnDestroy {
 
   constructor(private service: UsuarioService, private geolocation: Geolocation,
               private modalController: ModalController, private storageService: StorageService,
-              private menuCtrl: MenuController) { }
+              private menuCtrl: MenuController, private nav: NavController) { }
   
   latitudeUsuario;
   longitudeUsuario;
@@ -71,6 +71,7 @@ export class ProcurarPage implements OnInit, OnDestroy {
     this.storageService.buscarInformacoesUsuario().then(usuInfo => {
       if (usuInfo.tipoConta == 2) {
         this.UsuarioL = "dogWalker"
+        this.nav.navigateRoot('solicitacoesdw');
       }
       else
         this.UsuarioL = "proprietario"

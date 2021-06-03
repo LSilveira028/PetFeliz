@@ -25,11 +25,16 @@ section b{
 #sobre textarea, #preferencias textarea{
     margin-top: 5px;
 
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
     //impede que o tamanho seja alterado
     resize: none;
 }
 
-#preco, #aceita-cartao, #preferencias{
+#preco, #aceita-cartao, #preferencias, #sobre{
     margin-right: 20px;
 }
  

@@ -51,7 +51,7 @@
               <div class="avaliacao-dw"> <!--Avaliação média-->
                 <b>Avaliação média:</b> <br>
                 <!-- Aparecerá esta mensagem caso não houver avaliações -->
-                <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 0">
+                <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 0" style="font-style: italic;">
                   Nenhuma avaliação
                 </div>
                 <!-- Aparecerá as estrelas caso o dog walker tenha avaliaçãoes -->
@@ -139,6 +139,9 @@
         
               <div class="preferencias-dw">  <!--Preferencias-->
                 <b>Preferências:</b> <br>
+                <div *ngIf="d.servicoDogWalker.preferencias == null" style="font-style: italic;">
+                  Nenhuma
+                </div>
                 {{d.servicoDogWalker.preferencias}}
               </div>
             </div>

@@ -24,7 +24,7 @@
 
         <div class="avatarNomePerfildwProprietario"> <!--Area que contem o avatar e o nome do DW-->
             <ion-avatar  style="height: 65px; width: 65px;">
-              <img src="/assets/avatar_homemPerfil.jpg"> <!--Avatar do DW-->
+              <img src=""> <!--Avatar do DW-->
             </ion-avatar> &nbsp;&nbsp; <!--Dá um espaço horizontal-->
             
             
@@ -178,7 +178,7 @@
               &nbsp;&nbsp;
 
               <div class="valorPrecoPerfildwProprietario" style="color:forestgreen ;">
-                R$ {{d.servicoDogWalker.valorServico | currency}}
+                {{d.servicoDogWalker.valorServico | currency : 'BRL'}}
               </div>
             </div>
  
