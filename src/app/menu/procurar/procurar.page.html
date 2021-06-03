@@ -139,7 +139,7 @@
         
               <div class="preferencias-dw">  <!--Preferencias-->
                 <b>Preferências:</b> <br>
-                <div *ngIf="d.servicoDogWalker.preferencias == null" style="font-style: italic;">
+                <div *ngIf="d.servicoDogWalker.preferencias == null || d.servicoDogWalker.preferencias == '' " style="font-style: italic;">
                   Nenhuma
                 </div>
                 {{d.servicoDogWalker.preferencias}}

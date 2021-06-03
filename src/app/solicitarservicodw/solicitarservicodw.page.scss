@@ -1,26 +1,32 @@
-.avatarSolicitarServicoDW{
-    top: 10%;
-    left: 0%;
+.box-informacoes{
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
+.informacoes
+{
+    // width: 75%;
+
+    font-size: 15px;
+
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 20px;
+}
+
+.avatarSolicitarServicoDW{
+    margin-right: 15px;
+}
+
 .statusSolicitarServicoDW{
     
     color:rgb(75, 75, 75);
     // margin-left: 10px;
     float: right;
-}
-
-.aceitoSouNcartaoSolicitarServicoDW{
-    top: 15%;
-    left: 30%;
-}
-.textoPrecoPorCaoSolicitarServicoDW{
-    top: 18%;
-    left: 21%;
-}
-
-.preferenciasAvaliacaoMediaSolicitarServicoDW{
-    top: 30%;
-    left: 21%;
 }
 
 .selecionarCaesSolicitarServicoDW{
@@ -46,14 +52,14 @@
 }
 .informacoes
 {
-    height: 100%;
-    width: 120%;
+    width: 75%;
+
+    font-size: 15px;
 
     display: flex;
     flex-direction: row;
 
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .dogWalker
@@ -62,16 +68,20 @@
     flex-direction: column;
     align-items: center;
 } //aquele teste la
+
 .item-lista
 {
     margin-bottom: 20px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
 }
 
 .informacoesDW
 {
-
-    margin-left: 5%;
-
     display: flex;
     flex-direction: column;
 }
@@ -98,6 +108,7 @@
 {
     margin-top: 10px;
     display: flex;
+    flex-direction: row;
 }
 
 .cartao
@@ -108,8 +119,25 @@
 
 .distancia
 {
+    margin-top: 10px;
+
     display: flex;
-    align-items: center;
+    flex-direction: row;
+}
+
+.status-distancia{
+
+    display: flex;
+    flex-direction: column;
+
+    font-size: 15px;
+    float: right;
+
+    margin-top: 20px;
+}
+
+.status-distancia .status{
+    float: right;
 }
 
 .preco-servico
@@ -151,3 +179,4 @@
 #botao-fechar img{
     margin-left: 10px;
 }
+

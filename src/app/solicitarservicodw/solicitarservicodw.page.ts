@@ -65,6 +65,31 @@ export class SolicitarservicodwPage implements OnInit {
         })
       })
     })
+
+
+    //Verificação das avaliações em estrelas
+    var valorDecimal = this.dogWalker.servicoDogWalker.avaliacaoMedia % 1;
+    var valorInteiro = this.dogWalker.servicoDogWalker.avaliacaoMedia - valorDecimal;
+    
+    console.log(valorInteiro);
+
+    if (valorDecimal > 0.3 && valorDecimal < 0.8 ) {
+      valorDecimal = 0.5;
+      this.dogWalker.servicoDogWalker.avaliacaoMedia = valorInteiro + valorDecimal;
+    }
+    else
+    {
+      if (valorDecimal > 0.8) {
+        valorInteiro = valorInteiro + 1;
+        this.dogWalker.servicoDogWalker.avaliacaoMedia = valorInteiro + 1;
+        valorDecimal = 0.0;
+      }
+  
+      if (valorDecimal < 0.3) {
+        this.dogWalker.servicoDogWalker.avaliacaoMedia = valorInteiro;
+        valorDecimal = 0.0;
+      }
+    }
       
   }
 
