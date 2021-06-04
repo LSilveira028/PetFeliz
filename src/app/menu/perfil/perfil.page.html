@@ -1,12 +1,12 @@
 <ion-header>
   <!-- Se o usuário logado for um Dog Walker, então aparecerá o seguinte header para ele -->
-  <ion-toolbar color="primary" *ngIf="idUsuarioLogado == 2"><!--Toolbar-->
+  <ion-toolbar color="petfeliz" *ngIf="idUsuarioLogado == 2"><!--Toolbar-->
     <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
     <ion-title color="tertiary" *ngIf="idUsuarioLogado == 2"> <b>Perfil</b> <!-- <b> deixa o texto em negrito --> </ion-title>
   </ion-toolbar>
 
   <!-- Se o usuário logado for um proprietário, então aparecerá o seguinte header para ele -->
-  <ion-toolbar color="primary" *ngIf="idUsuarioLogado == 1"><!--Toolbar-->
+  <ion-toolbar color="petfeliz" *ngIf="idUsuarioLogado == 1"><!--Toolbar-->
 
     <div id="botao-voltar" (click)="fecharModalPerfil()" slot="start">
       <img src="/assets/arrow-left.png" width="30px" height="30px">

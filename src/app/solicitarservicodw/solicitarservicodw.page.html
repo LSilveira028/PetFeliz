@@ -51,7 +51,7 @@
     
               <div class="preco-servico"> <!--Aceito cartao ou não-->
                 <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
-                <b style="margin-left: 10px; color:forestgreen ;">R$ {{dogWalker.servicoDogWalker.valorServico}}</b>
+                <b style="margin-left: 10px; color:forestgreen ;">{{dogWalker.servicoDogWalker.valorServico | currency: 'BRL'}}</b>
               </div> 
               
               <div class="avaliacao-dw"> <!--Avaliação média-->

@@ -68,10 +68,6 @@ const routes: Routes = [
     loadChildren: () => import('./solicitacoesdw/solicitacoesdw.module').then( m => m.SolicitacoesdwPageModule)
   },
   {
-    path: 'perfildwproprietario',
-    loadChildren: () => import('./perfildwproprietario/perfildwproprietario.module').then( m => m.PerfildwproprietarioPageModule)
-  },
-  {
     path: 'historicoservicos',
     loadChildren: () => import('./historicoservicos/historicoservicos.module').then( m => m.HistoricoservicosPageModule)
   },
@@ -90,7 +86,8 @@ const routes: Routes = [
   {
     path: 'deletarconta',
     loadChildren: () => import('./deletarconta/deletarconta.module').then( m => m.DeletarcontaPageModule)
-  },  {
+  },
+  {
     path: 'avaliar-servico',
     loadChildren: () => import('./avaliar-servico/avaliar-servico.module').then( m => m.AvaliarServicoPageModule)
   }
