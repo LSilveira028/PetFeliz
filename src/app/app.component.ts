@@ -1,5 +1,6 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 import { StorageService } from './services/local-storage/storage.service';
 import { Usuario, UsuarioService } from './services/usuario.service';
 @Component({
@@ -8,21 +9,11 @@ import { Usuario, UsuarioService } from './services/usuario.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public appPages = [
-    // { title: 'Perfil', url: '/perfildwproprietario', icon: 'person' },
-    // { title: 'Procurar', url: '/procurar', icon: 'location' },
-    // { title: 'Meus cães', url: '/meuscaes', icon: 'paw' },
-    // { title: 'Favoritos', url: '/favoritos', icon: 'heart' },
-    // { title: 'Avaliações', url: '/avaliacoes', icon: 'star' },
-    // { title: 'Conta', url: '/conta', icon: 'cog' },
-    // { title: 'Sair', url: '/sair', icon: 'log-out' },
-    // { title: 'Termos de Uso', url: '/termosdeuso', icon: 'book' },
-    // { title: 'Política de Privacidade', url: '/politicadeprivacidade', icon: 'lock-closed' },
-  ];
+  public appPages = [];
 
   //public labels = ['Termos de Uso', 'Política de Privacidade'];
-  constructor(private storage: StorageService, private service: UsuarioService,
-             private menuCtrl: MenuController) {
+  constructor(private storage: StorageService, private usuarioService:  UsuarioService,
+             private menuCtrl: MenuController, private alert: AlertController) {
 
   }
 
@@ -62,7 +53,49 @@ export class AppComponent implements OnInit {
   }
 
 
-    
+  atualizarDisponibilidade(idDisponibilidade: number)
+  { 
+    //busca o token no storage
+    this.storage.buscarToken().then(token => {
 
+      //cria um header basedo no token
+      var header = new HttpHeaders ({
+        'Authorization': 'Bearer ' + token
+      })
+
+      //atualiza a disponibilidade
+      this.usuarioService.atualizarDisponibilidade(idDisponibilidade, header).subscribe(resp => {
+
+        //condição if para alterar o botão que apareçerá 
+        if (idDisponibilidade == 0) {
+          this.usuario.disponivel = 0;
+        }
+        else
+        {
+          this.usuario.disponivel = 1;
+        }
+
+        //busca as novas informações do usuário
+        this.usuarioService.informacoesUsuario(header).subscribe(infoUsu => {
+
+          //grava no storage
+          this.storage.gravarInformacoesUsuario(infoUsu);
+
+        })
+      })
+
+    })
+  }
+
+  async alertDisponibilidade()
+  {
+    const alert = await this.alert.create({
+      subHeader: 'Sua disponibilidade',
+      message: 'Ao deixar sua disponibilidade como indisponível, você não receberá solicitações de serviço.',
+      buttons: ['Ok']
+    });
+
+    await alert.present();
+  }
   
 }

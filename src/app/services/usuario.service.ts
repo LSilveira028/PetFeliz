@@ -97,4 +97,9 @@ export class UsuarioService {
   {
     return this.http.put(this.api_url + "AtualizarAvaliacaoMedia/" + idDogW, Usuario, {headers: header})
   }
+
+  atualizarDisponibilidade(idDisponibilidade: number, header: HttpHeaders)
+  {
+    return this.http.put(this.api_url + "AlterarDisponibilidade/" + idDisponibilidade, Usuario, {headers: header, responseType: 'text'})
+  }
 }
