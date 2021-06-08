@@ -60,7 +60,7 @@ export class SolicitarservicodwPage implements OnInit {
         let idUsuario = usuario.id
 
         //busca os cães do proprietário
-        this.serviceCao.listarCaesProprietario(idUsuario, header).subscribe(caes => {
+        this.serviceCao.listarCaesProprietario(header).subscribe(caes => {
           this.caes = caes;
         })
       })

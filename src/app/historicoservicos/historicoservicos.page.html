@@ -31,7 +31,7 @@
         <div class="informacoes">
           <div class="avatarSolicitarServicoDW">
             <ion-avatar slot="start">
-              <img src=""> <!--Avatar do Dog Walker-->
+              <img [src]="s.servico.usuarios[0].usuario.fotoPerfil"> <!--Avatar do Dog Walker-->
             </ion-avatar>
           </div>
           
@@ -43,12 +43,12 @@
             <!--Se o usuário logado for proprietário-->
             <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 1"> <!--Aceito cartao ou não-->
               <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
-              <b style="margin-left: 10px; color:forestgreen ;">R$ {{s.servico.usuarios[0].usuario.servicoDogWalker.valorServico}}</b>
+              <b style="margin-left: 10px; color:forestgreen ;">{{s.servico.usuarios[0].usuario.servicoDogWalker.valorServico | currency: 'BRL'}}</b>
             </div>
             <!--Se o usuário logado for Dog Walker-->
             <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 2"> <!--Aceito cartao ou não-->
               <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
-              <b style="margin-left: 10px; color:forestgreen ;">R$ {{usuario.servicoDogWalker.valorServico}}</b>
+              <b style="margin-left: 10px; color:forestgreen ;">{{usuario.servicoDogWalker.valorServico | currency: 'BRL'}}</b>
             </div> 
   
             <!--Todas os possiveis estados do serviço-->
@@ -101,7 +101,7 @@
       <div class="valor-total">
         <div class="valorTotalSolicitacoesDW"> <!--preço total-->
           <b>Valor total:</b>
-          <b style="margin-left: 10px; color:forestgreen ;">R$ {{s.servico.valorTotal}}</b>
+          <b style="margin-left: 10px; color:forestgreen ;">{{s.servico.valorTotal | currency: 'BRL'}}</b>
         </div>
       </div>
 
@@ -159,7 +159,7 @@
         <div class="informacoes">
           <div class="avatarSolicitarServicoDW">
             <ion-avatar slot="start">
-              <img src=""> <!--Avatar do Dog Walker-->
+              <img [src]="sf.servico.usuarios[0].usuario.fotoPerfil"> <!--Avatar do Dog Walker-->
             </ion-avatar>
           </div>
           

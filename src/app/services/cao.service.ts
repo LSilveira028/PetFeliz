@@ -1,14 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-export interface Cao
+export class Cao
 {
-  id: number;
+  id?: number;
   nome: number;
   raca: string;
   idade: number;
   porte: number;
-  peso: {
+  pesoId: number;
+  peso?: {
     id: number;
     descricao: string;
   }
@@ -41,9 +42,14 @@ export class CaoService {
   private api_url_caoServico = "http://localhost:5000/CaoServico/"
 
 
-  listarCaesProprietario(idProp: number, header: HttpHeaders)
+  listarCaesProprietario(header: HttpHeaders)
   {
-    return this.http.get<Cao[]>(this.api_url + idProp, { headers: header })
+    return this.http.get<Cao[]>(this.api_url + "ListarCaesProprietario", { headers: header })
+  }
+
+  cadastrarCao(cao: Cao, header: HttpHeaders)
+  {
+    return this.http.post(this.api_url + "CadastrarCao", cao, { headers: header, responseType: 'text' });
   }
 
   associarCaoServico(idCao: number, header: HttpHeaders)

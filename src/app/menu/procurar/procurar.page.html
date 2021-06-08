@@ -6,6 +6,11 @@
 </ion-header>
 
 <ion-content> <!--Conteúdo do app-->
+
+  <ion-refresher slot="fixed" pullFactor="0.5" pulMin="100" pulMax="200" (ionRefresh)="atualizarPagina($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-list>
   <ion-item *ngFor="let d of dogWalkers; let i = index">
     <div class="item-lista">
@@ -14,7 +19,7 @@
         <div class="informacoes">
           <div class="avatarSolicitarServicoDW">
             <ion-avatar slot="start" >
-              <img src=""> <!--Avatar do Dog Walker-->
+              <img [src]="d.fotoPerfil"> <!--Avatar do Dog Walker-->
             </ion-avatar>
           </div>
           

@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
       if (this.usuario.tipoConta == 1) {
         this.appPages = [
           { title: 'Procurar', url: '/procurar', icon: 'location' },
-          { title: 'Meus cães', url: '/meuscaes', icon: 'paw' },
+          { title: 'Meus cães', url: '/petsjacadastrados', icon: 'paw' },
           { title: 'Favoritos', url: '/favoritos', icon: 'heart' },
           { title: 'Conta', url: '/conta', icon: 'cog' },
           { title: 'Sair', url: '/sair', icon: 'log-out' },

@@ -74,113 +74,11 @@ export class ProcurarPage implements OnInit, OnDestroy {
         this.nav.navigateRoot('solicitacoesdw');
       }
       else
-        this.UsuarioL = "proprietario"
-
-      
+        this.UsuarioL = "proprietario" 
     })
 
-      parseFloat(this.longitudeDogWalker)
-  
-      this.storageService.buscarToken().then(tokenStorage => {
+    this.buscarDogWalkers();
 
-        let token = tokenStorage;
-
-        console.log(tokenStorage);
-
-        const header = new HttpHeaders ({
-          'Authorization': 'Bearer ' + token
-        });
-
-        //Pega a longitude e latitude do usuário
-        this.geolocation.getCurrentPosition().then((resp) => {
-        
-          this.latitudeUsuario =  resp.coords.latitude
-          this.longitudeUsuario = resp.coords.longitude
-          // parseFloat(this.latitudeUsuario);
-          
-          console.log(this.latitudeUsuario);
-          console.log(this.longitudeUsuario);
-
-          this.service.procurarDogWalkers(header).subscribe(response => {
-            this.dogWalkers = response;
-
-            this.dogWalkers.forEach(element => {
-              //pega a localização do dog walker
-              this.latitudeDogWalker = element.latitude;
-              this.longitudeDogWalker = element.longitude;   
-              
-              this.whatsapp = element.whatsApp;
-              console.log("whats: " + this.whatsapp)
-
-              //armazena a distancia entre o proprietário e o dog walker
-              this.distancia = calcularDistancia
-              (this.latitudeUsuario, this.longitudeUsuario, this.latitudeDogWalker, this.longitudeDogWalker)
-
-              element.distancia = (this.distancia).toFixed(0);
-
-              console.log("distancia: " + this.distancia)
-    
-              //Verificação das avaliações em estrelas
-                var valorDecimal = element.servicoDogWalker.avaliacaoMedia % 1;
-                var valorInteiro = element.servicoDogWalker.avaliacaoMedia - valorDecimal;
-                
-                console.log(valorInteiro);
-
-                if (valorDecimal > 0.3 && valorDecimal < 0.8 ) {
-                  valorDecimal = 0.5;
-                  element.servicoDogWalker.avaliacaoMedia = valorInteiro + valorDecimal;
-                }
-                else
-                {
-                  if (valorDecimal > 0.8) {
-                    valorInteiro = valorInteiro + 1;
-                    element.servicoDogWalker.avaliacaoMedia = valorInteiro + 1;
-                    valorDecimal = 0.0;
-                  }
-              
-                  if (valorDecimal < 0.3) {
-                    element.servicoDogWalker.avaliacaoMedia = valorInteiro;
-                    valorDecimal = 0.0;
-                  }
-                }
-
-
-
-              });
-              
-          })
-
-        }).catch((error) => {
-          console.log('Error getting location', error);
-        });
-
-        })
-
-
-    
-
-    //Função que faz o cálculo de dois pontos geográficos
-    function calcularDistancia(lat1,lon1,lat2,lon2)
-    {
-      var R = 6371; //Raio da Terra em km
-      var dLat = deg2rad(lat2-lat1);
-      var dLon = deg2rad(lon2-lon1);
-      var a = 
-      Math.sin(dLat/2) * Math.sin(dLat/2) +
-      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-      Math.sin(dLon/2) * Math.sin(dLon/2);
-      
-
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-      var d = R * c; // Distancia em km
-      
-
-      return d;
-    }
-    function deg2rad(deg)
-    {
-      return deg * (Math.PI/180);
-    }
   }
   
    //Quando a página carregar
@@ -259,6 +157,118 @@ export class ProcurarPage implements OnInit, OnDestroy {
     return await modalPerfilDogWalker.present();
   }
 
-  
+  criarHeader(token)
+  {
+    const header = new HttpHeaders ({
+      'Authorization': 'Bearer ' + token
+    });
+    return header;
+  }
+
+  buscarDogWalkers()
+  {
+    this.storageService.buscarToken().then(token => {
+
+      console.log(token)
+
+      var header = this.criarHeader(token);
+
+      this.geolocation.getCurrentPosition().then( resp => {
+
+        console.log(resp.coords.latitude);
+        console.log(resp.coords.longitude);
+
+        this.latitudeUsuario =  resp.coords.latitude
+        this.longitudeUsuario = resp.coords.longitude
+
+        this.service.procurarDogWalkers(resp.coords.latitude, resp.coords.longitude,header).subscribe(response => {
+          this.dogWalkers = response;
+          console.log(response)
+          this.dogWalkers.forEach(element => {
+            //pega a localização do dog walker
+            this.latitudeDogWalker = element.latitude;
+            this.longitudeDogWalker = element.longitude;   
+            
+            this.whatsapp = element.whatsApp;
+            console.log("whats: " + this.whatsapp)
+    
+            //armazena a distancia entre o proprietário e o dog walker
+            this.distancia = calcularDistancia
+            (this.latitudeUsuario, this.longitudeUsuario, this.latitudeDogWalker, this.longitudeDogWalker)
+    
+            element.distancia = (this.distancia).toFixed(0);
+    
+            console.log("distancia: " + this.distancia)
+    
+            //Verificação das avaliações em estrelas
+              var valorDecimal = element.servicoDogWalker.avaliacaoMedia % 1;
+              var valorInteiro = element.servicoDogWalker.avaliacaoMedia - valorDecimal;
+              
+              console.log(valorInteiro);
+    
+              if (valorDecimal > 0.3 && valorDecimal < 0.8 ) {
+                valorDecimal = 0.5;
+                element.servicoDogWalker.avaliacaoMedia = valorInteiro + valorDecimal;
+              }
+              else
+              {
+                if (valorDecimal > 0.8) {
+                  valorInteiro = valorInteiro + 1;
+                  element.servicoDogWalker.avaliacaoMedia = valorInteiro + 1;
+                  valorDecimal = 0.0;
+                }
+            
+                if (valorDecimal < 0.3) {
+                  element.servicoDogWalker.avaliacaoMedia = valorInteiro;
+                  valorDecimal = 0.0;
+                }
+              }
+    
+    
+    
+            });
+            
+        })
+
+      })
+
+      
+
+    })
+
+    
+
+    //Função que faz o cálculo de dois pontos geográficos
+    function calcularDistancia(lat1,lon1,lat2,lon2)
+    {
+      var R = 6371; //Raio da Terra em km
+      var dLat = deg2rad(lat2-lat1);
+      var dLon = deg2rad(lon2-lon1);
+      var a = 
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+      Math.sin(dLon/2) * Math.sin(dLon/2);
+      
+
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      var d = R * c; // Distancia em km
+      
+
+      return d;
+    }
+    function deg2rad(deg)
+    {
+      return deg * (Math.PI/180);
+    }
+
+  }
+
+  atualizarPagina(event)
+  {
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000)
+  }
+
 
 }

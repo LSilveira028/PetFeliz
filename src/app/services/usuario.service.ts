@@ -17,7 +17,7 @@ export class Usuario
     nome?: string;
     DataNascimento?: Date;
     dataCadastro?: Date;
-    fotoPerfil?: ImageData; //Para verificação
+    fotoPerfil?: string; //Para verificação
     email?: string;
     whatsApp?: string;
     PasswordString?: string;
@@ -78,9 +78,9 @@ export class UsuarioService {
     return this.http.post(this.api_url + 'Cadastrar', usuario, {responseType: 'text'});
   }
 
-  procurarDogWalkers(header: HttpHeaders)
+  procurarDogWalkers(latitude, longitude,header: HttpHeaders)
   {
-    return this.http.get<Usuario[]>(this.api_url + 'DogWalkers', { headers: header})
+    return this.http.get<Usuario[]>(this.api_url + 'DogWalkers/' + latitude + "/" + longitude, { headers: header})
   }
 
   logarUsuario(usuario: Usuario): Observable<HttpResponse<any>>

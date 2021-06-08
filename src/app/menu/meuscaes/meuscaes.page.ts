@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, NavController, ToastController } from '@ionic/angular';
+import {NgForm } from '@angular/forms';
+import { Cao, CaoService } from 'src/app/services/cao.service';
+import { StorageService } from 'src/app/services/local-storage/storage.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-meuscaes',
@@ -8,9 +12,11 @@ import { ActionSheetController, NavController, ToastController } from '@ionic/an
 })
 export class MeuscaesPage implements OnInit {
 
+  cao: Cao;
+
   constructor(public toastCtrl: ToastController,
     public ffcsca: ActionSheetController,
-    public nav: NavController,
+    public nav: NavController, private storage: StorageService, private caoService: CaoService
     ) { }
 
   ngOnInit() {
@@ -18,17 +24,48 @@ export class MeuscaesPage implements OnInit {
 
   abrirPagina(){
     this.nav.navigateForward('petsjacadastrados');
-    
    }
   
-  async metodoToast() {
+  cadastarCao(form: NgForm)
+  {
+    this.cao = form.value;
+
+    console.log(this.cao);
+
+    this.storage.buscarToken().then(token => {
+
+      var header = new HttpHeaders ({
+        'Authorization': 'Bearer '+ token
+      });
+
+      this.caoService.cadastrarCao(this.cao, header).subscribe(resp => {
+        
+        this.toastCaoCadastrado();
+
+      });
+
+    })
+
+  }
+
+  async toastCaoCadastrado() {
     const toast = await this.toastCtrl.create({
-      message: 'Você cadastrou seu Pet!',
+      message: 'Cão cadastrado!',
       duration: 2000,
     });
-    toast.present();
+
+    this.abrirPagina();
+
+    toast.present();    
   }
  
+  criarHeader(token)
+  {
+    var header = new HttpHeaders ({
+      'Authorization': 'Bearer '+ token
+    });
+    return header;
+  }
 
   /*async funcoesFabCadastreSeusCaesAqui() {
     const actionSheet = await this.ffcsca.create({

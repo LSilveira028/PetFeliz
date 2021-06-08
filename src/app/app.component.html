@@ -3,7 +3,7 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>{{usuario.nome}}</ion-list-header> <!--Texto "Pet Feliz no Header do Menu"-->
+          <ion-list-header id="nome-usuario">{{usuario.nome}}</ion-list-header> <!--Texto "Pet Feliz no Header do Menu"-->
 
           <div id="botoes" *ngIf="usuario.tipoConta == 2">
             <div>
