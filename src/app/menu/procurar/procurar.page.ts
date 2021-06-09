@@ -41,8 +41,16 @@ export class ProcurarPage implements OnInit, OnDestroy {
 
   whatsapp: string;
 
+  favoritos: Usuario[];
+
   ngOnInit() {
 
+    this.storageService.buscarFavoritos().then(favoritos => {
+
+      this.favoritos = favoritos;
+      
+      console.log(this.favoritos);
+    })
 
     // this.storageService.gravarReload(true);
 
@@ -107,6 +115,62 @@ export class ProcurarPage implements OnInit, OnDestroy {
   // ionViewWillEnter() {
   //   this.menuCtrl.enable(true);
   // }
+
+
+  tornarFavorito(indexUsuario: number)
+  {
+    let usuarios: Usuario[] = [];
+
+    let usuario = this.dogWalkers[indexUsuario];
+
+    this.storageService.adicionarFavorito(usuarios).then(r => {
+      console.log(r);
+    });
+
+
+    this.storageService.buscarFavoritos().then(favoritos => {
+
+      usuarios = favoritos;
+
+      usuarios.unshift(usuario);
+
+      this.dogWalkers[indexUsuario].favorito = true;
+
+      this.storageService.adicionarFavorito(usuarios);
+
+    });
+  }
+
+  removerFavorito(index: number)
+  {
+    // let usuarios: Usuario[] = [];
+
+    let usuario = this.dogWalkers[index];
+
+    this.storageService.buscarFavoritos().then(favoritos => {
+
+      this.favoritos = favoritos;
+
+      //busca o index em que o dog walker está no array de favoritos
+      let indexDwRemover = this.favoritos.findIndex((e) => e.id == usuario.id);
+
+      //remove esse dog walker do array
+      this.favoritos.splice(indexDwRemover, 1);
+
+      //atualiza a lista para mostrar que o dog walker não é mais favorito
+      this.dogWalkers[index].favorito = false;
+
+      //atualiza o storage
+      this.storageService.adicionarFavorito(this.favoritos);
+
+      console.log(this.favoritos);
+
+      // delete usuarios[indexDwRemover];
+      // this.storageService.adicionarFavorito(usuarios);
+
+    });
+
+  }
 
   enviarMensagem(i: any)
   {
@@ -183,7 +247,7 @@ export class ProcurarPage implements OnInit, OnDestroy {
 
         this.service.procurarDogWalkers(resp.coords.latitude, resp.coords.longitude,header).subscribe(response => {
           this.dogWalkers = response;
-          console.log(response)
+
           this.dogWalkers.forEach(element => {
             //pega a localização do dog walker
             this.latitudeDogWalker = element.latitude;
@@ -192,7 +256,7 @@ export class ProcurarPage implements OnInit, OnDestroy {
             this.whatsapp = element.whatsApp;
             console.log("whats: " + this.whatsapp)
     
-            //armazena a distancia entre o proprietário e o dog walker
+            //1. armazena a distancia entre o proprietário e o dog walker
             this.distancia = calcularDistancia
             (this.latitudeUsuario, this.longitudeUsuario, this.latitudeDogWalker, this.longitudeDogWalker)
     
@@ -200,7 +264,7 @@ export class ProcurarPage implements OnInit, OnDestroy {
     
             console.log("distancia: " + this.distancia)
     
-            //Verificação das avaliações em estrelas
+            //2. Verificação das avaliações em estrelas
               var valorDecimal = element.servicoDogWalker.avaliacaoMedia % 1;
               var valorInteiro = element.servicoDogWalker.avaliacaoMedia - valorDecimal;
               
@@ -224,8 +288,23 @@ export class ProcurarPage implements OnInit, OnDestroy {
                 }
               }
     
-    
-    
+              //3. verifica se é favorito
+              this.storageService.buscarFavoritos().then(favoritos => {
+                
+                this.favoritos = favoritos;
+                
+                if (this.favoritos.find(dw => dw.id == element.id)) {
+                  
+                  element.favorito = true;
+
+                }
+                else
+                {
+                  element.favorito = false;
+                }
+
+              })
+              
             });
             
         })

@@ -1,0 +1,193 @@
+.avatarSolicitarServicoDW{
+    margin-right: 15px;
+}
+
+.status-distancia{
+
+    display: flex;
+    flex-direction: column;
+
+    font-size: 15px;
+    float: right;
+
+    margin-top: 20px;
+}
+
+.status-distancia .status{
+    float: right;
+}
+
+.statusSolicitarServicoDW{
+    
+    color:rgb(75, 75, 75);
+    // margin-left: 10px;
+    float: right;
+}
+
+.box-informacoes{
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.informacoes
+{
+    width: 75%;
+
+    font-size: 15px;
+
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 20px;
+}
+
+.item-lista
+{
+    width: 100%;
+
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.informacoesDW
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.nomeStatus
+{
+    width: 245px;
+
+}
+
+.nomeDW
+{
+    max-width: 52%;
+    float: left;
+}
+
+.linha1Info
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.cartao-distancia
+{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.cartao
+{
+    display: flex;
+    align-items: center;
+}
+
+.distancia
+{
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.preco-servico
+{
+    margin-top: 10px;
+}
+
+.avaliacao-dw
+{
+    margin-top: 10px;
+}
+
+.preferencias-dw
+{
+    margin-top: 10px;
+}
+
+.botoes
+{
+    //
+    // background: chartreuse;
+    width: 100vw;
+
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botoes div
+{
+    // background: chocolate;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.botao-solicitar
+{
+    margin-right: 13px;
+
+    font-size: 18px;
+    color: white;
+    height: 50px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: #E94F37;
+}
+
+.botao-solicitar-bloqueado{
+    margin-right: 13px;
+
+    font-size: 18px;
+    color: white;
+    height: 50px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: rgb(110, 110, 110);
+}
+
+.botao-whatsapp
+{
+    margin-right: 13px;
+
+    height: 50px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: #47BE53;
+}
+
+.botao-tornar-favorito
+{
+    height: 50px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: #FFF;
+    border: solid 2px rgb(110, 110, 110);
+}
+
+.botao-remover-favorito{
+    height: 50px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: #E94F37;
+    // border: solid 2px rgb(110, 110, 110);
+}
+
+#aviso{
+    text-align: center;
+    margin-top: 20px;
+}

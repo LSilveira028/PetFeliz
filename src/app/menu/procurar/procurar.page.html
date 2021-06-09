@@ -200,8 +200,12 @@
             <img src="/assets/whatsapp.png" style="height: 25px; width: 25px;">
           </button>
   
-          <button class="botao-tornar-favorito">
+          <button *ngIf="d.favorito == false" class="botao-tornar-favorito" (click)="tornarFavorito(i)">
             <img src="/assets/like-white.png" style="height: 25px; width: 25px;">
+          </button>
+
+          <button *ngIf="d.favorito == true" class="botao-remover-favorito" (click)="removerFavorito(i)">
+            <img src="/assets/like-black.png" style="height: 25px; width: 25px;">
           </button>
         </div>  
       </div>

@@ -34,6 +34,7 @@ export class Usuario
     
     //nao mapeado
     distancia?: number;
+    favorito?: boolean;
 }
 
 @Injectable({

@@ -88,4 +88,21 @@ export class StorageService {
     return await this.storage.get('reload');
   }
    
+  public async criarKeyFavorito()
+   {
+     let usuarios: Usuario[];
+    await this.storage.set('favoritos', usuarios);
+    return "Criado!";
+   }
+
+   public async buscarFavoritos()
+   {
+     return await this.storage.get('favoritos'); 
+   }
+
+   public async adicionarFavorito(usuarios: Usuario[])
+   {
+     await this.storage.set('favoritos', usuarios);
+     return await this.storage.get('favoritos');
+   }
 }
