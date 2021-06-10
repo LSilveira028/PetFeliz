@@ -268,6 +268,9 @@ export class ProcurarPage implements OnInit, OnDestroy {
               var valorDecimal = element.servicoDogWalker.avaliacaoMedia % 1;
               var valorInteiro = element.servicoDogWalker.avaliacaoMedia - valorDecimal;
               
+              console.log(element.servicoDogWalker.avaliacaoMedia % 1);
+              console.log(valorInteiro);
+
               console.log(valorInteiro);
     
               if (valorDecimal > 0.3 && valorDecimal < 0.8 ) {
@@ -347,6 +350,8 @@ export class ProcurarPage implements OnInit, OnDestroy {
     setTimeout(() => {
       event.target.complete();
     }, 2000)
+
+    this.buscarDogWalkers();
   }
 
 

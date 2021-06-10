@@ -19,6 +19,7 @@ export class UsuarioAvaliacao
     dataAvaliacao: Date;
     usuarioAvaliacao: [{
       nome: string;
+      fotoPerfil: string;
     }]
   }
 }

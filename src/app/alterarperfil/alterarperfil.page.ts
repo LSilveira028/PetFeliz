@@ -18,6 +18,7 @@ export class AlterarperfilPage implements OnInit {
   nome: string;
   sobre: string;
   valorServico: number;
+  fotoPerfil;
   aceitaCar: boolean;
   preferencias: string;
 
@@ -45,6 +46,7 @@ export class AlterarperfilPage implements OnInit {
         this.valorServico = infoUsu.servicoDogWalker.valorServico;
         this.aceitaCar = infoUsu.servicoDogWalker.aceitaCartao;
         this.preferencias = infoUsu.servicoDogWalker.preferencias;
+        this.fotoPerfil = infoUsu.fotoPerfil;
 
         if (this.aceitaCar == true) {
           this.aceitaCartao = true;

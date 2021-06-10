@@ -171,12 +171,12 @@
             <!--Se o usuáriologado for Proprietário-->
             <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 1"> <!--Aceito cartao ou não-->
               <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
-              <b style="margin-left: 10px; color:forestgreen ;">R$ {{sf.servico.usuarios[0].usuario.servicoDogWalker.valorServico}}</b>
+              <b style="margin-left: 10px; color:forestgreen ;">{{sf.servico.usuarios[0].usuario.servicoDogWalker.valorServico | currency: 'BRL'}}</b>
             </div> 
             <!--Se o usuário logado for Dog Walker-->
             <div class="preco-servico" id="estado-servico" *ngIf="usuario.tipoConta == 2"> <!--Aceito cartao ou não-->
               <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
-              <b style="margin-left: 10px; color:forestgreen ;">R$ {{usuario.servicoDogWalker.valorServico}}</b>
+              <b style="margin-left: 10px; color:forestgreen ;">{{usuario.servicoDogWalker.valorServico | currency: 'BRL'}}</b>
             </div> 
   
             <div class="estado-servico">
@@ -203,7 +203,7 @@
       <div class="valor-total">
         <div class="valorTotalSolicitacoesDW"> <!--preço total-->
           <b>Valor total:</b>
-          <b style="margin-left: 10px; color:forestgreen ;">R$ {{sf.servico.valorTotal}}</b>
+          <b style="margin-left: 10px; color:forestgreen ;">{{sf.servico.valorTotal | currency : 'BRL'}}</b>
         </div>
       </div>
 

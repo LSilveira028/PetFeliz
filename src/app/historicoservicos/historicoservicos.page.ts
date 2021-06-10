@@ -58,11 +58,7 @@ export class HistoricoservicosPage implements OnInit {
 
       let header = this.headerRequisicao(tokenStorage);
 
-      this.service.listarServicosFinalizados(header).subscribe(servicoF => {
-        this.servicosFinalizados = servicoF;
-
-        console.log(this.servicosFinalizados);
-      });
+      this.buscarServicosFinalizados();
     })   
   }
 
@@ -155,9 +151,7 @@ export class HistoricoservicosPage implements OnInit {
         this.buscarServicosGerais();
       })
 
-      this.service.listarServicosFinalizados(header).subscribe(servF => {
-        this.servicosFinalizados = servF;
-      })
+      this.buscarServicosFinalizados();
     }) 
     
     
@@ -185,7 +179,20 @@ export class HistoricoservicosPage implements OnInit {
 
     //busca os serviços gerais
     this.buscarServicosGerais();
+    //busca os serviços finalizados
+    this.buscarServicosFinalizados();
+  }
 
+  buscarServicosFinalizados()
+  {
+    this.storageService.buscarToken().then(token => {
+      
+      var header = this.headerRequisicao(token);
+
+      this.service.listarServicosFinalizados(header).subscribe(servF => {
+        this.servicosFinalizados = servF;
+      })
+    })
   }
 
   buscarServicosGerais()

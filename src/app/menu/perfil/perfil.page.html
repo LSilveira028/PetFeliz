@@ -24,7 +24,7 @@
 
         <div class="avatarNomePerfildwProprietario"> <!--Area que contem o avatar e o nome do DW-->
             <ion-avatar  style="height: 65px; width: 65px;">
-              <img src=""> <!--Avatar do DW-->
+              <img [src]="d.fotoPerfil"> <!--Avatar do DW-->
             </ion-avatar> &nbsp;&nbsp; <!--Dá um espaço horizontal-->
             
             
@@ -202,8 +202,12 @@
               <b>Preferências</b>
             </div>
 
-            <div class="textoPreferenciasPerfildwProprietario">
+            <div class="textoPreferenciasPerfildwProprietario" *ngIf="d.servicoDogWalker.preferencias != null">
               {{d.servicoDogWalker.preferencias}}
+            </div>
+
+            <div class="textoPreferenciasPerfildwProprietario" *ngIf="d.servicoDogWalker.preferencias == '' || d.servicoDogWalker.preferencias == null">
+              Nenhuma
             </div>
         </div>
 
