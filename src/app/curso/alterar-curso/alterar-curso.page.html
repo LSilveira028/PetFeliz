@@ -1,0 +1,35 @@
+<ion-header>
+  <h2 style="text-align: center;"><b>Alterar curso</b></h2>
+</ion-header>
+
+<ion-content>
+  <div id="conteudo">
+    <div id="inputs">
+      
+      <form #f="ngForm" (ngSubmit)="atualizarCurso(f)" style="margin-top: 50px;">
+
+        <ion-item>
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input type="text" [(ngModel)]="nome" name="nome"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label position="floating">Ano de conclusão</ion-label>
+            <ion-datetime displayFormat="YYYY"
+                          min="1980" 
+                              [(ngModel)]="anoConclusao" name="anoConclusao">
+            </ion-datetime>
+        </ion-item>
+
+        <ion-button color="secondary" expand="block" id="botao" type="submit">
+          Alterar
+        </ion-button>
+
+      </form>
+
+      
+
+      
+    </div>
+  </div>
+</ion-content>

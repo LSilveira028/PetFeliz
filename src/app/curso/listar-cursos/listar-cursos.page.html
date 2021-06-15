@@ -18,7 +18,7 @@
   </div>
 
   <ion-list>
-    <ion-item *ngFor="let c of cursos">
+    <ion-item *ngFor="let c of cursos; let i = index">
       <div id="item-lista">
         <section id="dado-informacao">
           <div id=dado>
@@ -37,10 +37,10 @@
         </section>
   
         <section id="botoes">
-          <ion-button color="primary" expand="block">
+          <ion-button color="primary" expand="block" (click)="irParaAlterarCurso(i)">
             Alterar
           </ion-button>
-          <ion-button color="danger" expand="block">
+          <ion-button color="danger" expand="block" (click)="removerCurso(i)">
             Remover
           </ion-button>
         </section>

@@ -2,8 +2,8 @@ import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NavController, ToastController } from '@ionic/angular';
-import { Curso, CursoService } from '../services/curso/curso.service';
-import { StorageService } from '../services/local-storage/storage.service';
+import { Curso, CursoService } from '../../services/curso/curso.service';
+import { StorageService } from '../../services/local-storage/storage.service';
 
 @Component({
   selector: 'app-cadastrar-curso',
