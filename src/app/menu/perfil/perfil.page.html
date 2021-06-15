@@ -215,18 +215,22 @@
           <div class="tituloCursosPerfildwProprietario">
             <b>Cursos</b> <br>
           </div>
-          <!-- <div class="cursosPerfildwProprietario">
-            Adestramento de cães - 2019 <br> <br>
-            Cuidador de cães - 2018 <br> <br>
-          </div> -->
+          
+          <div *ngFor="let c of cursos" id="info-curso">
+            {{c.nome}} - {{c.anoConclusao | date : 'YYYY'}}
+          </div>
+          <div *ngIf="cursos == null" style="font-style: italic;">
+            Nenhum
+          </div>
+          
         </div>    
 
       <section id="botoes" *ngIf="idUsuarioLogado == 2">
         <ion-button expand="" color="secondary" (click)="abrirAlterarPerfil()">
           <b>Alterar perfil</b>
         </ion-button>
-        <ion-button expand="" color="secondary">
-          <b>Adicionar curso</b>
+        <ion-button expand="" color="secondary" (click)="irParaListarCursos()">
+          <b>editar cursos</b>
         </ion-button>
       </section>
     </div> <!--Fim DIV informações do perfil do DW--> <br>

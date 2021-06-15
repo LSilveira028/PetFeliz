@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, NavController, ToastController } from '@ionic/angular';
+import { Curso, CursoService } from 'src/app/services/curso/curso.service';
 import { StorageService } from 'src/app/services/local-storage/storage.service';
 import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 import { AvaliacoesPage } from '../avaliacoes/avaliacoes.page';
@@ -14,10 +15,12 @@ export class PerfilPage implements OnInit {
 
   public dogW: Usuario[] = [];
 
+  cursos: Curso[]
+
   constructor(public toastSalvarCtrl: ToastController, private storage: StorageService,
               private usuarioService: UsuarioService, private nav: NavController,
               private modal: ModalController, private usuario: UsuarioService,
-              private modal_: ModalController) { }
+              private modal_: ModalController, private cursoService: CursoService) { }
 
   idUsuarioLogado: number;
   @Input() dogWalker: Usuario;
@@ -100,9 +103,28 @@ export class PerfilPage implements OnInit {
 
   }
 
+  criarHeader(token)
+  {
+    var header = new HttpHeaders ({
+      'Authorization': 'Bearer ' + token
+    })
+
+    return header;
+  }
+
   ionViewWillEnter()
   {
+    this.storage.buscarToken().then(token => {
 
+      var header = this.criarHeader(token);
+
+      this.cursoService.listarCursos(header).subscribe(cursos => {
+
+        this.cursos = cursos;
+
+      })
+
+    })
   }
 
   //Quando a página carregar
@@ -117,6 +139,11 @@ export class PerfilPage implements OnInit {
     this.modal.dismiss();
   }
 
+  irParaListarCursos()
+  {
+    this.nav.navigateForward('listar-cursos');
+  }
+
   abrirAlterarPerfil()
   {
     this.nav.navigateForward('alterarperfil');
@@ -126,12 +153,7 @@ export class PerfilPage implements OnInit {
   {
   
 
-    this.dogW.forEach(dogWalker => {
-      
-      // var valorDecimal = dogWalker.servicoDogWalker.avaliacaoMedia % 1;
-      // var valorInteiro = dogWalker.servicoDogWalker.avaliacaoMedia - valorDecimal;
-
-      
+    this.dogW.forEach(dogWalker => {      
 
       //Verificação das avaliações em estrelas
       var valorDecimal = dogWalker.servicoDogWalker.avaliacaoMedia % 1;

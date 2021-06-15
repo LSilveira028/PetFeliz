@@ -90,7 +90,15 @@ const routes: Routes = [
   {
     path: 'avaliar-servico',
     loadChildren: () => import('./avaliar-servico/avaliar-servico.module').then( m => m.AvaliarServicoPageModule)
+  },  {
+    path: 'listar-cursos',
+    loadChildren: () => import('./listar-cursos/listar-cursos.module').then( m => m.ListarCursosPageModule)
+  },
+  {
+    path: 'cadastrar-curso',
+    loadChildren: () => import('./cadastrar-curso/cadastrar-curso.module').then( m => m.CadastrarCursoPageModule)
   }
+
 
 
 
