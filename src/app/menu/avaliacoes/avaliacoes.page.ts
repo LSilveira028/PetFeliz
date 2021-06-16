@@ -45,30 +45,22 @@ export class AvaliacoesPage implements OnInit {
 
         var header = this.criarHeader(token);
 
-        this.avaliacao.verificarAvaliacao(idDogWalker, header).subscribe(resp => {
-          console.log(resp)
-          //Se não houver avaliações, então mostratá o aviso de acorod com o usuário logado
-          if (resp) {
-            //Se for um proprietário logado, então mostratá um aviso especifico ao proprietario
+        this.avaliacao.listarAvaliacoesDogWalker(idDogWalker, header).subscribe(aval => {
+
+          this.avaliacoes = aval;
+          console.log(this.avaliacoes);
+
+          //se não houver avaliações, aparecerá um aviso 
+          if (aval.length == 0) {
             if (infoUsu.tipoConta == 1) {
               this.avisoProprietario = true;
             }
-            //Se for um dog walker logado, então mostratá um aviso especifico ao dog walker
-            if (infoUsu.tipoConta == 2) {
+            else
+            {
               this.avisoDogWalker = true;
             }
           }
-          else
-          {
 
-            this.avaliacao.listarAvaliacoesDogWalker(idDogWalker, header).subscribe(aval => {
-
-              this.avaliacoes = aval;
-              console.log(this.avaliacoes);
-
-            })
-
-          }
         })
 
       })

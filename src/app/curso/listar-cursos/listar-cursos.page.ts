@@ -38,7 +38,7 @@ export class ListarCursosPage implements OnInit {
 
       var header = this.criarHeader(token);
 
-    this.cursoService.listarCursos(header).subscribe(cursos => {
+    this.cursoService.listarCursos(0,header).subscribe(cursos => {
       this.cursos = cursos;
 
       if (this.cursos.length == 0) {

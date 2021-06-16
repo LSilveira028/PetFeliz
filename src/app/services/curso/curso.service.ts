@@ -24,9 +24,9 @@ export class CursoService {
     return this.http.post(this.api_url + "AdicionarCurso", curso, { headers: header });
   }
 
-  listarCursos(header: HttpHeaders)
+  listarCursos(idDogW: number, header: HttpHeaders)
   {
-    return this.http.get<Curso[]>(this.api_url + "ListarCursos", { headers: header});
+    return this.http.get<Curso[]>(this.api_url + "ListarCursos/" + idDogW, { headers: header});
   }
 
   alterarCurso(idCurso: number, curso: Curso, header: HttpHeaders)

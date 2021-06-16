@@ -216,10 +216,10 @@
             <b>Cursos</b> <br>
           </div>
           
-          <div *ngFor="let c of cursos" id="info-curso">
+          <div *ngFor="let c of cursos" class="info-curso">
             {{c.nome}} - {{c.anoConclusao | date : 'YYYY'}}
           </div>
-          <div *ngIf="cursos == null" style="font-style: italic;">
+          <div *ngIf="cursos == null" style="font-style: italic;" class="info-curso">
             Nenhum
           </div>
           

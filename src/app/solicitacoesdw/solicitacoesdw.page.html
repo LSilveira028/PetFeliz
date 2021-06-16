@@ -35,7 +35,7 @@
                 
                 <br>
                 <div class="dataServicoSolicitacoesDW"> <!--Data da solicitacao-->
-                    <b>Data:</b>{{s.servico.dataSolicitacao}}, {{s.servico.horaSolicitacao}}
+                    <b>Data: </b>{{s.servico.dataSolicitacao}}, {{s.servico.horaSolicitacao}}
                 </div>
                 <br>
   
@@ -62,7 +62,7 @@
         <div class="valor-total">
           <div class="valorTotalSolicitacoesDW"> <!--preço total-->
             <b>Valor total:</b>
-            <b style="margin-left: 10px; color:forestgreen ;">R$ {{s.servico.valorTotal}}</b>
+            <b style="margin-left: 10px; color:forestgreen ;">{{s.servico.valorTotal | currency : 'BRL'}}</b>
           </div>
         </div>
         

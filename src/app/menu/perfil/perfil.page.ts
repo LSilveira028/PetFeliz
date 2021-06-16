@@ -58,6 +58,8 @@ export class PerfilPage implements OnInit {
 
         this.avaliacaoEstrelas();
 
+        //listar os cursos do dog walker
+        this.listarCursos(this.dogWalker.id);
 
       }
       if (infoUsu.tipoConta == 2) {
@@ -93,10 +95,9 @@ export class PerfilPage implements OnInit {
         
         })
 
+        this.listarCursos(this.idUsuarioLogado);
 
       }
-
-
     })
 
     
@@ -112,19 +113,32 @@ export class PerfilPage implements OnInit {
     return header;
   }
 
-  ionViewWillEnter()
+  listarCursos(idDogW: number)
   {
     this.storage.buscarToken().then(token => {
 
       var header = this.criarHeader(token);
 
-      this.cursoService.listarCursos(header).subscribe(cursos => {
+      this.cursoService.listarCursos(idDogW,header).subscribe(cursos => {
 
         this.cursos = cursos;
 
       })
 
     })
+  }
+
+  ionViewWillEnter()
+  {
+    // this.storage.buscarInformacoesUsuario().then(infoUsu => {
+
+    //   if (infoUsu.tipoConta == 1) {
+        
+    //   }
+
+    // })
+
+    // this.listarCursos(this.dogWalker.id);
   }
 
   //Quando a página carregar
