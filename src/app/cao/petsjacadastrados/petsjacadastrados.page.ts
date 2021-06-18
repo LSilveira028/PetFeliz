@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController, NavController, ToastController } from '@ionic/angular';
+import { MeuscaesPage } from 'src/app/menu/meuscaes/meuscaes.page';
 import { Cao, CaoService } from '../../services/cao.service';
 import { StorageService } from '../../services/local-storage/storage.service';
 import { AlterarCaoPage } from '../alterar-cao/alterar-cao.page';
@@ -96,9 +97,24 @@ export class PetsjacadastradosPage implements OnInit {
     return header;
   }
 
-  irParaCadastrarCao()
+  async irParaCadastrarCao()
   {
-    this.nav.navigateForward('meuscaes');
+    
+    const modal = await this.modal.create({
+      component: MeuscaesPage,
+      cssClass: 'modal-cadastrar-cao'
+    });
+
+    modal.onDidDismiss().then(r => {
+
+      if (r.data == true) {
+        this.listarCaes();
+        this.toastCaoCadastrado();
+      }
+
+    })
+
+    return await modal.present();
   }
 
   async toast(mensagem: string)
@@ -139,6 +155,15 @@ export class PetsjacadastradosPage implements OnInit {
     })
 
     await alert.present();
+  }
+
+  async toastCaoCadastrado() {
+    const toast = await this.toastCtrl.create({
+      message: 'Cão cadastrado!',
+      duration: 2000,
+    });
+
+    toast.present();    
   }
 
   //Funções de retorno no HTML

@@ -1,13 +1,9 @@
-<ion-header>
-  <ion-toolbar color="petfeliz"><!--Toolbar-->
-    <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
-    <ion-title class="tituloToolBar" color="tertiary"> <b>Cadastrar cão</b> <!-- <b> deixa o texto em negrito --> </ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content> <!--Conteúdo do app-->
   
   <div id="conteudo">
+
+    <h1 id="title"><b>Cadastrar cão</b></h1>
 
     <form #f="ngForm" (ngSubmit)="cadastarCao(f)">
       <ion-item>

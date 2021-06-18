@@ -69,7 +69,8 @@
 
 .modal-alterar-curso .modal-wrapper,
 .modal-alterar-cao .modal-wrapper,
-.modal-cadastrar-curso .modal-wrapper{
+.modal-cadastrar-curso .modal-wrapper,
+.modal-cadastrar-cao .modal-wrapper{
     border-radius: 20px 20px 0px 0px;
     width: 100%;
     //Faz o modal ficar no bottom da página
@@ -84,9 +85,13 @@
 }
 
 .modal-alterar-cao .modal-wrapper{
-    height: 390px;
+    height: 400px;
 }
 
 .modal-cadastrar-curso .modal-wrapper{
     height: 270px;
+}
+
+.modal-cadastrar-cao .modal-wrapper{
+    height: 400px;
 }

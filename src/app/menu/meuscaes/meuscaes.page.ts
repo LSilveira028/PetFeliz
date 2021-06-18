@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionSheetController, NavController, ToastController } from '@ionic/angular';
+import { ActionSheetController, ModalController, NavController, ToastController } from '@ionic/angular';
 import {NgForm } from '@angular/forms';
 import { Cao, CaoService } from 'src/app/services/cao.service';
 import { StorageService } from 'src/app/services/local-storage/storage.service';
@@ -16,7 +16,8 @@ export class MeuscaesPage implements OnInit {
 
   constructor(public toastCtrl: ToastController,
     public ffcsca: ActionSheetController,
-    public nav: NavController, private storage: StorageService, private caoService: CaoService
+    public nav: NavController, private storage: StorageService, private caoService: CaoService,
+    private modal: ModalController
     ) { }
 
   ngOnInit() {
@@ -40,7 +41,9 @@ export class MeuscaesPage implements OnInit {
 
       this.caoService.cadastrarCao(this.cao, header).subscribe(resp => {
         
-        this.toastCaoCadastrado();
+        var cadastrado: boolean = true;
+
+        this.modal.dismiss(cadastrado)
 
       });
 
@@ -48,16 +51,7 @@ export class MeuscaesPage implements OnInit {
 
   }
 
-  async toastCaoCadastrado() {
-    const toast = await this.toastCtrl.create({
-      message: 'Cão cadastrado!',
-      duration: 2000,
-    });
-
-    this.abrirPagina();
-
-    toast.present();    
-  }
+  
  
   criarHeader(token)
   {
