@@ -17,15 +17,26 @@
     <ion-item *ngFor="let c of caes; let i = index">
       <div id="item-lista">
         <section id="dado-informacao">
-          <div id=dado>
+
+          <div id="dado">
+
+            <div class="info"><b>Nome:</b> {{c.nome}} </div>
+            <div class="info"><b>Idade:</b> {{ verificarIdade(c.idade)}} </div>
+            <div class="info"><b>Peso:</b> {{c.peso.descricao}}</div>
+            <div class="info"><b>Raça:</b> {{c.raca}}</div>
+            <div class="info"><b>Porte: </b> {{ converterPorte(c.porte) }}</div>
+
+          </div>
+
+          <!-- <div id=dado>
             <b>Nome: &nbsp;</b>
             <b>Idade: </b>
             <b>Peso: </b>
             <b>Raça: </b>
             <b>Porte: </b>
-          </div>
+          </div> -->
           
-          <div id="informacao">
+          <!-- <div id="informacao">
             <div>
               {{c.nome}}
             </div>
@@ -50,7 +61,7 @@
             <div *ngIf="c.porte == 3">
               Grande
             </div>
-          </div>
+          </div> -->
         </section>
   
         <section id="botoes">

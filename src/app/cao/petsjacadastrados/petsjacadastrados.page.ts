@@ -73,12 +73,13 @@ export class PetsjacadastradosPage implements OnInit {
       }
     });
     
-    //ao fechar o modal, ele listará os cães e mostrará o toast, caso houver uma alteração
+    //ao fechar o modal, ele listará os cães. Mostrará o toast, caso houver uma alteração
     modal.onDidDismiss().then(resp => {
+
+      this.listarCaes();
 
       if (resp.data == true) {
         this.toast("Cão alterado!");
-        this.listarCaes();
       }
       
     })
@@ -139,4 +140,33 @@ export class PetsjacadastradosPage implements OnInit {
 
     await alert.present();
   }
+
+  //Funções de retorno no HTML
+    verificarIdade(idade)
+    {
+      if (idade > 1) {
+        return idade + " anos"
+      }
+      else
+      {
+        return idade + "ano";
+      }
+    }
+
+    converterPorte(porte: number)
+    {
+      if (porte == 1) {
+        return "Pequeno";
+      }
+      else
+      {
+        if (porte == 2) {
+          return "Médio"
+        }
+        else
+        {
+          return "Grande";
+        }
+      }
+    }
 }
