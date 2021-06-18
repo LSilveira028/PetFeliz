@@ -45,7 +45,7 @@ const routes: Routes = [
   },
   {
     path: 'petsjacadastrados',
-    loadChildren: () => import('./petsjacadastrados/petsjacadastrados.module').then( m => m.PetsjacadastradosPageModule)
+    loadChildren: () => import('./cao/petsjacadastrados/petsjacadastrados.module').then( m => m.PetsjacadastradosPageModule)
   },
   {
     path: 'cadastro',
@@ -102,7 +102,12 @@ const routes: Routes = [
   {
     path: 'alterar-curso',
     loadChildren: () => import('./curso/alterar-curso/alterar-curso.module').then( m => m.AlterarCursoPageModule)
+  },
+  {
+    path: 'alterar-cao',
+    loadChildren: () => import('./cao/alterar-cao/alterar-cao.module').then( m => m.AlterarCaoPageModule)
   }
+
 
 
 

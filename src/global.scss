@@ -53,14 +53,14 @@
     right: 0;
 }
 
-//Estilos do alerta ao solicitar serviço
+//Estilos do alert de solicitar e remover cão
 .alerta-solicitar .botao-alert-neutro{
     color: black;
 }
-.alerta-solicitar .botao-alert-danger{
+.alerta-solicitar .botao-alert-danger,
+.alerta-remover-cao .botao-alert-danger{
     color: red;
 }
-
 //Estilo do alerta: "Sem cão"
 .botao-alert-sem-cao .botao-alert-neutro{
     color: black;
@@ -69,6 +69,17 @@
 .modal-alterar-curso .modal-wrapper{
     border-radius: 20px 20px 0px 0px;
     height: 350px;
+    width: 100%;
+    //Faz o modal ficar no bottom da página
+    position: fixed;
+    left: 0;
+    bottom: 0px;
+    right: 0;
+}
+
+.modal-alterar-cao .modal-wrapper{
+    border-radius: 20px 20px 0px 0px;
+    height: 390px;
     width: 100%;
     //Faz o modal ficar no bottom da página
     position: fixed;

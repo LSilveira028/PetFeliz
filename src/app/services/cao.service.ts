@@ -47,9 +47,19 @@ export class CaoService {
     return this.http.get<Cao[]>(this.api_url + "ListarCaesProprietario", { headers: header })
   }
 
+  alterarCao(idCao: number, header: HttpHeaders, cao: Cao)
+  {
+    return this.http.put(this.api_url + "AlterarCao/" + idCao, cao, { headers: header })
+  }
+
   cadastrarCao(cao: Cao, header: HttpHeaders)
   {
     return this.http.post(this.api_url + "CadastrarCao", cao, { headers: header, responseType: 'text' });
+  }
+
+  removerCao(idCao: number, header: HttpHeaders)
+  {
+    return this.http.delete(this.api_url + "DeletarCao/" + idCao, {headers: header});
   }
 
   associarCaoServico(idCao: number, header: HttpHeaders)
