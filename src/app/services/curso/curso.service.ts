@@ -34,4 +34,9 @@ export class CursoService {
     return this.http.put(this.api_url + "AlterarCurso/" +  idCurso, curso, { headers: header} )
   }
 
+  removerCurso(idCurso: number, header: HttpHeaders)
+  {
+    return this.http.delete(this.api_url + "RemoverCurso/" + idCurso, { headers: header })
+  }
+
 }

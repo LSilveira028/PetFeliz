@@ -1,9 +1,10 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { Curso, CursoService } from '../../services/curso/curso.service';
 import { StorageService } from '../../services/local-storage/storage.service';
 import { AlterarCursoPage } from '../alterar-curso/alterar-curso.page';
+import { CadastrarCursoPage } from '../cadastrar-curso/cadastrar-curso.page';
 
 @Component({
   selector: 'app-listar-cursos',
@@ -17,7 +18,8 @@ export class ListarCursosPage implements OnInit {
   aviso: boolean = false;
 
   constructor(private nav: NavController, private cursoService: CursoService,
-             private storage: StorageService, private modal: ModalController) { }
+             private storage: StorageService, private modal: ModalController,
+             private alertCtrl: AlertController) { }
 
   ngOnInit() {
   }
@@ -55,6 +57,23 @@ export class ListarCursosPage implements OnInit {
     })
   }
 
+  removerCurso(idCurso: number)
+  {
+
+    this.storage.buscarToken().then( token => {
+
+      var header = this.criarHeader(token);
+
+      this.cursoService.removerCurso(idCurso, header).subscribe(() => {
+
+        this.listarCursos();
+
+      })
+
+    } )
+
+  }
+
   criarHeader(token)  
   {
 
@@ -65,9 +84,24 @@ export class ListarCursosPage implements OnInit {
     return header;
   }
 
-  irParaCadastrarCurso()
+  async irParaCadastrarCurso()
   {
-    this.nav.navigateForward('cadastrar-curso');
+
+    const modal = await this.modal.create({
+      component: CadastrarCursoPage,
+      cssClass: 'modal-cadastrar-curso'
+    })
+
+    modal.onDidDismiss().then(r => {
+
+      if (r.data == true) {
+        this.listarCursos();
+      }
+
+    })
+
+    return await modal.present();
+
   }
 
   async irParaAlterarCurso(index: number)
@@ -89,6 +123,35 @@ export class ListarCursosPage implements OnInit {
     });
 
     return await modal.present();
+  }
+
+  async alertRemoverCurso(indexCurso: number)
+  {
+
+    var curso: Curso = this.cursos[indexCurso];
+
+    var alert = await this.alertCtrl.create({
+      'header': 'Tem certeza?',
+      'message': 'Deseja remover o curso?',
+      cssClass: 'alerta-remover-curso',
+      buttons: [
+        {
+          text: 'Cancelar',
+        },
+        {
+          cssClass: 'botao-alert-danger',
+          text: 'Sim',
+          handler: () => {
+
+            this.removerCurso(curso.id)
+
+          }
+        }
+
+      ]
+    })
+
+    await alert.present();
   }
 
 }

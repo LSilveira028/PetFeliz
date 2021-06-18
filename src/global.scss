@@ -58,7 +58,8 @@
     color: black;
 }
 .alerta-solicitar .botao-alert-danger,
-.alerta-remover-cao .botao-alert-danger{
+.alerta-remover-cao .botao-alert-danger,
+.alerta-remover-curso .botao-alert-danger{
     color: red;
 }
 //Estilo do alerta: "Sem cão"
@@ -66,9 +67,10 @@
     color: black;
 }
 
-.modal-alterar-curso .modal-wrapper{
+.modal-alterar-curso .modal-wrapper,
+.modal-alterar-cao .modal-wrapper,
+.modal-cadastrar-curso .modal-wrapper{
     border-radius: 20px 20px 0px 0px;
-    height: 350px;
     width: 100%;
     //Faz o modal ficar no bottom da página
     position: fixed;
@@ -77,13 +79,14 @@
     right: 0;
 }
 
+.modal-alterar-curso .modal-wrapper{
+    height: 300px;
+}
+
 .modal-alterar-cao .modal-wrapper{
-    border-radius: 20px 20px 0px 0px;
     height: 390px;
-    width: 100%;
-    //Faz o modal ficar no bottom da página
-    position: fixed;
-    left: 0;
-    bottom: 0px;
-    right: 0;
+}
+
+.modal-cadastrar-curso .modal-wrapper{
+    height: 270px;
 }

@@ -1,7 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { NavController, ToastController } from '@ionic/angular';
+import { ModalController, NavController, ToastController } from '@ionic/angular';
 import { Curso, CursoService } from '../../services/curso/curso.service';
 import { StorageService } from '../../services/local-storage/storage.service';
 
@@ -15,7 +15,8 @@ export class CadastrarCursoPage implements OnInit {
   curso: Curso;
 
   constructor(private cursoService: CursoService, private storage: StorageService,
-              private toast: ToastController, private nav: NavController) { }
+              private toast: ToastController, private nav: NavController,
+              private modal: ModalController) { }
 
 
   ngOnInit() {
@@ -36,9 +37,13 @@ export class CadastrarCursoPage implements OnInit {
         console.log(resp);
 
         //emite alerta de que o curso foi adicionado
-        this.alertaCursoAdicionado();
+        // this.alertaCursoAdicionado();
         //vai para a tela de listar cursos
-        this.nav.navigateBack('listar-cursos');
+        // this.nav.navigateBack('listar-cursos');
+
+        var cadastrado: Boolean = true;
+
+        this.modal.dismiss(cadastrado);
         
 
       })
