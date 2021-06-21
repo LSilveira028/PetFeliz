@@ -1,12 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
-import { ModalController, AlertController, ToastController } from '@ionic/angular';
+import { ModalController, AlertController, ToastController, LoadingController } from '@ionic/angular';
 import { Cao, CaoService } from '../services/cao.service';
 import { Servico, ServicoService, UsuariosServico } from '../services/servico.service';
 import { Usuario, UsuarioService } from '../services/usuario.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { isNull } from '@angular/compiler/src/output/output_ast';
-import { LoadingComponent } from '../componentes/loading/loading.component';
 import { StorageService } from '../services/local-storage/storage.service';
 import { HttpHeaders } from '@angular/common/http';
 
@@ -36,7 +35,7 @@ export class SolicitarservicodwPage implements OnInit {
               private modal: ModalController, private _modal: ModalController,
               private geolocation: Geolocation, private toast: ToastController,
               private serviceServico: ServicoService, private alertController: AlertController,
-              private storageService: StorageService
+              private storageService: StorageService, private loading: LoadingController
               ) { }
 
   //Estilização do select de cães
@@ -148,7 +147,7 @@ export class SolicitarservicodwPage implements OnInit {
             cssClass: 'botao-alert-neutro',
             handler: (action) => {
               //Ação que será feita ao clicar em 'Sim'
-              this.loadingModal();
+              this.presentLoading();
               this.solicitarServico();
             }
           },
@@ -229,7 +228,7 @@ export class SolicitarservicodwPage implements OnInit {
                 
               }
               //Fecha o modal de loading
-              this._modal.dismiss();
+              this.loading.dismiss();
               //Fecha o modal de solicitar serviço
               this.modal.dismiss();
               //Emite alerta avisando que o serviço foi solicitado
@@ -242,18 +241,16 @@ export class SolicitarservicodwPage implements OnInit {
 
     });
   }
-
-  async loadingModal()
+  
+  async presentLoading()
   {
-    const modal = await this._modal.create({
-      component: LoadingComponent,
-      cssClass: 'modal-loading',
-      backdropDismiss: false
+    const loading = await this.loading.create({
+      message: 'Solicitando...'
     });
 
-    return await modal.present();
+    await loading.present();
   }
-  
+
   async avisoSolicitado()
   {
     const toast = await this.toast.create({

@@ -211,7 +211,7 @@
             </div>
         </div>
 
-        <div class="areaCursosPerfildwProprietario">
+        <div id="cursos">
           <div class="tituloCursosPerfildwProprietario">
             <b>Cursos</b> <br>
           </div>
@@ -219,7 +219,7 @@
           <div *ngFor="let c of cursos" class="info-curso">
             {{c.nome}} - {{c.anoConclusao | date : 'YYYY'}}
           </div>
-          <div *ngIf="cursos == null" style="font-style: italic;" class="info-curso">
+          <div *ngIf="c == null" style="font-style: italic;" class="info-curso">
             Nenhum
           </div>
           

@@ -5,6 +5,11 @@
     display: flex;
     align-items: center;
 }
+
+.informacoesPerfildwProprietario{
+    width: 100%;
+}
+
 .areaNomeDataEntrouEmPerfildwProprietario
 {
     color:#000000;
@@ -180,4 +185,8 @@
 .info-curso{
     margin-left: 10%;
     margin-top: 5%;
+}
+
+#cursos{
+    margin-bottom: 15px;
 }
