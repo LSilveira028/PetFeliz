@@ -1,18 +1,20 @@
 # Pet Feliz
 
+![Logo](https://i.ibb.co/2FZcpBQ/Banner.jpg)
+
 ## 🗒️ Sobre
 > Status: Desenvolvimento 🛠️
 
 ### Este App permite você contratar um dog walker próximo a sua região ou, se preferir, se tornar um dog walker!
 #### Solução desenvolvida para o TCC do curso Técnico em Desenvolvimento de Sistemas.
 
-Tabela de conteúdos
-=================
+## Tabela de conteudo
 <!--ts-->
-   * [Sobre](#Sobre)
+   * [Sobre](#sobre)
    * [Tabela de Conteúdo](#tabela-de-conteudo)
-   * [Imagens do App](#app-imagens)
+   * [Imagens do App](#imagens-do-app)
    * [Tecnologias](#tecnologias)
+   * [Licença](#licença)
 <!--te-->
 
 ## Imagens do App
@@ -37,6 +39,13 @@ Tabela de conteúdos
 * [Angular](https://angular.io/start)
 * [.NET EF Core](https://docs.microsoft.com/pt-br/ef/core/cli/dotnet)
 * [SQL Server](https://www.somee.com/)
+
+## 🧑‍💻 Autores
+
+- [Anderson Rodrigo da Silva](https://github.com/anderson314)
+  - [![Linkedin Badge](https://img.shields.io/badge/-Anderson-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/anderson-rodrigo-da-silva-63598a209/)](https://www.linkedin.com/in/anderson-rodrigo-da-silva-63598a209/) 
+
+- [Lucas Silveira de C. Ramos](https://github.com/LSilveira028)
 
 ## 📝 Licença
 Projeto sob licença do MIT. Leia o [LICENSE](https://github.com/anderson314/PetFeliz-1/blob/anderson/LICENSE), para mais informações.
