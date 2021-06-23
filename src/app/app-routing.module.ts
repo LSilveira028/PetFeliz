@@ -106,7 +106,11 @@ const routes: Routes = [
   {
     path: 'alterar-cao',
     loadChildren: () => import('./cao/alterar-cao/alterar-cao.module').then( m => m.AlterarCaoPageModule)
+  },  {
+    path: 'alterar-dados-pessoais',
+    loadChildren: () => import('./componentes/conta/alterar-dados-pessoais/alterar-dados-pessoais.module').then( m => m.AlterarDadosPessoaisPageModule)
   }
+
 
 
 

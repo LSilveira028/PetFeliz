@@ -6,17 +6,17 @@
 </ion-header>
 
 <ion-content>
-  <div id="content">
+  <div id="content" *ngFor="let u of usuarioLogado">
 
     <!-- Seção foto e nome -->
     <section id="foto-nome">
       
       <ion-avatar slot="start" style="height: 115px; width: 115px;">
-        <img src="/assets/retanguloCinzaFoto.png">
+        <img [src]="u.fotoPerfil">
       </ion-avatar>
 
       <div id="nome">
-        <h3><b>Jennifer Carolina da Silva</b></h3>
+        <h3><b>{{u.nome}}</b></h3>
       </div>
      
 
@@ -31,30 +31,22 @@
 
       <div class="inputs">
 
-        <div>
-          <ion-item>
-            <ion-label posistion="fixed">Nome</ion-label>
-            <ion-input readonly>
-    
-            </ion-input>
-          </ion-item>
-    
-          
+        <div style="width: 100%;">    
           <ion-item>
             <ion-label position="floating">Data de nascimento</ion-label>
-            <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" readonly>
+            <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" readonly [(ngModel)]="u.dataNascimento">
             </ion-datetime>
           </ion-item>
           
           <ion-item>
-            <ion-label posistion="fixed">Número de celular</ion-label>
-            <ion-input readonly>
+            <ion-label position="fixed">WhatsApp</ion-label>
+            <ion-input readonly type="text" [(ngModel)]="u.whatsApp">
     
             </ion-input>
           </ion-item>
         </div>
         
-        <ion-button color="primary" class="botao">alterar</ion-button>
+        <ion-button color="primary" class="botao" (click)="alterarDadosPessoais(u.dataNascimento)">alterar</ion-button>
       
       </div>
     </section>
@@ -67,24 +59,22 @@
       <div class="inputs">
         <div style="width: 100%">
           <ion-item>
-            <ion-label posistion="fixed">E-mail</ion-label>
-            <ion-input readonly>
-    
+            <ion-label position="fixed">E-mail</ion-label>
+            <ion-input readonly [(ngModel)]="u.email" type="text">
             </ion-input>
           </ion-item>
           
           <ion-item>
-            <ion-label posistion="fixed">Senha</ion-label>
+            <ion-label position="fixed">Senha</ion-label>
             <ion-input readonly type="password">
-    
+              *********
             </ion-input>
           </ion-item>
         </div>
 
-        <ion-button color="primary" class="botao">alterar e-mail</ion-button>
+        <ion-button color="primary" class="botao" (click)="presentAlertPrompt()">alterar senha</ion-button>
       
       </div>
-
 
     </section>
 
