@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { AlterarDadosPessoaisPage } from 'src/app/componentes/conta/alterar-dados-pessoais/alterar-dados-pessoais.page';
 import { StorageService } from 'src/app/services/local-storage/storage.service';
 import { Usuario } from 'src/app/services/usuario.service';
@@ -13,7 +13,8 @@ export class ContaPage implements OnInit {
 
   constructor(private storage: StorageService,
               private modal: ModalController,
-              private alert: AlertController) { }
+              private alert: AlertController,
+              private toast: ToastController) { }
 
   usuarioLogado: Usuario[] = [];
 
@@ -22,22 +23,25 @@ export class ContaPage implements OnInit {
 
   ionViewWillEnter()
   {
+    this.buscarUsuarioLogado();
+  }
+
+  buscarUsuarioLogado()
+  {
     this.storage.buscarInformacoesUsuario().then(infoUsu => {
 
       console.log(infoUsu)
 
-      // this.usuarioLogado[0] = infoUsu;
+      this.usuarioLogado[0] = infoUsu;
 
-      this.usuarioLogado.push(infoUsu);
+      // this.usuarioLogado.push(infoUsu);
     })
   }
 
+  
+
   async alterarDadosPessoais(dataNascimento: any)
   {
-
-    // console.log(this.usuarioLogado[0].DataNascimento)
-    // console.log(this.usuarioLogado[0].whatsApp)
-
 
     var modal = await this.modal.create({
       component: AlterarDadosPessoaisPage,
@@ -48,23 +52,33 @@ export class ContaPage implements OnInit {
       }
     })
 
+    modal.onDidDismiss().then(resp => {
+
+      if (resp.data == true) {
+        //mostra a mensagem em um toast
+        this.toastUsuarioAtualizado();
+        //atualiza as informações do usuário na página
+        this.buscarUsuarioLogado();
+      }
+
+    })
+
     return await modal.present();
   }
 
   async presentAlertPrompt() {
     const alert = await this.alert.create({
-      cssClass: 'my-custom-class',
       header: 'Alterar senha',
       inputs: [
         {
           name: 'senhaAtual',
-          type: 'text',
+          type: 'password',
           placeholder: 'Senha atual'
         },  
         {
           name: 'senhaNova',
-          type: 'text',
-          // id: 'name2-id',
+          type: 'password',
+          id: 'name2-id',
           placeholder: 'Senha nova'
         },
         
@@ -75,11 +89,13 @@ export class ContaPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            console.log('Confirm Cancel');
           }
         }, {
           text: 'Ok',
-          handler: () => {
+          handler: (alertInputs) => {
+
+            console.log(alertInputs.senhaAtual);
+
             console.log('Confirm Ok');
           }
         }
@@ -87,6 +103,16 @@ export class ContaPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  async toastUsuarioAtualizado()
+  {
+    var toast = await this.toast.create({
+      message: "Usuário atualizado com sucesso!",
+      duration: 2000
+    })
+
+    return await toast.present();
   }
 
 }

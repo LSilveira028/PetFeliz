@@ -103,4 +103,9 @@ export class UsuarioService {
   {
     return this.http.put(this.api_url + "AlterarDisponibilidade/" + idDisponibilidade, Usuario, {headers: header, responseType: 'text'})
   }
+
+  atualizarUsuario(usuario: Usuario, header: HttpHeaders)
+  {
+    return this.http.patch(`${this.api_url}AtualizarUsuario`, usuario, { headers: header})
+  }
 }
