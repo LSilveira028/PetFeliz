@@ -37,3 +37,6 @@ Tabela de conteúdos
 * [Angular](https://angular.io/start)
 * [.NET EF Core](https://docs.microsoft.com/pt-br/ef/core/cli/dotnet)
 * [SQL Server](https://www.somee.com/)
+
+## 📝 Licença
+Projeto sob licença do MIT. Leia o [LICENSE](https://github.com/anderson314/PetFeliz-1/blob/anderson/LICENSE), para mais informações.
