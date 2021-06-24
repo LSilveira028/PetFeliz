@@ -5,8 +5,9 @@
 ## 🗒️ Sobre
 > Status: Desenvolvimento 🛠️
 
-### Este App permite você contratar um dog walker próximo a sua região ou, se preferir, se tornar um dog walker!
-#### Solução desenvolvida para o TCC do curso Técnico em Desenvolvimento de Sistemas.
+**Este App permite você contratar um dog walker próximo a sua região ou, se preferir, se tornar um dog walker!**
+
+**Solução desenvolvida para o TCC do curso Técnico em Desenvolvimento de Sistemas.**
 
 ## Tabela de conteudo
 <!--ts-->
