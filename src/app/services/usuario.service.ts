@@ -108,4 +108,9 @@ export class UsuarioService {
   {
     return this.http.patch(`${this.api_url}AtualizarUsuario`, usuario, { headers: header})
   }
+
+  alterarSenha(senhaAtual, senhaNova, header: HttpHeaders)
+  {
+    return this.http.patch(`${this.api_url}AtualizarSenha/${senhaAtual}/${senhaNova}`, Usuario, { headers: header, responseType: 'text' })
+  }
 }

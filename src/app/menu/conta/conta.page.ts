@@ -1,8 +1,9 @@
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController, ToastController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { AlterarDadosPessoaisPage } from 'src/app/componentes/conta/alterar-dados-pessoais/alterar-dados-pessoais.page';
 import { StorageService } from 'src/app/services/local-storage/storage.service';
-import { Usuario } from 'src/app/services/usuario.service';
+import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-conta',
@@ -14,7 +15,10 @@ export class ContaPage implements OnInit {
   constructor(private storage: StorageService,
               private modal: ModalController,
               private alert: AlertController,
-              private toast: ToastController) { }
+              private toast: ToastController,
+              private loading: LoadingController,
+              private usuarioService: UsuarioService,
+              ) { }
 
   usuarioLogado: Usuario[] = [];
 
@@ -38,7 +42,64 @@ export class ContaPage implements OnInit {
     })
   }
 
-  
+  alterarSenha(senhaAtual, senhaNova)
+  {
+
+    this.storage.buscarToken().then(token => {
+
+      const header = new HttpHeaders ({
+        'Authorization': 'Bearer ' + token
+      });
+
+      this.usuarioService.alterarSenha(senhaAtual, senhaNova, header).subscribe( resp => {
+
+        //fecha o loading de carregamento
+        this.loading.dismiss().then(() => {
+          //Emite o alerta de que a senha foi alterada
+          this.alertMudancaSenha("Senha alterada.", "Sua senha foi alterada com sucesso!")
+        })
+
+
+        console.log("Senha alterada!");
+
+      }, (error: HttpErrorResponse) => {
+         
+        //possiveis resultados de erro:
+          //caso a senha atual seja igual a nova
+          var senhaIgual = "Sua nova senha não pode ser igual a antiga.";
+          //caso a senha seja incorreta
+          var senhaIncorreta = "Senha incorreta."
+
+        //Se o retorno for o 400, então quer dizer que a senha está incorreta.
+        if (error.status == 400) {
+          
+          if (error.error == senhaIncorreta) {
+             //fecha o loading de carregamento
+            this.loading.dismiss().then( () => {
+              //exibirá uma mensagem informando que a senha atual está incorreta.
+              this.alertMudancaSenha("Senha incorreta","Senha atual incorreta.");
+            })
+          }
+          
+          if (error.error == senhaIgual) {
+            //fecha o loading de carregamento
+            this.loading.dismiss().then( () => {
+              //exibirá uma mensagem informando que a senha atual está incorreta.
+              this.alertMudancaSenha("Ops!","Sua senha atual não pode ser igual a antiga.");
+            })
+          }
+
+       
+
+          
+
+        }
+        console.log("Senha incorreta!")
+
+      })
+
+    })
+  }
 
   async alterarDadosPessoais(dataNascimento: any)
   {
@@ -66,7 +127,7 @@ export class ContaPage implements OnInit {
     return await modal.present();
   }
 
-  async presentAlertPrompt() {
+  async componenteAlterarSenha() {
     const alert = await this.alert.create({
       header: 'Alterar senha',
       inputs: [
@@ -78,8 +139,12 @@ export class ContaPage implements OnInit {
         {
           name: 'senhaNova',
           type: 'password',
-          id: 'name2-id',
-          placeholder: 'Senha nova'
+          placeholder: 'Nova senha'
+        },
+        {
+          name: 'confirmarSenhaNova',
+          type: 'password',
+          placeholder: 'Confirme sua nova senha'
         },
         
       ],
@@ -94,9 +159,19 @@ export class ContaPage implements OnInit {
           text: 'Ok',
           handler: (alertInputs) => {
 
-            console.log(alertInputs.senhaAtual);
+            //Se a nova senha, digitada duas vezes, estiverem diferentes, aparecerá um aviso.
+            if (alertInputs.senhaNova != alertInputs.confirmarSenhaNova) 
+            {
+                //chamará o alerta com a mensagem abaixo
+                this.alertMudancaSenha("Senha incorreta",
+                                        "Sua nova senha não corresponde à confirmada.") 
+            }
+            else
+            {
+              this.loadingAlterarSenha();
 
-            console.log('Confirm Ok');
+              this.alterarSenha(alertInputs.senhaAtual, alertInputs.senhaNova);
+            }
           }
         }
       ]
@@ -113,6 +188,27 @@ export class ContaPage implements OnInit {
     })
 
     return await toast.present();
+  }
+
+  async alertMudancaSenha(subHeader: string, mensagem: string)
+  {
+    const alert = await this.alert.create({
+      subHeader: subHeader,
+      message: mensagem,
+      cssClass: "alert-alterar-senha",
+      buttons: ['Ok']
+    })
+
+    return await alert.present();
+  }
+
+  async loadingAlterarSenha()
+  {
+    const loading = await this.loading.create({
+      message: "Alterando..."
+    })
+
+    await loading.present();
   }
 
 }
