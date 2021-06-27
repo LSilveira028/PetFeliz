@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController, NavController, ToastController } from '@ionic/angular';
@@ -13,7 +14,7 @@ import { AlterarCaoPage } from '../alterar-cao/alterar-cao.page';
 })
 export class PetsjacadastradosPage implements OnInit {
 
-  caes: Cao[];
+  caes: Cao[] = [];
 
   constructor(private nav: NavController, private cao: CaoService, private storage: StorageService,
               private modal: ModalController, private toastCtrl: ToastController,
@@ -37,6 +38,29 @@ export class PetsjacadastradosPage implements OnInit {
       this.cao.listarCaesProprietario(header).subscribe(caes => {
 
         this.caes = caes;
+
+        // console.log(caes[0].dataNascimento)
+
+        var dataAtual = new Date()
+
+        this.caes.forEach(cao => {
+          
+          var dataNasc = new Date(cao.dataNascimento);
+
+          //Diferença em meses
+          var difMeses = dataAtual.getMonth() - dataNasc.getMonth();
+
+          cao.idade = dataAtual.getFullYear() - dataNasc.getFullYear();
+
+          if (difMeses < 0)
+          {
+              cao.idade =  dataAtual.getFullYear() - dataNasc.getFullYear() - 1;
+          }
+
+
+          console.log(difMeses)
+
+        });
 
       });
 

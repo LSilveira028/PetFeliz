@@ -58,3 +58,21 @@ section b{
     height: 50px;
     width: 160px;
 }
+
+.input::-webkit-input-placeholder { /* Chrome, Safari, Opera */
+    font-style: italic;
+  }
+  
+  .input:-moz-placeholder { /* Firefox 18- */
+    font-style: italic;
+    opacity: 1;
+  }
+  
+  .input::-moz-placeholder {  /* Firefox 19+ */
+    font-style: italic;
+    opacity: 1;
+  }
+  
+  .input:-ms-input-placeholder { /* IE10+ */ 
+    font-style: italic; 
+  }

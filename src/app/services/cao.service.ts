@@ -6,13 +6,16 @@ export class Cao
   id?: number;
   nome: number;
   raca: string;
-  idade: number;
   porte: number;
+  dataNascimento: Date;
   pesoId: number;
   peso?: {
     id: number;
     descricao: string;
   }
+
+  //não mapeado
+  idade: number;
 }
 
 export class CaoServico

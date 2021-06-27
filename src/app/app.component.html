@@ -4,6 +4,9 @@
       <ion-content>
         <ion-list id="inbox-list">
           <ion-list-header id="nome-usuario">{{usuario.nome}}</ion-list-header> <!--Texto "Pet Feliz no Header do Menu"-->
+         
+          <!--Tipo conta do usuário-->
+          <p id="tipo-conta">{{ converterTipoConta(usuario.tipoConta) }}</p>
 
           <div id="botoes" *ngIf="usuario.tipoConta == 2">
             <div>
@@ -15,7 +18,7 @@
               </button>
             </div>
 
-            <img src="/assets/info.png" height="20px" width="20px" (click)="alertDisponibilidade()">
+            <img src="/assets/info.png" height="20px" width="20px" (click)="alertDisponibilidade(usuario.disponivel)">
           
           </div>
             

@@ -19,7 +19,7 @@
     <!--Descrição sobre o Dog Walker-->
     <section id="sobre">
       <b>Sobre</b>
-      <textarea cols="38" rows="5" placeholder="Conte aqui sobre você, seu trabalho e suas experiências!"
+      <textarea class="input" cols="38" rows="5" placeholder="Conte aqui sobre você, seu trabalho e suas experiências!"
                 maxlength="600"
                 name="sobre"
                 [(ngModel)]="sobre"></textarea>
@@ -31,7 +31,7 @@
 
       <ion-item>
         <ion-label position="floating">R$</ion-label>
-        <ion-input type="number" placeholder="Ex: R$ 45" [(ngModel)]="valorServico" name="valorServico"></ion-input>
+        <ion-input class="input" type="number" placeholder="45.00" [(ngModel)]="valorServico" name="valorServico"></ion-input>
       </ion-item>
     </section>
 
@@ -52,7 +52,7 @@
     <section id="preferencias">
       <b>Preferências</b>
 
-      <textarea cols="38" rows="5" placeholder="Escreva aqui sobre suas preferências: se prefere trabalhar com determinada raça, porte, idade, ou qualquer outra preferência."
+      <textarea class="input" cols="38" rows="5" placeholder="Escreva aqui sobre suas preferências: se prefere trabalhar com determinada raça, porte, idade, ou qualquer outra preferência."
                 maxlength="250"
                 [(ngModel)]="preferencias"
                 name="preferencias"></textarea>

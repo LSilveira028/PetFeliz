@@ -53,6 +53,16 @@ export class AppComponent implements OnInit {
   }
 
 
+  converterTipoConta(idTipoConta)
+  {
+    if(idTipoConta == 1)
+    {
+      return "Proprietário"
+    }
+    else
+      return "Dog Walker"
+  }
+
   atualizarDisponibilidade(idDisponibilidade: number)
   { 
     //busca o token no storage
@@ -87,15 +97,30 @@ export class AppComponent implements OnInit {
     })
   }
 
-  async alertDisponibilidade()
+  async alertDisponibilidade(status: boolean)
   {
-    const alert = await this.alert.create({
-      subHeader: 'Sua disponibilidade',
-      message: 'Ao deixar sua disponibilidade como indisponível, você não receberá solicitações de serviço.',
-      buttons: ['Ok']
-    });
 
-    await alert.present();
+    if (status) {
+      const alert = await this.alert.create({
+        subHeader: 'Sua status',
+        message: 'Ao deixar seu status como disponível, você poderá receber solicitações de serviço.',
+        buttons: ['Ok']
+      });
+  
+      await alert.present();
+    }
+    else
+    {
+      const alert = await this.alert.create({
+        subHeader: 'Seu status',
+        message: 'Ao deixar seu status como indisponível, você não receberá solicitações de serviço.',
+        buttons: ['Ok']
+      });
+
+      await alert.present();
+    }
+
+    
   }
   
 }
