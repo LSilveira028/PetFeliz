@@ -21,8 +21,12 @@ export interface CaesServico
   cao: {
     nome: string;
     raca: string;
-    idade: string;
+    dataNascimento: Date;
+    idade: number;
     porte: string;
+    peso: {
+      descricao: string;
+    }
   }
 }
 

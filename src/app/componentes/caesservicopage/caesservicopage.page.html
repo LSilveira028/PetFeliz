@@ -28,22 +28,15 @@
         {{c.cao.raca}}
       </th>
       <th>
-        {{c.cao.idade}}
-      </th>
-
-      <!--Todos os possíveis portes que um cão pode ter-->
-      <th *ngIf="c.cao.porte == 1">
-        Pequeno
-      </th>
-      <th *ngIf="c.cao.porte == 2">
-        Médio
-      </th>
-      <th *ngIf="c.cao.porte == 3">
-        Grande
+        {{ verificarIdade(c.cao.idade)}}
       </th>
 
       <th>
-        25- 30kg
+        {{ converterPorte(c.cao.porte)}}
+      </th>
+
+      <th>
+        {{c.cao.peso.descricao}}
       </th>
     </tr>
   </table>
