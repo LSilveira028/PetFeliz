@@ -13,9 +13,9 @@ export class Curso{
 })
 export class CursoService {
 
-  // private api_url = "http://pet-feliz.somee.com/PetFeliz/Curso/";
+  private api_url = "http://pet-feliz.somee.com/PetFeliz/Curso/";
 
-  private api_url = "http://localhost:5000/Curso/";
+  // private api_url = "http://localhost:5000/Curso/";
 
   constructor(private http: HttpClient) { }
 

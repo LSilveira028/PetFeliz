@@ -14,9 +14,9 @@ export class ServicoDogWalker{
 })
 export class ServicoDogwalkerService {
 
-  // private api_url = 'http://pet-feliz.somee.com/PetFeliz/ServicoDogWalker/'
+  private api_url = 'http://pet-feliz.somee.com/PetFeliz/ServicoDogWalker/'
   
-  private api_url = "http://localhost:5000/ServicoDogWalker/"
+  // private api_url = "http://localhost:5000/ServicoDogWalker/"
 
   constructor(private http: HttpClient) { }
 
