@@ -5,20 +5,22 @@
 <ion-content>
   <div class="fundoRosaLogin">
 
+    <section>
       <img src="/assets/logoPetFeliz.png" style="height: 120px; width: 120px;" class="logoEntrarouCadastrar">
-    <div class="textoUmLogin">
+      
+      <div class="textoUmLogin">
+        <br>
+        <b>Torne-se um Dog Walker <br> ou contrate um.</b>
+      </div>
       <br>
-      <b>Torne-se um Dog Walker <br> ou contrate um.</b>
-    </div>
-    <br>
-    <div class="textoDoisLogin">
-      O Pet Feliz lhe ajudará a encontrar e contratar os Dog Walkers mais próximos da sua região. 
-    </div>
-    
-    <div class="botoesEntrarouCadastrar"> <br>
-      <ion-button expand="block" class="botaoEntrarLogin" color="secondary" (click)="abrirPagina(petsjacadastrados)"><b>Entrar</b></ion-button> <!--BOTÃO-->
-      <ion-button expand="block" class="botaoCadastrarLogin" color="secondary" fill="outline" (click)="abrirPagina(petsjacadastrados)"><b>Cadastrar</b></ion-button> <!--BOTÃO-->
-    </div>
-    
+      <div class="textoDoisLogin">
+        O Pet Feliz lhe ajudará a encontrar e contratar <br> os Dog Walkers mais próximos da sua região. 
+      </div>
+      
+      <div class="botoesEntrarouCadastrar"> <br>
+        <ion-button expand="block" class="botaoEntrarLogin" color="secondary" (click)="abrirPaginaEntrar()"><b>Entrar</b></ion-button> <!--BOTÃO-->
+        <ion-button expand="block" class="botaoCadastrarLogin" color="secondary" fill="outline" (click)="abrirPaginaCadastrar()"><b>Cadastrar</b></ion-button> <!--BOTÃO-->
+      </div>
+    </section>
   </div>
 </ion-content>

@@ -1,31 +1,41 @@
 
 
-<ion-content color="primary">
-    <div class="conteudo">
-        <img src="/assets/logoPetFeliz.png" style="height: 120px; width: 120px;">
+<ion-content color="petfeliz">
+    <form #f="ngForm" (ngSubmit)="logarUsuario(f)">
+        <div class="conteudo">
+            <img src="/assets/logoPetFeliz.png" style="height: 120px; width: 120px;">
+    
+            <div class="caixaBranca">
+                <div class="title">
+                    <b>Login</b>
+                </div>
+    
+                <ion-list>
+                    <!--Email-->
+                    <ion-item class="inputs">
+                        <ion-label position="floating">E-mail</ion-label>
+                        <ion-input type="email" placeholder="Digite seu e-mail" 
+                                    autofocus="true"
+                                    ngModel name="email"><!--Assim que a página abrir, o botão de email ficará em foco-->
+                        </ion-input>
+                    </ion-item>
+    
+                    <ion-item class="inputs">
+                        <ion-label position="floating">Senha</ion-label>
+                        <ion-input type="password"
+                                    placeholder="Digite sua senha"
+                                    ngModel name="passwordString"></ion-input>
+                    </ion-item>
+                </ion-list>
 
-        <div class="caixaBranca">
-            <div class="title">
-                <b>Login</b>
-            </div>
+                <div *ngIf="resultado == 1" class="dados-invalidos">
+                    E-mail ou senha inválidos.
+                </div>
 
-            <ion-list>
-                <!--Email-->
-                <ion-item class="inputs">
-                    <ion-label position="floating">E-mail</ion-label>
-                    <ion-input type="email" placeholder="Digite seu e-mail" 
-                                autofocus="true"><!--Assim que a página abrir, o botão de email ficará em foco-->
-                    </ion-input>
-                </ion-item>
-
-                <ion-item class="inputs">
-                    <ion-label position="floating">Senha</ion-label>
-                    <ion-input type="password" placeholder="Digite sua senha"></ion-input>
-                </ion-item>
-            </ion-list>
+                
+                <ion-button expand="block" color="secondary" class="botaoLogar" type="submit"><b>Entrar</b></ion-button>
             
-            <ion-button expand="block" color="secondary" class="botaoLogar"><b>Entrar</b></ion-button>
-        
+            </div>
         </div>
-    </div>
+    </form>
 </ion-content>

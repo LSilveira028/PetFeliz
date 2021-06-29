@@ -1,12 +1,18 @@
 .avatarSolicitarServicoDW{
-    top: 5%;
-    left: 0%;
+    // top: 5%;
+    // left: 0%;
+}
+
+.box-informacoes{
+    width: 100%;
 }
 
 .informacoes
 {
     height: 100%;
     width: 120%;
+
+    font-size: 15px;
 
     display: flex;
     flex-direction: row;
@@ -17,6 +23,12 @@
 
 .item-lista
 {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
     margin-bottom: 20px;
 }
 
@@ -43,6 +55,16 @@
     margin-top: 10px;
 }
 
+.valor-total{
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.valorTotalSolicitacoesDW{
+    margin-top: 10px;
+    float: right;
+}
+
 .valor-total-servico
 {
     float: right;
@@ -65,10 +87,56 @@
 
 #botoes
 {
+    width: 100vw;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     align-content: center;
 }
 
+#botoes div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
+.botao-chamar-caes
+{
+    margin-top: 20px;
+
+    display: flex;
+    color: gray;
+    font-size: 105%;
+    background-color: transparent;
+    width: max-content;
+}
+
+.botaoAbrirMapaSolicitacoesDW
+{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 40px;
+    width: 135px;
+    border-radius: 25px;
+    background-color: #FFF;
+    border: solid 2px rgb(110, 110, 110);
+}
+
+.botao-whatsapp
+{
+    margin-left: 13px;
+
+
+    height: 50px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: #47BE53;
+}
+
+.textoAbrirMapa
+{
+    font-size: 130%;
+}

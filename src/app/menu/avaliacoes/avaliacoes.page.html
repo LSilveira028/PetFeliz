@@ -1,0 +1,117 @@
+<ion-header>
+
+  <ion-toolbar color="petfeliz"><!--Toolbar-->
+    <div id="botao-voltar" (click)="fecharModalAvaliacoes()" slot="start"
+        *ngIf="idUsuarioLogado == 1">
+      <img src="/assets/arrow-left.png" width="30px" height="30px">
+    </div>
+
+    <ion-menu-button color ="tertiary" slot="start"
+                      *ngIf="idUsuarioLogado == 2"></ion-menu-button> <!--Menu hamburguer-->
+
+
+    <ion-title color="tertiary"> <b>Avaliações</b> <!-- <b> deixa o texto em negrito --> </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="aviso" *ngIf="avisoProprietario == true">Este Dog Walker não possui avaliações.</div>
+  <div class="aviso" *ngIf="avisoDogWalker == true">Você não possui avaliações.</div>
+  
+  <ion-list>
+    <ion-item *ngFor="let aval of avaliacoes">
+      <div id="item-content">
+
+        <section id="superior">
+          <div id="avaliador-nome-nota">
+            <ion-avatar  style="height: 50px; width: 50px;">
+              <img [src]="aval.avaliacao.usuarioAvaliacao[0].usuario.fotoPerfil"> 
+            </ion-avatar> 
+
+            <div id="nome-nota">
+              <div>{{aval.avaliacao.usuarioAvaliacao[0].usuario.nome}}</div>
+
+              <div id="estrelas">
+                <!-- Estrelas das avaliações -->
+                <!-- Nota igual a 1 -->
+                <div *ngIf="aval.avaliacao.nota == 1">
+                  <img src="/assets/star2.png" height="17" width="22">
+
+                  <img src="/assets/star1.png" height="17" width="22">
+
+                  <img src="/assets/star1.png" height="17" width="22">
+
+                  <img src="/assets/star1.png" height="17" width="22">
+
+                  <img src="/assets/star1.png" height="17" width="22">
+                </div>
+                <!-- Nota igual a 2 -->
+                <div *ngIf="aval.avaliacao.nota == 2">
+                  <img src="/assets/star2.png" height="17" width="22">
+
+                  <img src="/assets/star2.png" height="17" width="22">
+
+                  <img src="/assets/star1.png" height="17" width="22">
+
+                  <img src="/assets/star1.png" height="17" width="22">
+
+                  <img src="/assets/star1.png" height="17" width="22">
+                </div>
+              </div>
+              <!-- Nota igual a 3 -->
+              <div *ngIf="aval.avaliacao.nota == 3">
+                <img src="/assets/star2.png" height="17" width="22">
+
+                <img src="/assets/star2.png" height="17" width="22">
+
+                <img src="/assets/star2.png" height="17" width="22">
+
+                <img src="/assets/star1.png" height="17" width="22">
+
+                <img src="/assets/star1.png" height="17" width="22">
+              </div>
+              <!-- Nota igual a 4 -->
+              <div *ngIf="aval.avaliacao.nota == 4">
+                <img src="/assets/star2.png" height="17" width="22">
+
+                <img src="/assets/star2.png" height="17" width="22">
+
+                <img src="/assets/star2.png" height="17" width="22">
+
+                <img src="/assets/star2.png" height="17" width="22">
+
+                <img src="/assets/star1.png" height="17" width="22">
+              </div>
+              <!-- Nota igual a 5 -->
+              <div *ngIf="aval.avaliacao.nota == 5">
+                <img src="/assets/star2.png" height="17" width="22">
+
+                <img src="/assets/star2.png" height="17" width="22">
+
+                <img src="/assets/star2.png" height="17" width="22">
+
+                <img src="/assets/star2.png" height="17" width="22">
+
+                <img src="/assets/star2.png" height="17" width="22">
+              </div>
+              
+            </div>
+              
+          </div>
+    
+          <div id="data-avaliacao">
+            {{aval.avaliacao.dataAvaliacao | date: 'dd/MM/yyyy'}}
+          </div>
+        </section>
+        
+
+        <div id="comentario">
+          {{aval.avaliacao.comentario}}
+        </div>
+      </div>
+      
+    </ion-item>
+  </ion-list>
+
+</ion-content>

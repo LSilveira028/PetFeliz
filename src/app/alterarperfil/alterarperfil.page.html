@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar color="petfeliz"><!--Toolbar-->
+    <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
+    <ion-title color="tertiary"> <b>Alterar Perfil</b> <!-- <b> deixa o texto em negrito --> </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> <!--Conteúdo do app-->
+  <form #f="ngForm" (ngSubmit)="salvar(f)">
+    <!--Nome e foto do Dog Walker-->
+  <section id="foto-nome">
+    <div>
+      <img [src]="fotoPerfil" width="60px" height="60px" style="border-radius: 30px;">
+      <b>{{nome}}</b>
+    </div>
+  </section>
+
+  <div id="informacoes">
+    <!--Descrição sobre o Dog Walker-->
+    <section id="sobre">
+      <b>Sobre</b>
+      <textarea class="input" cols="38" rows="5" placeholder="Conte aqui sobre você, seu trabalho e suas experiências!"
+                maxlength="600"
+                name="sobre"
+                [(ngModel)]="sobre"></textarea>
+    </section>
+
+    <!--Valor do serviço do Dog Walker-->
+    <section id="preco">
+      <b>Preço</b>
+
+      <ion-item>
+        <ion-label position="floating">R$</ion-label>
+        <ion-input class="input" type="number" placeholder="45.00" [(ngModel)]="valorServico" name="valorServico"></ion-input>
+      </ion-item>
+    </section>
+
+    <!--Dog Walker aceita ou não aceita cartão-->
+    <section id="aceita-cartao">
+      <b>Aceita cartão</b>
+      <ion-item> <!-- ion-select "Aceita cartao?"-->
+        <ion-label>Aceita cartão?</ion-label>
+        
+        <ion-select cancelText="Cancelar" [(ngModel)]="aceitaCartao" name="aceitaCartao" okText="Confirmar"(ionChange)="pegarResultadoCartao($event)" [compareWith]="compareWith">
+          <!-- <ion-select-option *ngFor="let opcao of opcoesCartao" [selected]="">{{opcao}}</ion-select-option> -->
+          <ion-select-option [value]="true">Sim</ion-select-option>
+          <ion-select-option [value]="false">Não</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </section>
+
+    <section id="preferencias">
+      <b>Preferências</b>
+
+      <textarea class="input" cols="38" rows="5" placeholder="Escreva aqui sobre suas preferências: se prefere trabalhar com determinada raça, porte, idade, ou qualquer outra preferência."
+                maxlength="250"
+                [(ngModel)]="preferencias"
+                name="preferencias"></textarea>
+    </section>
+
+    <!--Botão salvar-->
+    <div id="area-botao">
+      <button id="botao-salvar" type="submit">
+        Salvar
+      </button>
+    </div>
+
+  </div>
+  </form>
+  
+  
+</ion-content>

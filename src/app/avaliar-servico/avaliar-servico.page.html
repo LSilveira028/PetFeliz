@@ -1,0 +1,41 @@
+<div id="wrapper">
+
+  <div id="title">
+    <h4>
+      Avalie o serviço de  <b>{{nomeDogWalker}}</b>
+    </h4>
+  </div>
+
+  <div id="estrelas">
+    
+    <img src="/assets/star1.png" id="star1" (click)="avaliar(1)">
+
+    <img src="/assets/star1.png" id="star2" (click)="avaliar(2)" >
+
+    <img src="/assets/star1.png" id="star3" (click)="avaliar(3)">
+
+    <img src="/assets/star1.png" id="star4" (click)="avaliar(4)">
+
+    <img src="/assets/star1.png" id="star5" (click)="avaliar(5)" >
+
+  </div>
+
+  <div id="alerta" *ngIf="aviso == true">
+    Por favor, escolha a nota em estrelas acima.
+  </div>
+
+  <textarea placeholder="Deixe um comentário (opcional)" 
+            cols="38" 
+            rows="5"
+            name="comentario"
+            [(ngModel)]="comentario" 
+            maxlength="350">
+  </textarea>
+  
+  <div id="area-botao">
+    <button (click)="enviarAvaliacao()">
+      <b>Avaliar</b>
+    </button>
+  </div>
+
+</div>

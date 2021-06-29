@@ -1,0 +1,44 @@
+//ion-toolbar{
+//    --ion-color-primary: rgb(90, 187, 0) !important;} //exemplo de como mudar a cor de algo
+//é só declarar a classe class na frente do item, e mexer aqui 
+
+#content{
+    height: 100%;
+    background-color: #e9e9e9;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#box-inputs{
+    background-color: white;
+    border-radius: 25px;
+    height: 300px;
+    width: 100%;
+}
+
+.tituloToolBar{
+    font-family:arial;
+}
+.cadastreSeusCaesAqui{
+    text-align: center;
+    font-size: 120%;
+    font-family:arial;
+}
+
+
+.botaoCadastrarCurso{
+    margin-top: 30px;
+    font-family:arial;
+}
+
+.verPetsJaCadastrados{
+    font-family:arial;
+}
+
+#conteudo{
+    height: 100%;
+    width:  100%;
+}
+

@@ -117,3 +117,39 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+
+#botao-disponivel{
+  background: #4CAC3C;
+}
+
+#botao-indisponivel{
+  background: #EA4242
+}
+
+.botao{
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 0px 40px 0px 40px;
+  height: 40px;
+  width: max-content;
+}
+
+#botoes{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#botoes img{
+  margin-left: 15px;
+}
+
+button{
+  color: #fff;
+  font-size: 18px;
+}
+
+#tipo-conta{
+  color: #979797;
+  margin-left: 10px;
+}

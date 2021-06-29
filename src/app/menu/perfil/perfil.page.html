@@ -1,54 +1,253 @@
 <ion-header>
-  <ion-toolbar color="primary"><!--Toolbar-->
+  <!-- Se o usuário logado for um Dog Walker, então aparecerá o seguinte header para ele -->
+  <ion-toolbar color="petfeliz" *ngIf="idUsuarioLogado == 2"><!--Toolbar-->
     <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
-    <ion-title color="tertiary"> <b>Perfil</b> <!-- <b> deixa o texto em negrito --> </ion-title>
+    <ion-title color="tertiary" *ngIf="idUsuarioLogado == 2"> <b>Perfil</b> <!-- <b> deixa o texto em negrito --> </ion-title>
+  </ion-toolbar>
+
+  <!-- Se o usuário logado for um proprietário, então aparecerá o seguinte header para ele -->
+  <ion-toolbar color="petfeliz" *ngIf="idUsuarioLogado == 1"><!--Toolbar-->
+
+    <div id="botao-voltar" (click)="fecharModalPerfil()" slot="start">
+      <img src="/assets/arrow-left.png" width="30px" height="30px">
+    </div>
+
+    <ion-title color="tertiary" *ngIf="idUsuarioLogado == 1"> <b>{{dogWalker.nome}}</b> <!-- <b> deixa o texto em negrito --> </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> <!--Conteúdo do app-->
+<ion-content>
+  <div class="perfildwProprietario"> <!--Inicio DIV perfil do DW-->
 
-  <div class="headerPerfil">   
+    <ion-item *ngFor="let d of dogW">
+      <div class="informacoesPerfildwProprietario"> <!--Inicio DIV informações do perfil do DW-->
 
-    <ion-item class="avatarNomePerfil">
-      <ion-avatar slot="start">
-        <img src="/assets/avatar_homemPerfil.jpg">
-      </ion-avatar>
-      <ion-label><b> Vanderlei </b></ion-label>
+        <div class="avatarNomePerfildwProprietario"> <!--Area que contem o avatar e o nome do DW-->
+            <ion-avatar  style="height: 65px; width: 65px;">
+              <img [src]="d.fotoPerfil"> <!--Avatar do DW-->
+            </ion-avatar> &nbsp;&nbsp; <!--Dá um espaço horizontal-->
+            
+            
+            <div class="areaNomeDataEntrouEmPerfildwProprietario">
+              <div><b>{{ d.nome }}</b></div>  <!--Nome DW-->
+              <div style="font-style: italic;" *ngIf="d.servicoDogWalker.avaliacaoMedia == 0">
+                Nenhuma avaliação
+              </div>
+              <!-- Se a avaliação média for igual a 1 -->
+              <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 1">
+                <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star2" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star3" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star4" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star5" height="17" width="22">
+              </div>
+                <!-- Se a avaliação média for igual a 1.5 -->
+                <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 1.5">
+                  <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+  
+                  <img src="/assets/star3.png" id="star2" height="17" width="22">
+  
+                  <img src="/assets/star1.png" id="star3" height="17" width="22">
+  
+                  <img src="/assets/star1.png" id="star4" height="17" width="22">
+  
+                  <img src="/assets/star1.png" id="star5" height="17" width="22">
+                </div>
+
+              <!-- Se a avaliação média for igual a 2 -->
+              <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 2">
+                <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star2" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star3" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star4" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star5" height="17" width="22">
+              </div>
+                <!-- Se a avaliação média for igual a 2.5 -->
+                <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 2.5">
+                  <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+  
+                  <img src="/assets/star2.png" id="star2" height="17" width="22">
+  
+                  <img src="/assets/star3.png" id="star3" height="17" width="22">
+  
+                  <img src="/assets/star1.png" id="star4" height="17" width="22">
+  
+                  <img src="/assets/star1.png" id="star5" height="17" width="22">
+                </div>
+
+               <!-- Se a avaliação média for igual a 3 -->
+               <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 3">
+                <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star2" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star3" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star4" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star5" height="17" width="22">
+              </div>
+                <!-- Se a avaliação média for igual a 3.5 -->
+                <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 3.5">
+                  <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+  
+                  <img src="/assets/star2.png" id="star2" height="17" width="22">
+  
+                  <img src="/assets/star2.png" id="star3" height="17" width="22">
+  
+                  <img src="/assets/star3.png" id="star4" height="17" width="22">
+  
+                  <img src="/assets/star1.png" id="star5" height="17" width="22">
+                </div>
+
+              <!-- Se a avaliação média for igual a 4 -->
+              <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 4">
+                <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star2" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star3" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star4" height="17" width="22">
+
+                <img src="/assets/star1.png" id="star5" height="17" width="22">
+              </div>
+                <!-- Se a avaliação média for igual a 4.5 -->
+                <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 4.5">
+                  <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+  
+                  <img src="/assets/star2.png" id="star2" height="17" width="22">
+  
+                  <img src="/assets/star2.png" id="star3" height="17" width="22">
+  
+                  <img src="/assets/star2.png" id="star4" height="17" width="22">
+  
+                  <img src="/assets/star3.png" id="star5" height="17" width="22">
+                </div>
+
+              <!-- Se a avaliação média for igual a 5 -->
+              <div *ngIf="d.servicoDogWalker.avaliacaoMedia == 5">
+                <img src="/assets/star2.png" id="star1" class="star1" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star2" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star3" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star4" height="17" width="22">
+
+                <img src="/assets/star2.png" id="star5" height="17" width="22">
+              </div>
+              
+              <div>Entrou em: {{d.dataCadastro | date: 'dd/MM/yyyy'}}</div>  <!--Entrou em: e data -->
+            </div>
+        </div>
+
+        <div class="areaSobrePerfildwProprietario"> <!--Area de Sobre o perfil do DW-->
+            <div class="tituloSobrePerfildwProprietario"> <!--Titulo "Sobre"-->
+              <b>Sobre</b> <br>
+            </div>
+            <div class="textoSobrePerfildwProprietario"> <!--Texto principal puxado do Banco-->
+              {{ d.servicoDogWalker.sobre }}
+            </div>
+        </div>
+
+        <div class="areaPrecoPerfildwProprietario">
+            <div class="tituloPrecoPerfildwProprietario">
+              <b>Preço</b>
+            </div>
+          
+            <div class="iconeTextoValorPerfildwProprietario">
+              <div class="iconePerfildwProprietario">
+                <img src="/assets/dogWalker.png" style="height: 20px; width: 20px;">
+              </div>
+
+              &nbsp;&nbsp;
+
+              <div class="textoPrecoPerfildwProprietario">
+                Passeio
+              </div>
+
+              &nbsp;&nbsp;
+
+              <div class="valorPrecoPerfildwProprietario" style="color:forestgreen ;">
+                {{d.servicoDogWalker.valorServico | currency : 'BRL'}}
+              </div>
+            </div>
+ 
+        </div>
+
+        <div class="areaCartaoPerfildwProprietario">
+            <div class="tituloCartaoPerfildwProprietario">
+              <b>Aceita cartão</b>
+            </div>
+
+            <div class="textoCartaoPerfildwProprietario" *ngIf="d.servicoDogWalker.aceitaCartao == true">
+              Sim
+            </div>
+            <div class="textoCartaoPerfildwProprietario" *ngIf="d.servicoDogWalker.aceitaCartao == false">
+              Não
+            </div>
+        </div>
+
+        <div class="areaPreferenciasPerfildwProprietario">
+            <div class="tituloPreferenciasPerfildwProprietario">
+              <b>Preferências</b>
+            </div>
+
+            <div class="textoPreferenciasPerfildwProprietario" *ngIf="d.servicoDogWalker.preferencias != null">
+              {{d.servicoDogWalker.preferencias}}
+            </div>
+
+            <div class="textoPreferenciasPerfildwProprietario" *ngIf="d.servicoDogWalker.preferencias == '' || d.servicoDogWalker.preferencias == null">
+              Nenhuma
+            </div>
+        </div>
+
+        <div id="cursos">
+          <div class="tituloCursosPerfildwProprietario">
+            <b>Cursos</b> <br>
+          </div>
+          
+          <div *ngFor="let c of cursos" class="info-curso">
+            {{c.nome}} - {{c.anoConclusao | date : 'YYYY'}}
+          </div>
+          <div *ngIf="c == null" style="font-style: italic;" class="info-curso">
+            Nenhum
+          </div>
+          
+        </div>    
+
+      <section id="botoes" *ngIf="idUsuarioLogado == 2">
+        <ion-button expand="" color="secondary" (click)="abrirAlterarPerfil()">
+          <b>Alterar perfil</b>
+        </ion-button>
+        <ion-button expand="" color="secondary" (click)="irParaListarCursos()">
+          <b>editar cursos</b>
+        </ion-button>
+      </section>
+    </div> <!--Fim DIV informações do perfil do DW--> <br>
     </ion-item>
 
-  </div>
 
-    <div class="parteMeioPerfil"> <!--Contém a Caixa de Texto "Sobre" -->
-
-      <div class="sobrePerfil"> <!--Texto "Sobre"-->
-        <b>Sobre</b>
-      </div>
-
-      <p class="textareaSobrePerfil"> <!--caixa de texto Sobre-->
-        <textarea name="textareaSobrePerfil" placeholder="Conte aqui sobre você, seu trabalho e suas experiências"></textarea>
-      </p>
-
-      <div class="precoPerfil"> <!-- Preço -->
-        <b>Preço</b>
-        <ion-item> <!-- Label para colocar o preço do serviço -->
-          <ion-label></ion-label>
-          <ion-input type="number"></ion-input>
-        </ion-item>
-      </div>
-
-      <ion-item> <!-- ion-select "Aceita cartao?"-->
-        <ion-label>Aceita Cartão?</ion-label>
-          <ion-select cancelText="Cancelar" okText="Confirmar">
-            <ion-select-option>Sim</ion-select-option>
-            <ion-select-option>Não</ion-select-option>
-          </ion-select>
-      </ion-item>
-
-      <p class="textareaPreferenciasPerfil"> <!--caixa de texto Preferencias-->
-        <textarea name="textareaPreferenciasPerfil" placeholder="Conte aqui suas preferências: se prepere trabalhar com determinada raça, porte, idade ou qualquer outra preferência."></textarea>
-      </p>
-
-      <ion-button expand="block" class="botaoSalvarPerfil" color="secondary"  (click)="metodoToastSalvar()"><b>Salvar</b></ion-button> <!--BOTÃO Salvar-->
-    </div>
-
+        <!--INICIO AVALIAÇÕES DO DW-->
+        <div class="areaAvaliacoesDWPerfildwProprietario" *ngIf="idUsuarioLogado == 1">
+            <div class="tituloAvaliacoesDWPerfildwProprietario">
+              <b>Avaliações</b>
+            </div>
+            
+            <button id="botao-ver-avaliacoes" (click)="navegarParaAvaliacoes()">
+              Ver avaliações
+            </button>
+        </div>
+  </div> <!--Fim DIV perfil inteiro do DW-->
+ 
+  
 </ion-content>

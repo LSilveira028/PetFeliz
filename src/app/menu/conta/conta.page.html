@@ -1,59 +1,83 @@
 <ion-header>
-  <ion-toolbar color="primary"><!--Toolbar-->
+  <ion-toolbar color="petfeliz"><!--Toolbar-->
     <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
     <ion-title color="tertiary"> <b>Conta</b> <!-- <b> deixa o texto em negrito --> </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> <!--Conteúdo do app-->
+<ion-content>
+  <div id="content" *ngFor="let u of usuarioLogado">
 
-  <ion-item class="avatarContaDW">
+    <!-- Seção foto e nome -->
+    <section id="foto-nome">
+      
+      <ion-avatar slot="start" style="height: 115px; width: 115px;">
+        <img [src]="u.fotoPerfil">
+      </ion-avatar>
 
-    <ion-avatar slot="start" style="height: 65px; width: 65px;">
-      <img src="/assets/avatar_homemPerfil.jpg"> <!--Avatar do DW-->
-    </ion-avatar>
-
-  </ion-item>
-
-    <div class="nomeEavatarContaDW">
-      <ion-label> <b> Heitor Chaves </b> </ion-label>  <!--Nome do DW-->
-    </div>  
-
-    <ion-label class="alterarFotoPerfilDW"> Alterar foto de perfil </ion-label>
-  
-
-  <div class="dadosPessoaisContaDW">
-    <b>Dados pessoais</b>
-  </div>
-  
-  <div class="nomeContaDW">
-    <b>Nome:</b>
-  </div>
-
-  <div class="dataNascimentoContaDW">
-    <b>Data de Nascimento:</b>
-  </div>
-
-  <div class="telefoneContaDW">
-    <b>Número de celular:</b>
-  </div>
-
-  <ion-button expand="block" color="secondary" class="botaoAlterarConta"><b>Alterar</b></ion-button>
-  
-  <div class="dadosdaContaDWConta">
-      <b>Dados da Conta</b> <br>
-  </div>
-
-      <div class="emailContaDW">
-        <b>E-mail:</b>
+      <div id="nome">
+        <h3><b>{{u.nome}}</b></h3>
       </div>
-    
-      <div class="senhaContaDW">
-        <b>Senha:</b>
-      </div>
-  
-  <p class="botaoDeletarMinhaContaDW"> <b> Deletar minha conta </b> </p>
      
 
+    </section>
+    
+    <ion-item-divider></ion-item-divider>
+
+    <!-- Seção dados pessoais -->
+    <section class="dados">
+
+      <h4 style="margin-left: 15px;"> <b>Dados pessoais</b></h4>
+
+      <div class="inputs">
+
+        <div style="width: 100%;">    
+          <ion-item>
+            <ion-label position="floating">Data de nascimento</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" readonly [(ngModel)]="u.dataNascimento">
+            </ion-datetime>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label position="fixed">WhatsApp</ion-label>
+            <ion-input readonly type="text" [(ngModel)]="u.whatsApp">
+    
+            </ion-input>
+          </ion-item>
+        </div>
+        
+        <ion-button color="primary" class="botao" (click)="alterarDadosPessoais(u.dataNascimento)">alterar</ion-button>
+      
+      </div>
+    </section>
+
+    <!-- Seção dados da conta -->
+    <section class="dados">
+
+      <h4 style="margin-left: 15px; text-align: start;" > <b>Dados da conta</b></h4>
+
+      <div class="inputs">
+        <div style="width: 100%">
+          <ion-item>
+            <ion-label position="fixed">E-mail</ion-label>
+            <ion-input readonly [(ngModel)]="u.email" type="text">
+            </ion-input>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label position="fixed">Senha</ion-label>
+            <ion-input readonly type="password">
+              *********
+            </ion-input>
+          </ion-item>
+        </div>
+
+        <ion-button color="primary" class="botao" (click)="componenteAlterarSenha()">alterar senha</ion-button>
+      
+      </div>
+
+    </section>
+
+  </div>
 </ion-content>
   

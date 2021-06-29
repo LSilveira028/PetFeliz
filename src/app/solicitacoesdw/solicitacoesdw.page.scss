@@ -36,10 +36,39 @@
     
 }
 
+.box-informacoes{
+    width: 100%;
+}
+
 .informacoes
 {
-    height: 100%;
-    width: 120%;
+    display: flex;
+    flex-direction: row;
+
+    font-size: 15px;
+
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+    margin-right: 10%;
+
+}
+
+.item-listaSolicitacoesDW
+{
+    width: 100%;
+
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+
+}
+
+.informacoes{
+    font-size: 15px;
 
     display: flex;
     flex-direction: row;
@@ -48,14 +77,8 @@
     margin-bottom: 10px;
 }
 
-.item-listaSolicitacoesDW
-{
-    margin-bottom: 20px;
-}
-
 .informacoesProprietario
 {
-
     margin-left: 5%;
 
     display: flex;
@@ -69,7 +92,6 @@
 
 .nomeProprietarioSolicitacoesDW
 {
-    max-width: 55%;
     float: left;
 }
 
@@ -99,23 +121,28 @@
 .botaoAbrirMapaSolicitacoesDW
 {
     display:flex;
-    flex-direction: row;
-
+    flex-direction: column;
     align-items: center;
-    height: 50px;
-    width: 150px;
+
+    height: 40px;
+    width: 135px;
     border-radius: 25px;
     background-color: #FFF;
     border: solid 2px rgb(110, 110, 110);
 }
 .textoAbrirMapa
 {
-    font-size: 150%;
+    font-size: 130%;
 }
 
 .valorTotalSolicitacoesDW
 {
     margin-top: 10px;
+    float: right;
+}
+
+.valor-total{
+   width: 100%;
 }
 
 .avaliacao-dw
@@ -126,13 +153,28 @@
 .mostrarCaesSolicitacoesDW
 {
     margin-top: 10px;
+    word-wrap: break-word;
+    max-width: 240px;
 }
 
-.botoesSolicitacoesDW
+.botoes
 {
+
+    width: 100vw;
+
     margin-top: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
+
+}
+
+.botoes div{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
 }
 
 .botaoAceitarServicoSolicitacoesDW
@@ -145,6 +187,13 @@
     width: 100px;
     border-radius: 25px;
     background-color: #47BE53;
+
+    transition: background-color 0.5s;
+}
+
+.botaoAceitarServicoSolicitacoesDW:hover
+{
+    background-color: #2e8537;
 }
 
 .botaoRecusarServicoSolicitacoesDW
@@ -157,6 +206,13 @@
     width: 100px;
     border-radius: 25px;
     background-color: #E94F37;
+
+    transition: background-color 0.5s;
+}
+
+.botaoRecusarServicoSolicitacoesDW:hover
+{
+    background-color: #e4371d;
 }
 
 .botaoWhatsappSolicitacoesDW
@@ -167,3 +223,22 @@
     background-color: #FFF;
     border: solid 2px rgb(110, 110, 110);
 }
+
+.botao-chamar-caes
+{
+    margin-top: 20px;
+
+    display: flex;
+    color: gray;
+    font-size: 105%;
+    background-color: transparent;
+    width: max-content;
+}
+
+
+.item-cao
+{
+    display: flex;
+    flex-direction: column;
+}
+

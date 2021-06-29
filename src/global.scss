@@ -24,3 +24,74 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.modal-caes .modal-wrapper {
+    width: 90%;
+    height: 55%;
+    background: royalblue;
+    border-radius: 20px;
+    // height: 20%;
+    // top: 80%;
+    // position: absolute; 
+    // display: block;  
+}
+
+
+.modal-avaliar .modal-wrapper {
+    border-radius: 20px 20px 0px 0px;
+    height: 350px;
+    width: 100%;
+    //Faz o modal ficar no bottom da página
+    position: fixed;
+    left: 0;
+    bottom: 0px;
+    right: 0;
+}
+
+//Estilos do alert de solicitar e remover cão
+.alerta-solicitar .botao-alert-neutro{
+    color: black;
+}
+.alerta-solicitar .botao-alert-danger,
+.alerta-remover-cao .botao-alert-danger,
+.alerta-remover-curso .botao-alert-danger{
+    color: red;
+}
+//Estilo do alerta: "Sem cão"
+.botao-alert-sem-cao .botao-alert-neutro{
+    color: black;
+}
+
+.modal-alterar-curso .modal-wrapper,
+.modal-alterar-cao .modal-wrapper,
+.modal-cadastrar-curso .modal-wrapper,
+.modal-cadastrar-cao .modal-wrapper,
+.modal-alterar-dados-pessoais .modal-wrapper{
+    border-radius: 20px 20px 0px 0px;
+    width: 100%;
+    //Faz o modal ficar no bottom da página
+    position: fixed;
+    left: 0;
+    bottom: 0px;
+    right: 0;
+}
+
+.modal-alterar-curso .modal-wrapper{
+    height: 300px;
+}
+
+.modal-alterar-cao .modal-wrapper{
+    height: 400px;
+}
+
+.modal-cadastrar-curso .modal-wrapper{
+    height: 270px;
+}
+
+.modal-cadastrar-cao .modal-wrapper{
+    height: 400px;
+}
+
+.modal-alterar-dados-pessoais .modal-wrapper{
+    height: 300px;
+}

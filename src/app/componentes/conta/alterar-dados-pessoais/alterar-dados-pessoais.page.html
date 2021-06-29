@@ -1,0 +1,26 @@
+
+<ion-content>
+  <div id="content">
+
+    <h3 style="text-align: center;"><b>Alterar dados pessoais</b></h3>
+
+    <div id="inputs">
+      <ion-item>
+        <ion-label position="floating">Data de nascimento</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" min="1900-01-01" [(ngModel)]="dataNascimento">
+        </ion-datetime>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="fixed">WhatApp</ion-label>
+        <ion-input type="text" [(ngModel)]="whatsApp">
+  
+        </ion-input>
+      </ion-item>
+    </div>
+    
+    <ion-button expand="block" color="secondary" id="botao" (click)="alterarDadosPessoais(dataNascimento, whatsApp)">
+      alterar
+    </ion-button>
+  </div>
+</ion-content>

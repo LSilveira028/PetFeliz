@@ -1,0 +1,60 @@
+
+<ion-header>
+  <ion-toolbar color="petfeliz">
+    
+    <div id="nome-proprietario">
+      <b><p>{{nomePropri}}</p></b>
+    </div>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <p style="text-align: center;">Informações dos cães</p>
+
+  <table>
+    <tr>
+      <th>Nome</th>
+      <th>Raça</th>
+      <th>Idade</th>
+      <th>Porte</th>
+      <th>Peso</th>
+    </tr>
+    <tr *ngFor="let c of caes" class="" id="informacoes-caes">
+      <th>
+        {{c.cao.nome}}
+      </th>
+      <th>
+        {{c.cao.raca}}
+      </th>
+      <th>
+        {{ verificarIdade(c.cao.idade)}}
+      </th>
+
+      <th>
+        {{ converterPorte(c.cao.porte)}}
+      </th>
+
+      <th>
+        {{c.cao.peso.descricao}}
+      </th>
+    </tr>
+  </table>
+
+  
+
+  <!-- <ion-item *ngFor="">
+    {{c.cao.nome}}
+  </ion-item> -->
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div id="botao-fechar">
+      <button (click)="fecharModal()">
+        Fechar
+      </button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+

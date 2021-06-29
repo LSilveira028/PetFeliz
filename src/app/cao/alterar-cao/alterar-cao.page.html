@@ -1,0 +1,59 @@
+<ion-content>
+  <div id="conteudo">
+    <div id="inputs">
+      
+      <h2 id="titulo"><b>Alterar cão</b></h2>
+
+      <form #f="ngForm" (ngSubmit)="alterarCao(f)">
+
+        <ion-item>
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input type="text" [(ngModel)]="cao.nome" name="nome"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">Raça</ion-label>
+          <ion-input type="text" [(ngModel)]="cao.raca" name="raca"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">Data de nascimento</ion-label>
+          <ion-datetime displayFormat="MM/YYYY" [(ngModel)]="cao.dataNascimento" name="dataNascimento"></ion-datetime>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">Peso</ion-label>
+            <ion-select cancelText="Cancelar" okText="Confirmar" [(ngModel)]="cao.pesoId" name="pesoId" >
+              <ion-select-option [value]="1">0 - 4 kg </ion-select-option>
+              <ion-select-option [value]="2">5 - 9 kg</ion-select-option>
+              <ion-select-option [value]="3">10 - 14 kg</ion-select-option>
+              <ion-select-option [value]="4">15 - 19 kg</ion-select-option>
+              <ion-select-option [value]="5">20 - 24 kg</ion-select-option>
+              <ion-select-option [value]="6">25 - 29 kg</ion-select-option>
+              <ion-select-option [value]="7">30 - 34 kg</ion-select-option>
+              <ion-select-option [value]="8">35 - 39 kg</ion-select-option>
+              <ion-select-option [value]="8">40 - 44 kg</ion-select-option>
+              <ion-select-option [value]="10">45 - 49 kg</ion-select-option>
+              <ion-select-option [value]="11">50 - 54 kg</ion-select-option>
+              <ion-select-option [value]="12">55 - 60 kg</ion-select-option>
+            </ion-select>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating"  class="labelCadastreSeusCaesAqui">Porte</ion-label>
+            <ion-select cancelText="Cancelar" okText="Confirmar" [(ngModel)]="cao.porte" name="porte">
+              <ion-select-option [value]="1">Pequeno</ion-select-option>
+              <ion-select-option [value]="2">Médio</ion-select-option>
+              <ion-select-option [value]="3">Grande</ion-select-option>
+            </ion-select>
+        </ion-item>  
+
+        <ion-button color="secondary" expand="block" id="botao" type="submit">
+          Alterar
+        </ion-button>
+
+      </form>
+      
+    </div>
+  </div>
+</ion-content>

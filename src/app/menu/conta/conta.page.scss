@@ -1,84 +1,33 @@
-.avatarContaDW{
-    position: absolute;
-    left: 0%;
-    top: 5%;
+#content{
+    height: 100vh;
+    // background-color: blue;
 }
-.nomeEavatarContaDW{
-    position: absolute;
-    top: 8%;
-    left: 31%;
-    font-size: 110%;
-    
-}
-.alterarFotoPerfilDW{
-    position: absolute;
-    top: 12%;
-    left: 31%;
-    font-size: 80%;
-    color: #0000ff;
-    
-}
-.dadosPessoaisContaDW{
-    position: absolute;
-    top: 20%;
-    left: 5%;
-    font-size: 130%;
-}
-.nomeContaDW{
-    position: absolute;
-    top: 25%;
-    left: 7%;
-    font-size: 120%;
-}
-.dataNascimentoContaDW{
-    position: absolute;
-    top: 32%;
-    left: 7%;
-    font-size: 120%;
-}
-.telefoneContaDW{
-    position: absolute;
-    top: 39%;
-    left: 7%;
-    font-size: 120%;
-}
-.botaoAlterarConta{
-    width: 40%;
-    position: absolute;
-    top: 50%;
-    left: 30%;
-}
-.dadosdaContaDWConta
-{
-    position: absolute;
-    top: 65%;
-    left: 5%;
-    font-size: 130%;
-}
-.emailContaDW
-{
-    position: absolute;
-    top: 70%;
-    left: 5%;
-    font-size: 100%;
 
-}
-.senhaContaDW
-{
-    position: absolute;
-    top: 75%;
-    left: 5%;
-    font-size: 100%;
-}
-.botaoDeletarMinhaContaDW
-{
-    font-size: 120%;
-    color: rgb(240, 9, 9);
+#foto-nome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    text-align: center;
-    position: absolute;
-    left: 25%;
-    bottom: 10%;
-    
-    
+    width: 100vw;
+    margin-top: 20px;
+}
+
+#nome{
+    margin-top: 10px;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+.dados{
+    margin-top: 40px;
+}
+
+.botao{
+    margin-top: 20px;
+    width: 50%;
 }

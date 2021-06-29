@@ -1,59 +1,63 @@
-<ion-header>
-  <ion-toolbar color="primary"><!--Toolbar-->
-    <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
-    <ion-title class="tituloToolBar" color="tertiary"> <b>Meus Cães</b> <!-- <b> deixa o texto em negrito --> </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content class="conteudo"> <!--Conteúdo do app-->
-  <h1 class="cadastreSeusCaesAqui"> <b>Cadastre seus cães aqui</b></h1>
+<ion-content> <!--Conteúdo do app-->
+  
+  <div id="conteudo">
 
-  <ion-list>
-    <ion-item>
-      <ion-label position="floating"  class="labelCadastreSeusCaesAqui">Nome</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+    <h1 id="title"><b>Cadastrar cão</b></h1>
 
-    <ion-item>
-      <ion-label position="floating"  class="labelCadastreSeusCaesAqui">Raça</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+    <form #f="ngForm" (ngSubmit)="cadastarCao(f)">
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="text" ngModel name="nome"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating"  class="labelCadastreSeusCaesAqui">Idade</ion-label>
-      <ion-input type="number"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="floating">Raça</ion-label>
+        <ion-input type="text" ngModel name="raca"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating"  class="labelCadastreSeusCaesAqui">Peso</ion-label>
-        <ion-select cancelText="Cancelar" okText="Confirmar">
-          <ion-select-option>0 - 4 kg </ion-select-option>
-          <ion-select-option>10 - 14 kg</ion-select-option>
-          <ion-select-option>15 - 19 kg</ion-select-option>
-          <ion-select-option>20 - 24 kg</ion-select-option>
-          <ion-select-option>25 - 29 kg</ion-select-option>
-          <ion-select-option>30 - 34 kg</ion-select-option>
-          <ion-select-option>35 - 39 kg</ion-select-option>
-          <ion-select-option>40 - 44 kg</ion-select-option>
-          <ion-select-option>45 - 49 kg</ion-select-option>
-          <ion-select-option>50 - 54 kg</ion-select-option>
-          <ion-select-option>55 - 59 kg</ion-select-option>
-          <ion-select-option>60 - 64 kg</ion-select-option>
-        </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-label position="floating">Data nascimento</ion-label>
+        <ion-datetime displayFormat="MM/YYYY" ngModel name="dataNascimento"></ion-datetime>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating"  class="labelCadastreSeusCaesAqui">Porte</ion-label>
-        <ion-select cancelText="Cancelar" okText="Confirmar">
-          <ion-select-option>Pequeno</ion-select-option>
-          <ion-select-option>Médio</ion-select-option>
-          <ion-select-option>Grande</ion-select-option>
-        </ion-select>
-    </ion-item>  
-  </ion-list>
-  <br>
-  <ion-button expand="block" class="botaoCadastrarPet" color="secondary" (click)="metodoToast()"><b>Cadastrar Pet</b></ion-button> <!--BOTÃO-->
-  <ion-button expand="block" class="verPetsJaCadastrados" color="danger" (click)="abrirPagina(petsjacadastrados)"><b>Ver Pets já cadastrados</b></ion-button> <!--BOTÃO-->
+      <ion-item>
+        <ion-label position="floating">Peso</ion-label>
+          <ion-select cancelText="Cancelar" okText="Confirmar" ngModel name="pesoId" >
+            <ion-select-option value="1">0 - 4 kg </ion-select-option>
+            <ion-select-option value="2">5 - 9 kg</ion-select-option>
+            <ion-select-option value="3">10 - 14 kg</ion-select-option>
+            <ion-select-option value="4">15 - 19 kg</ion-select-option>
+            <ion-select-option value="5">20 - 24 kg</ion-select-option>
+            <ion-select-option value="6">25 - 29 kg</ion-select-option>
+            <ion-select-option value="7">30 - 34 kg</ion-select-option>
+            <ion-select-option value="8">35 - 39 kg</ion-select-option>
+            <ion-select-option value="8">40 - 44 kg</ion-select-option>
+            <ion-select-option value="10">45 - 49 kg</ion-select-option>
+            <ion-select-option value="11">50 - 54 kg</ion-select-option>
+            <ion-select-option value="12">55 - 60 kg</ion-select-option>
+          </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"  class="labelCadastreSeusCaesAqui">Porte</ion-label>
+          <ion-select cancelText="Cancelar" okText="Confirmar" ngModel name="porte">
+            <ion-select-option value="1">Pequeno</ion-select-option>
+            <ion-select-option value="2">Médio</ion-select-option>
+            <ion-select-option value="3">Grande</ion-select-option>
+          </ion-select>
+      </ion-item>  
+    <br>
+
+      <ion-button expand="block" class="botaoCadastrarPet" color="secondary" type="submit">
+        <b>Cadastrar</b>
+      </ion-button> <!--BOTÃO-->
+    
+    </form>
+
+  </div>
+  
+  
 
   <!-- <ion-fab vertical="bottom" horizontal="start" slot="fixed">
       <ion-fab-button class="FabCadastreSeusCaesAqui" color="danger" (click)="funcoesFabCadastreSeusCaesAqui()">

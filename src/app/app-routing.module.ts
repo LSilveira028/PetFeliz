@@ -45,7 +45,7 @@ const routes: Routes = [
   },
   {
     path: 'petsjacadastrados',
-    loadChildren: () => import('./petsjacadastrados/petsjacadastrados.module').then( m => m.PetsjacadastradosPageModule)
+    loadChildren: () => import('./cao/petsjacadastrados/petsjacadastrados.module').then( m => m.PetsjacadastradosPageModule)
   },
   {
     path: 'cadastro',
@@ -68,13 +68,54 @@ const routes: Routes = [
     loadChildren: () => import('./solicitacoesdw/solicitacoesdw.module').then( m => m.SolicitacoesdwPageModule)
   },
   {
-    path: 'perfildwproprietario',
-    loadChildren: () => import('./perfildwproprietario/perfildwproprietario.module').then( m => m.PerfildwproprietarioPageModule)
-  },
-  {
     path: 'historicoservicos',
     loadChildren: () => import('./historicoservicos/historicoservicos.module').then( m => m.HistoricoservicosPageModule)
+  },
+  {
+    path: 'caesservicopage',
+    loadChildren: () => import('./componentes/caesservicopage/caesservicopage.module').then( m => m.CaesservicopagePageModule)
+  },
+  {
+    path: 'alterarperfil',
+    loadChildren: () => import('./alterarperfil/alterarperfil.module').then( m => m.AlterarperfilPageModule)
+  },
+  {
+    path: 'avaliacoes',
+    loadChildren: () => import('./menu/avaliacoes/avaliacoes.module').then( m => m.AvaliacoesPageModule)
+  },
+  {
+    path: 'deletarconta',
+    loadChildren: () => import('./deletarconta/deletarconta.module').then( m => m.DeletarcontaPageModule)
+  },
+  {
+    path: 'avaliar-servico',
+    loadChildren: () => import('./avaliar-servico/avaliar-servico.module').then( m => m.AvaliarServicoPageModule)
+  },
+  {
+    path: 'listar-cursos',
+    loadChildren: () => import('./curso/listar-cursos/listar-cursos.module').then( m => m.ListarCursosPageModule)
+  },
+  {
+    path: 'cadastrar-curso',
+    loadChildren: () => import('./curso/cadastrar-curso/cadastrar-curso.module').then( m => m.CadastrarCursoPageModule)
+  },
+  {
+    path: 'alterar-curso',
+    loadChildren: () => import('./curso/alterar-curso/alterar-curso.module').then( m => m.AlterarCursoPageModule)
+  },
+  {
+    path: 'alterar-cao',
+    loadChildren: () => import('./cao/alterar-cao/alterar-cao.module').then( m => m.AlterarCaoPageModule)
+  },  {
+    path: 'alterar-dados-pessoais',
+    loadChildren: () => import('./componentes/conta/alterar-dados-pessoais/alterar-dados-pessoais.module').then( m => m.AlterarDadosPessoaisPageModule)
   }
+
+
+
+
+
+
 
 ];
 

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="petfeliz"><!--Toolbar-->
+    <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
+    <ion-title color="tertiary"> <b>Seus cursos</b> <!-- <b> deixa o texto em negrito --> </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> <!--Conteúdo do app-->
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="irParaCadastrarCurso()">
+    <ion-fab-button color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div id="aviso" *ngIf="aviso == true">
+    Você não possui cursos.
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let c of cursos; let i = index">
+      <div id="item-lista">
+        <section id="dado-informacao">
+          <div id=dado>
+            <b>Nome: &nbsp;</b>
+            <b>Ano conclusão: &nbsp;</b>
+          </div>
+          
+          <div id="informacao">
+            <div>
+              {{c.nome}}
+            </div>
+            <div>
+              {{c.anoConclusao | date : 'YYYY'}}
+            </div>
+          </div>
+        </section>
+  
+        <section id="botoes">
+          <ion-button color="primary" expand="block" (click)="irParaAlterarCurso(i)">
+            Alterar
+          </ion-button>
+          <ion-button color="danger" expand="block" (click)="alertRemoverCurso(i)">
+            Remover
+          </ion-button>
+        </section>
+      </div>  
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+

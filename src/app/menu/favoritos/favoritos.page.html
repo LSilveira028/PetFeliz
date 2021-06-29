@@ -1,10 +1,188 @@
 <ion-header>
-  <ion-toolbar color="primary"><!--Toolbar-->
+  <ion-toolbar color="petfeliz"><!--Toolbar-->
     <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
     <ion-title color="tertiary"> <b>Favoritos</b> <!-- <b> deixa o texto em negrito --> </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content> <!--Conteúdo do app-->
+
+  <div id="aviso" *ngIf="aviso == true">Você não possui dog walkers favoritos</div>
+
+  <ion-item *ngFor="let f of favoritos; let i = index">
+    <div class="item-lista">
+
+      <div class="box-informacoes">
+        <div class="informacoes">
+          <div class="avatarSolicitarServicoDW">
+            <ion-avatar slot="start" >
+              <img [src]="f.fotoPerfil"> <!--Avatar do Dog Walker-->
+            </ion-avatar>
+          </div>
+          
+          <div class="informacoesDW">
+            <div class="nomeStatus" (click)="modalPerfilDogWalker(i)">
+              <div class="nomeDW">
+                <ion-label><b> {{f.nome}}</b></ion-label>  <!--Nome Dog Walker-->
+              </div>
+            </div>
+            
+            <div class="avaliacao-dw"> <!--Avaliação média-->
+              <!-- Aparecerá esta mensagem caso não houver avaliações -->
+              <div *ngIf="f.servicoDogWalker.avaliacaoMedia == 0" style="font-style: italic;">
+                Nenhuma avaliação
+              </div>
+              <!-- Aparecerá as estrelas caso o dog walker tenha avaliaçãoes -->
+              <div *ngIf="f.servicoDogWalker.avaliacaoMedia != 0">
+
+                <!-- Se a avaliacao média for igual a 1 -->
+                <div *ngIf="f.servicoDogWalker.avaliacaoMedia == 1">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star1.png" height="17" width="22">
+                  <img src="/assets/star1.png" height="17" width="22">
+                  <img src="/assets/star1.png" height="17" width="22">
+                  <img src="/assets/star1.png" height="17" width="22">
+                </div>
+                  <!-- Se a avaliação média for igual a 1.5 -->
+                  <div *ngIf="f.servicoDogWalker.avaliacaoMedia == 1.5">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star3.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                  </div>
+
+                <!-- Se a avaliacao média for igual a 2 -->
+                <div *ngIf="f.servicoDogWalker.avaliacaoMedia == 2">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star1.png" height="17" width="22">
+                  <img src="/assets/star1.png" height="17" width="22">
+                  <img src="/assets/star1.png" height="17" width="22">
+                </div>
+                  <!-- Se a avaliação média for igual a 2.5 -->
+                  <div *ngIf="f.servicoDogWalker.avaliacaoMedia == 2.5">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star3.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                  </div>
+
+                  <!-- Se a avaliacao média for igual a 3 -->
+                <div *ngIf="f.servicoDogWalker.avaliacaoMedia == 3">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star1.png" height="17" width="22">
+                  <img src="/assets/star1.png" height="17" width="22">
+                </div>
+                  <!-- Se a avaliação média for igual a 3.5 -->
+                  <div *ngIf="f.servicoDogWalker.avaliacaoMedia == 3.5">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star3.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                  </div>
+                
+                  <!-- Se a avaliacao média for igual a 4 -->
+                <div *ngIf="f.servicoDogWalker.avaliacaoMedia == 4">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star1.png" height="17" width="22">
+                </div>
+                  <!-- Se a avaliação média for igual a 4.5 -->
+                  <div *ngIf="f.servicoDogWalker.avaliacaoMedia == 4.5">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star2.png" height="17" width="22">
+                    <img src="/assets/star3.png" height="17" width="22">
+                    <img src="/assets/star1.png" height="17" width="22">
+                  </div>
+
+                <!-- Se a avaliacao média for igual a 5 -->
+                <div *ngIf="f.servicoDogWalker.avaliacaoMedia == 5">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star2.png" height="17" width="22">
+                  <img src="/assets/star2.png" height="17" width="22">
+                </div>
+
+                </div> <!--Estrelas (descobriremos como fazer)-->
+            </div>
+
+            <div class="linha1Info">
+              <div class="cartao-distancia">
+                <div class="cartao">
+                  <ion-icon name="card" style="width: 25px; height: 25px;"></ion-icon>
+                  <div class="textoCartao" style="margin-left: 5px;" *ngIf="f.servicoDogWalker.aceitaCartao == 1">
+                    Aceito cartão
+                  </div>
+                  <div class="textoCartao" style="margin-left: 5px;" *ngIf="f.servicoDogWalker.aceitaCartao == 0">
+                    Não aceito cartão
+                  </div>
+                </div>
+    
+                
+              </div>
+              
+    
+              <div class="preco-servico"> <!--Aceito cartao ou não-->
+                <img src="/assets/dogWalker.png" style="height: 25px; width: 25px;">
+                <b style="margin-left: 10px; color:forestgreen ;">{{f.servicoDogWalker.valorServico | currency: 'BRL'}}</b>
+              </div> 
+              
+              
+        
+              <div class="preferencias-dw">  <!--Preferencias-->
+                <b>Preferências:</b> <br>
+                <div *ngIf="f.servicoDogWalker.preferencias == null || f.servicoDogWalker.preferencias == '' " style="font-style: italic;">
+                  Nenhuma
+                </div>
+                {{f.servicoDogWalker.preferencias}}
+              </div>
+            </div>
+          </div>       
+           
+        </div>
+
+        <!-- <div class="status-distancia"> -->
+          
+
+      </div>
+
+      
+      
+
+      <!--Botões-->
+      <div class="botoes">
+
+        <div>
+          <button class="botao-solicitar-bloqueado" *ngIf="f.disponivel == false">
+            Solicitar <br> serviço
+          </button>
+          <button class="botao-solicitar" (click)="irParaSolicitar(i)" *ngIf="f.disponivel == true">
+            Solicitar <br> serviço
+          </button>
+  
+          <button class="botao-whatsapp" (click)="enviarMensagem(i)">
+            <img src="/assets/whatsapp.png" style="height: 25px; width: 25px;">
+          </button>
+  
+          <!-- <button *ngIf="f.favorito == false" class="botao-tornar-favorito" (click)="tornarFavorito(i)">
+            <img src="/assets/like-white.png" style="height: 25px; width: 25px;">
+          </button> -->
+
+          <button *ngIf="f.favorito == true" class="botao-remover-favorito" (click)="removerFavorito(i)">
+            <img src="/assets/like-black.png" style="height: 25px; width: 25px;">
+          </button>
+        </div>  
+      </div>
+    </div>
+  </ion-item>
 
 </ion-content>

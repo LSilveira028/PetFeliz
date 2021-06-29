@@ -1,0 +1,34 @@
+#item-lista{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#dado-informacao{
+    display: flex;
+    flex-direction: row;
+}
+
+#dado{
+    display: flex;
+    flex-direction: column;
+}
+
+#dado b{
+    margin-top: 10px;
+}
+
+#informacao div{
+    margin-top: 10px;
+}
+
+#botoes{
+    margin-top: 20px;
+    width: 100%;
+    // background-color: blue;
+}
+
+.info{
+    margin-top: 10px;
+}

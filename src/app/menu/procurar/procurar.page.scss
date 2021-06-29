@@ -1,7 +1,22 @@
 .avatarSolicitarServicoDW{
-    top: 5%;
-    left: 0%;
+    margin-right: 15px;
 }
+
+.status-distancia{
+
+    display: flex;
+    flex-direction: column;
+
+    font-size: 15px;
+    float: right;
+
+    margin-top: 20px;
+}
+
+.status-distancia .status{
+    float: right;
+}
+
 .statusSolicitarServicoDW{
     
     color:rgb(75, 75, 75);
@@ -9,55 +24,40 @@
     float: right;
 }
 
-.aceitoSouNcartaoSolicitarServicoDW{
-    top: 15%;
-    left: 30%;
-}
-.textoPrecoPorCaoSolicitarServicoDW{
-    top: 18%;
-    left: 21%;
-}
+.box-informacoes{
 
-.preferenciasAvaliacaoMediaSolicitarServicoDW{
-    top: 30%;
-    left: 21%;
-}
-
-
-.valorTotalSolicitarServicoDW{
-    text-align: center;
-    top: 65%;
-    left: 30%;
-}
-.botaoSolicitarServicoDW{
-    top: 70%;
-    left: 25%;
-    width:50%
-    
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .informacoes
 {
-    height: 100%;
-    width: 120%;
+    width: 75%;
+
+    font-size: 15px;
 
     display: flex;
     flex-direction: row;
 
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .item-lista
 {
+    width: 100%;
+
     margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
 }
 
 .informacoesDW
 {
-
-    margin-left: 5%;
-
     display: flex;
     flex-direction: column;
 }
@@ -84,6 +84,7 @@
 {
     margin-top: 10px;
     display: flex;
+    flex-direction: row;
 }
 
 .cartao
@@ -94,8 +95,10 @@
 
 .distancia
 {
+    margin-top: 10px;
+
     display: flex;
-    align-items: center;
+    flex-direction: row;
 }
 
 .preco-servico
@@ -115,8 +118,22 @@
 
 .botoes
 {
+    //
+    // background: chartreuse;
+    width: 100vw;
+
     margin-top: 20px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botoes div
+{
+    // background: chocolate;
+
+    display: flex;
+    flex-direction: row;
     align-items: center;
 }
 
@@ -130,6 +147,17 @@
     width: 100px;
     border-radius: 25px;
     background-color: #E94F37;
+}
+
+.botao-solicitar-bloqueado{
+    margin-right: 13px;
+
+    font-size: 18px;
+    color: white;
+    height: 50px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: rgb(110, 110, 110);
 }
 
 .botao-whatsapp
@@ -149,4 +177,12 @@
     border-radius: 25px;
     background-color: #FFF;
     border: solid 2px rgb(110, 110, 110);
+}
+
+.botao-remover-favorito{
+    height: 50px;
+    width: 100px;
+    border-radius: 25px;
+    background-color: #E94F37;
+    // border: solid 2px rgb(110, 110, 110);
 }

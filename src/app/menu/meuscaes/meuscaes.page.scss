@@ -2,25 +2,28 @@
 //    --ion-color-primary: rgb(90, 187, 0) !important;} //exemplo de como mudar a cor de algo
 //é só declarar a classe class na frente do item, e mexer aqui 
 
-.tituloToolBar{
-    font-family:arial;
-}
 .cadastreSeusCaesAqui{
     text-align: center;
     font-size: 120%;
     font-family:arial;
 }
 
+#conteudo{
+    height: 100%;
+    width:  100%;
+}
 
-.labelCadastreSeusCaesAqui{
-    color:#E7BBE3;
+#title{
+    text-align: center;
+    font-size: 120%;
+    font-family:arial;
 }
 
 .botaoCadastrarPet{
-    font-family:arial;
-}
+    margin-bottom: 15px;
 
-.verPetsJaCadastrados{
-    font-family:arial;
+    position: fixed;
+    left: 0;
+    bottom: 0px;
+    right: 0;
 }
-

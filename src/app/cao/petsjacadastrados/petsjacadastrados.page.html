@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="petfeliz"><!--Toolbar-->
+    <ion-menu-button color ="tertiary" slot="start"></ion-menu-button> <!--Menu hamburguer-->
+    <ion-title color="tertiary"> <b>Seus cães</b> <!-- <b> deixa o texto em negrito --> </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> <!--Conteúdo do app-->
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="irParaCadastrarCao()">
+    <ion-fab-button color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-item *ngFor="let c of caes; let i = index">
+      <div id="item-lista">
+        <section id="dado-informacao">
+
+          <div id="dado">
+
+            <div class="info"><b>Nome:</b> {{c.nome}} </div>
+            <div class="info"><b>Idade:</b> {{ verificarIdade(c.idade)}} </div>
+            <div class="info"><b>Peso:</b> {{c.peso.descricao}}</div>
+            <div class="info"><b>Raça:</b> {{c.raca}}</div>
+            <div class="info"><b>Porte: </b> {{ converterPorte(c.porte) }}</div>
+
+          </div>
+
+        </section>
+  
+        <section id="botoes">
+          <ion-button color="primary" expand="block" (click)="abrirAlterarCao(i)">
+            Alterar
+          </ion-button>
+          <ion-button color="danger" expand="block" (click)="alertRemoverCao(i)">
+            Remover
+          </ion-button>
+        </section>
+      </div>  
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+

@@ -1,28 +1,43 @@
 
   <div class="tabs">
-
-    <div id="item-procurar" class="item" (click)="irParaProcurar()">
-      <img *ngIf="tela == 'historico'" src="/assets/pin.png" height="40px" width="40px" style="margin-top: 13px;">
-      <img *ngIf="tela == 'procurar'" src="/assets/pin-white.png" height="40px" width="40px" style="margin-top: 13px;">
+    <!-- Proprietário 1 -->
+    <div id="item-procurar" class="item" (click)="irParaProcurar()" *ngIf="Usuario == 'proprietario' && tela == 'procurar' ">
+      <img src="/assets/pin-white.png" height="40px" width="40px" style="margin-top: 13px;">
     </div>
+    <div id="item-procurar" class="item" *ngIf="Usuario == 'proprietario' && tela == 'historico' " (click)="irParaProcurar()">
+      <img src="/assets/pin.png" height="40px" width="40px" style="margin-top: 13px;">
+    </div>
+
+    <!--Dog Walker 1-->
+    <div id="item-procurar" class="item" *ngIf="Usuario == 'dogWalker' && tela == 'solicitacoes' " (click)="irParaSolicitacoes()">
+      <img src="/assets/white-bell.png" height="40px" width="40px" style="margin-top: 13px;">
+    </div>
+    <div id="item-procurar" class="item" *ngIf="Usuario == 'dogWalker' && tela == 'historico' " (click)="irParaSolicitacoes()">
+      <img src="/assets/bell.png" height="40px" width="40px" style="margin-top: 13px;">
+    </div>
+
 
     <div class="item-line">
       <img src="/assets/line.png">
     </div>
-
-    <div id="item-historico" class="item" (click)="irParaHistorico()">
-      <img *ngIf="tela == 'historico'" src="/assets/white-history.png" height="40px" width="40px" style="margin-top: 13px;">
-      <img *ngIf="tela == 'procurar'" src="/assets/history.png" height="40px" width="40px" style="margin-top: 13px;">
+    
+    <!-- Proprietário 2 -->
+    <div id="item-procurar" class="item" *ngIf="Usuario == 'proprietario' && tela == 'procurar' " (click)="irParaHistorico()">
+      <img src="/assets/history.png" height="40px" width="40px" style="margin-top: 13px;">
+    </div>
+    <div id="item-procurar" class="item" *ngIf="Usuario == 'proprietario' && tela == 'historico' " (click)="irParaHistorico()">
+      <img src="/assets/white-history.png" height="40px" width="40px" style="margin-top: 13px;">
     </div>
 
-    <!-- <div class="items">
+    <!--Dog Walker 2-->
+    <div id="item-procurar" class="item" *ngIf="Usuario == 'dogWalker' && tela == 'solicitacoes' " (click)="irParaHistorico()">
+      <img src="/assets/history.png" height="40px" width="40px" style="margin-top: 13px;">
+    </div>
+    <div id="item-procurar" class="item" *ngIf="Usuario == 'dogWalker' && tela == 'historico' " (click)="irParaHistorico()">
+      <img src="/assets/white-history.png" height="40px" width="40px" style="margin-top: 13px;">
+    </div>
 
-      <div style="background-color: gray;">
-        <img *ngIf="tela == 'historico'" src="/assets/pin.png" height="40px" width="40px">
-      </div>  
-
-      <img src="/assets/line.png" style="margin: 0px 60px 0px 60px;">
-
-      <img *ngIf="tela == 'historico'" src="/assets/white-history.png" height="40px" width="40px">
-    </div> -->
+    
   </div>
+
+  

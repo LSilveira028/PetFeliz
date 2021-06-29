@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SolicitacoesdwPageRoutingModule } from './solicitacoesdw-routing.module';
 
 import { SolicitacoesdwPage } from './solicitacoesdw.page';
+import { TabsComponent } from '../componentes/tabs/tabs.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { SolicitacoesdwPage } from './solicitacoesdw.page';
     IonicModule,
     SolicitacoesdwPageRoutingModule
   ],
-  declarations: [SolicitacoesdwPage]
+  declarations: [SolicitacoesdwPage, TabsComponent]
 })
 export class SolicitacoesdwPageModule {}

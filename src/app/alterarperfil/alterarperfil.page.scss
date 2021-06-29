@@ -1,0 +1,78 @@
+section b{
+    font-size: 18px;
+}
+
+#foto-nome div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+//Disntancia entre o nome e a foto
+#foto-nome div b{
+    margin-top: 10px;
+
+    max-width: 200px;
+    text-align: center;
+}
+
+#sobre, #preco, #aceita-cartao, #preferencias{
+    margin-left: 20px;
+    margin-top: 15px;
+}
+#sobre textarea, #preferencias textarea{
+    margin-top: 5px;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    //impede que o tamanho seja alterado
+    resize: none;
+}
+
+#preco, #aceita-cartao, #preferencias, #sobre{
+    margin-right: 20px;
+}
+ 
+#area-botao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#botao-salvar{
+    background-color: #E94F37;
+    color: white;
+
+    font-size: 18px;
+
+    border-radius: 10px;
+
+    height: 50px;
+    width: 160px;
+}
+
+.input::-webkit-input-placeholder { /* Chrome, Safari, Opera */
+    font-style: italic;
+  }
+  
+  .input:-moz-placeholder { /* Firefox 18- */
+    font-style: italic;
+    opacity: 1;
+  }
+  
+  .input::-moz-placeholder {  /* Firefox 19+ */
+    font-style: italic;
+    opacity: 1;
+  }
+  
+  .input:-ms-input-placeholder { /* IE10+ */ 
+    font-style: italic; 
+  }

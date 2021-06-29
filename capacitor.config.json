@@ -4,6 +4,7 @@
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
+  "allowMixedContent": true,
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0

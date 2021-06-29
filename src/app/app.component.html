@@ -3,14 +3,32 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Pet Feliz</ion-list-header> <!--Texto "Pet Feliz no Header do Menu"-->
-          <ion-note>hi@ionicframework.com</ion-note>
+          <ion-list-header id="nome-usuario">{{usuario.nome}}</ion-list-header> <!--Texto "Pet Feliz no Header do Menu"-->
+         
+          <!--Tipo conta do usuário-->
+          <p id="tipo-conta">{{ converterTipoConta(usuario.tipoConta) }}</p>
+
+          <div id="botoes" *ngIf="usuario.tipoConta == 2">
+            <div>
+              <button id="botao-disponivel" class="botao" *ngIf="usuario.disponivel == 1" (click)="atualizarDisponibilidade(0)">
+                Disponível
+              </button>
+              <button id="botao-indisponivel" class="botao" *ngIf="usuario.disponivel == 0" (click)="atualizarDisponibilidade(1)">
+                Indisponível
+              </button>
+            </div>
+
+            <img src="/assets/info.png" height="20px" width="20px" (click)="alertDisponibilidade(usuario.disponivel)">
+          
+          </div>
+            
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
+
           </ion-menu-toggle>
         </ion-list>
 
