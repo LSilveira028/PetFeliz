@@ -37,8 +37,8 @@ export class CaoService {
     'Authorization': 'Bearer ' + this.tokenAnderson
   })
 
-  private api_url = 'http://pet-feliz.somee.com/PetFeliz/Cao/'
-  private api_url_caoServico = 'http://pet-feliz.somee.com/PetFeliz/CaoServico/'
+  private api_url = 'http://www.pet-feliz.somee.com/PetFeliz/Cao/'
+  private api_url_caoServico = 'http://www.pet-feliz.somee.com/PetFeliz/CaoServico/'
   
 
   // private api_url = "http://localhost:5000/Cao/"

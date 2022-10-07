@@ -46,7 +46,7 @@ export class UsuarioService {
   tokenLucas = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI2IiwibmFtZSI6Ikx1Y2FzIiwibmJmIjoxNjIwNDE4MTY0LCJleHAiOjE2MjE2Mjc3NjQsImlhdCI6MTYyMDQxODE2NH0.Cd91j0_M_t0mVVGc-q1pWn_ifhMM_HgEtAnApNTZThfaVyXFVyW2atqIxsgpkAVJc4AnG9QmyOJEdw8WXAMAhA"
 
   
-  private api_url = 'http://pet-feliz.somee.com/PetFeliz/Usuario/'
+  private api_url = 'http://www.pet-feliz.somee.com/PetFeliz/Usuario/'
   
   // private api_url = "http://localhost:5000/Usuario/"
   

@@ -17,7 +17,7 @@ export interface Usuario
   providedIn: 'root'
 })
 export class ApiService {
-  private api_url = 'http://pet-feliz.somee.com/PetFeliz/Usuario/'
+  private api_url = 'http://www.pet-feliz.somee.com/PetFeliz/Usuario/'
 
   constructor(private http: HttpClient) { }
 

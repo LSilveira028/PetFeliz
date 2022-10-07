@@ -29,8 +29,8 @@ export class UsuarioAvaliacao
 })
 export class AvaliacaoService {
 
-  private api_url = "http://pet-feliz.somee.com/PetFeliz/Avaliacao/";
-  private api_url_usuarioAvaliacao = "http://pet-feliz.somee.com/PetFeliz/UsuarioAvaliacao/";
+  private api_url = "http://www.pet-feliz.somee.com/PetFeliz/Avaliacao/";
+  private api_url_usuarioAvaliacao = "http://www.pet-feliz.somee.com/PetFeliz/UsuarioAvaliacao/";
 
   // private api_url = "http://localhost:5000/Avaliacao/";
   // private api_url_usuarioAvaliacao = "http://localhost:5000/UsuarioAvaliacao/";
